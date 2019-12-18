@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/baseLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="top"
@@ -17,16 +18,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/upperLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.6"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
             android:background="#89F50C"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tageszieleHeadline"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Tagesziele:"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
@@ -34,14 +38,21 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <EditText
                     android:id="@+id/editText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.5"
                     android:ems="10"
                     android:inputType="number"
                     android:text="1796"
@@ -49,19 +60,19 @@
                     android:textColor="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.1"
                     android:text="/"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/editText2"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.5"
                     android:ems="10"
                     android:inputType="number"
                     android:text="3000"
@@ -70,24 +81,36 @@
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_weight="1.07"
                     android:text="kcal"
                     android:textColor="#FFFFFF" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <EditText
                     android:id="@+id/editText3"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:ems="10"
                     android:inputType="number"
                     android:text="63"
@@ -95,19 +118,18 @@
                     android:textColor="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
+                    android:id="@+id/slash2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="0.1"
                     android:text="/"
-                    android:textAlignment="center"
                     android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/editText4"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:ems="10"
                     android:inputType="number"
                     android:text="150"
@@ -116,19 +138,149 @@
 
                 <TextView
                     android:id="@+id/textView7"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.07"
                     android:text="g Protein"
                     android:textColor="#FFFFFF" />
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="63"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/slash3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="/"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/editText4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="150"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.07"
+                    android:text="g Kohlenhydrate"
+                    android:textColor="#FFFFFF" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="1796"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/slash4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="/"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="3000"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.07"
+                    android:text="g Fett"
+                    android:textColor="#FFFFFF" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2" />
+
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lowerLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:orientation="vertical"></LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:orientation="vertical">
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
