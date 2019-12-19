@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,11 +40,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public void openHistorie(View view) {
+        //something
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.historie:
                 Toast.makeText(MainActivity.this, "Historie ausgewählt", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, GerichteBearbeitenActivity.class);
+                startActivity(intent);
                 break;
             case R.id.gewichtSpeichern:
                 Toast.makeText(MainActivity.this, "Gewicht speichern ausgewählt", Toast.LENGTH_SHORT).show();
