@@ -23,16 +23,15 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.06"
-            android:background="@color/c1" />
+            android:layout_height="45dp"
+            android:background="@color/hellgrün" />
 
         <LinearLayout
             android:id="@+id/upperLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
-            android:background="@color/c1"
+            android:layout_weight="0.33"
+            android:background="@color/hellgrün"
             android:orientation="vertical">
 
             <TextView
@@ -54,16 +53,11 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
                     android:id="@+id/curKcal"
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
                     android:inputType="numberDecimal"
@@ -74,18 +68,17 @@
 
                 <TextView
                     android:id="@+id/slash1"
-                    android:layout_width="0dp"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
                     android:text="/"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/goalKcal"
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="3000"
                     android:inputType="numberDecimal"
@@ -96,17 +89,12 @@
 
                 <TextView
                     android:id="@+id/kcalTrackerText"
-                    android:layout_width="0dp"
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.13"
                     android:text="kcal"
                     android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -118,16 +106,11 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
-                    android:id="@+id/curProtein"
-                    android:layout_width="0dp"
+                    android:id="@+id/curProt"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
                     android:inputType="numberDecimal"
@@ -138,18 +121,17 @@
 
                 <TextView
                     android:id="@+id/slash2"
-                    android:layout_width="0dp"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
                     android:text="/"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF" />
 
                 <EditText
-                    android:id="@+id/goalProtein"
-                    android:layout_width="0dp"
+                    android:id="@+id/goalProt"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="200"
                     android:inputType="numberDecimal"
@@ -159,18 +141,13 @@
                     android:textColorHint="#66646464" />
 
                 <TextView
-                    android:id="@+id/proteinTrackerText"
-                    android:layout_width="0dp"
+                    android:id="@+id/protTrackerText"
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.13"
-                    android:text="g Protein"
+                    android:text="g Prot"
                     android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -183,16 +160,11 @@
                 android:orientation="horizontal"
                 android:visibility="visible">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
-                    android:id="@+id/curKohlenhydrate"
-                    android:layout_width="0dp"
+                    android:id="@+id/curKh"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
                     android:inputType="numberDecimal"
@@ -203,18 +175,17 @@
 
                 <TextView
                     android:id="@+id/slash3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
                     android:text="/"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF" />
 
                 <EditText
-                    android:id="@+id/goalKohlenhydrate"
-                    android:layout_width="0dp"
+                    android:id="@+id/goalKh"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="330"
                     android:inputType="numberDecimal"
@@ -224,18 +195,13 @@
                     android:textColorHint="#66646464" />
 
                 <TextView
-                    android:id="@+id/kohlenhydrateTrackerText"
-                    android:layout_width="0dp"
+                    android:id="@+id/khTrackerText"
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.13"
-                    android:text="g Kohlenhydrate"
+                    android:text="g KH"
                     android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -247,16 +213,11 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
                     android:id="@+id/curFett"
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
                     android:inputType="numberDecimal"
@@ -267,18 +228,17 @@
 
                 <TextView
                     android:id="@+id/slash4"
-                    android:layout_width="0dp"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
                     android:text="/"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/goalFett"
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="120"
                     android:inputType="numberDecimal"
@@ -289,17 +249,12 @@
 
                 <TextView
                     android:id="@+id/fettTrackerText"
-                    android:layout_width="0dp"
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.13"
                     android:text="g Fett"
                     android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -314,7 +269,7 @@
             android:id="@+id/lowerLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.66"
             android:orientation="vertical">
 
             <TextView
@@ -325,6 +280,8 @@
                 android:gravity="center"
                 android:text="Essen essen:"
                 android:textAlignment="center"
+                android:textColor="#000"
+                android:textColorHighlight="#000"
                 android:textSize="22sp" />
 
             <LinearLayout
@@ -335,29 +292,20 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.35" />
-
                 <Button
                     android:id="@+id/gerichtAuswählenButton"
-                    android:layout_width="0dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Gericht auswählen..." />
+                    android:text="Gericht auswählen..."
+                    android:textAllCaps="false"
+                    android:textSize="18sp" />
 
                 <ImageButton
                     android:id="@+id/gerichtHinzufügenButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     tools:srcCompat="@android:drawable/ic_input_add" />
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.35" />
             </LinearLayout>
 
             <LinearLayout
@@ -368,32 +316,25 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
                     android:id="@+id/toAddAmount"
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:backgroundTint="#000000"
                     android:ems="10"
                     android:inputType="numberDecimal"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="#000" />
 
                 <TextView
                     android:id="@+id/toAddPortionenText"
-                    android:layout_width="0dp"
+                    android:layout_width="78dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Portionen"
-                    android:textAlignment="viewStart" />
+                    android:textAlignment="viewStart"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -404,32 +345,25 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
                     android:id="@+id/toAddKcal"
-                    android:layout_width="0dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:backgroundTint="#000000"
                     android:ems="10"
                     android:inputType="numberDecimal"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="#000" />
 
                 <TextView
                     android:id="@+id/toAddKcalText"
-                    android:layout_width="0dp"
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="kcal"
-                    android:textAlignment="viewStart" />
+                    android:textAlignment="viewStart"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -440,32 +374,97 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <EditText
-                    android:id="@+id/toAddProtein"
-                    android:layout_width="0dp"
+                    android:id="@+id/toAddProt"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:backgroundTint="#000000"
                     android:ems="10"
                     android:inputType="numberDecimal"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="#000" />
 
                 <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="0dp"
+                    android:id="@+id/toAddProtText"
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="g Protein"
-                    android:textAlignment="viewStart" />
+                    android:text="g Prot"
+                    android:textAlignment="viewStart"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
 
-                <Space
-                    android:layout_width="0dp"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addKhLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/toAddKh"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:backgroundTint="#000"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/toAddKhText"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:text="g KH"
+                    android:textAlignment="viewStart"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addFettLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/toAddFett"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="viewStart"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/toAddFettText"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000"
+                    android:text="g Fett"
+                    android:textAlignment="viewStart"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mampfLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mampf!"
+                    android:textAlignment="center"
+                    android:textAllCaps="false" />
             </LinearLayout>
 
         </LinearLayout>
@@ -477,7 +476,7 @@
         android:id="@+id/navigationView"
         app:menu="@menu/menu_item"
         app:headerLayout="@layout/header"
-        android:background="@color/c1"
+        android:background="@color/hellgrün"
         android:layout_gravity="start"
         app:itemTextColor="#FFF"/>
 
