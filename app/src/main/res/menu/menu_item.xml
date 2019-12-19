@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/historie"
+        android:title="Historie"/>
+
+    <item
+        android:id="@+id/gewichtSpeichern"
+        android:title="Gewicht speichern"/>
+
+    <item
+        android:id="@+id/gerichteBearbeiten"
+        android:title="Gerichte bearbeiten"/>
+
+    <item
+        android:id="@+id/einstellungen"
+        android:title="Einstellungen"/>
+
+</menu>
