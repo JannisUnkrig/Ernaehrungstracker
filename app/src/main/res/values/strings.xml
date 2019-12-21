@@ -2,4 +2,10 @@
     <string name="app_name">Ernaehrungstracker</string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
+
+    <string-array name="portionenGramm">
+        <item>Portionen</item>
+        <item>Gramm</item>
+    </string-array>
+
 </resources>

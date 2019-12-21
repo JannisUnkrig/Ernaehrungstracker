@@ -3,7 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="hellgrün">#89F50C</color>
-    <color name="c3">#00574B</color>
+
+    <color name="hellgrün">#ffa3c71b</color>
+    <color name="helllila">#ffaba7ff</color>
+    <color name="dunkellila">#ff8b87ff</color>
+
 
 </resources>

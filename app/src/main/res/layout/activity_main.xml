@@ -9,466 +9,476 @@
     android:id="@+id/drawer"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/baseLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="top"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/hellgrün" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/upperLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.33"
-            android:background="@color/hellgrün"
+            android:layout_height="wrap_content"
+            android:gravity="top"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tageszieleHeadline"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Tagesziele:"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp" />
+                android:layout_height="wrap_content"
+                android:background="@color/hellgrün" />
 
             <LinearLayout
-                android:id="@+id/kcalTrackerLayout"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/curKcal"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
+                android:layout_height="wrap_content"
+                android:background="@color/hellgrün"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/slash1"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF" />
-
-                <EditText
-                    android:id="@+id/goalKcal"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="3000"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/kcalTrackerText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="kcal"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/proteinTrackerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/curProt"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/slash2"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF" />
-
-                <EditText
-                    android:id="@+id/goalProt"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="200"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/protTrackerText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="g Prot"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/kohlenhydrateTrackerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <EditText
-                    android:id="@+id/curKh"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/slash3"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF" />
-
-                <EditText
-                    android:id="@+id/goalKh"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="330"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/khTrackerText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="g KH"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fettTrackerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/curFett"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/slash4"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF" />
-
-                <EditText
-                    android:id="@+id/goalFett"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="120"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textColorHighlight="#FFFFFF"
-                    android:textColorHint="#66646464" />
-
-                <TextView
-                    android:id="@+id/fettTrackerText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="g Fett"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lowerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.66"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/essenEssenHeadline"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Essen essen:"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textColorHighlight="#000"
-                android:textSize="22sp" />
-
-            <LinearLayout
-                android:id="@+id/gerichtAuswählenLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/gerichtAuswählenButton"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Gericht auswählen..."
-                    android:textAllCaps="false"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/gerichtHinzufügenButton"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    tools:srcCompat="@android:drawable/ic_input_add" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/PortionenLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/toAddAmount"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#000000"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:id="@+id/toAddPortionenText"
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
-                    android:text="Portionen"
-                    android:textAlignment="viewStart"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addKcalLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/toAddKcal"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#000000"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:id="@+id/toAddKcalText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="kcal"
-                    android:textAlignment="viewStart"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addProteinLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/toAddProt"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#000000"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:id="@+id/toAddProtText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="g Prot"
-                    android:textAlignment="viewStart"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addKhLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/toAddKh"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#000"
-                    android:ems="10"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:id="@+id/toAddKhText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:text="g KH"
-                    android:textAlignment="viewStart"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addFettLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/toAddFett"
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#000"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="viewStart"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:id="@+id/toAddFettText"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#000"
-                    android:text="g Fett"
-                    android:textAlignment="viewStart"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mampfLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button"
+                    android:id="@+id/tageszieleHeadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mampf!"
+                    android:gravity="center"
+                    android:text="Tagesziele:"
                     android:textAlignment="center"
-                    android:textAllCaps="false" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/curKcal"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/slash1"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/goalKcal"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="3000"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/kcalTrackerText"
+                        android:layout_width="43dp"
+                        android:layout_height="wrap_content"
+                        android:text="kcal"
+                        android:textAlignment="viewStart"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/curProt"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/slash2"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/goalProt"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="200"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/protTrackerText"
+                        android:layout_width="43dp"
+                        android:layout_height="wrap_content"
+                        android:text="g Prot"
+                        android:textAlignment="viewStart"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <EditText
+                        android:id="@+id/curKh"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/slash3"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/goalKh"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="330"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/khTrackerText"
+                        android:layout_width="43dp"
+                        android:layout_height="wrap_content"
+                        android:text="g KH"
+                        android:textAlignment="viewStart"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <EditText
+                        android:id="@+id/curFett"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/slash4"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/goalFett"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#fff"
+                        android:ems="10"
+                        android:hint="120"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/fettTrackerText"
+                        android:layout_width="43dp"
+                        android:layout_height="wrap_content"
+                        android:text="g Fett"
+                        android:textAlignment="viewStart"
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp" />
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/essenEssenHeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:text="Essen essen:"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/gerichtAuswählenButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/helllila"
+                            android:text="Gericht auswählen..."
+                            android:textAllCaps="false"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="6dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/toAddAmount"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#000"
+                                android:ems="10"
+                                android:hint="1"
+                                android:inputType="numberDecimal"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/toAddPortionenText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Portionen"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/toAddKcal"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#000"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/toAddKcalText"
+                                android:layout_width="43dp"
+                                android:layout_height="wrap_content"
+                                android:text="kcal"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/toAddProt"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#000"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/toAddProtText"
+                                android:layout_width="43dp"
+                                android:layout_height="wrap_content"
+                                android:text="g Prot"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <EditText
+                                android:id="@+id/toAddKh"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#000"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/toAddKhText"
+                                android:layout_width="43dp"
+                                android:layout_height="wrap_content"
+                                android:text="g KH"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/toAddFett"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#000"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/toAddFettText"
+                                android:layout_width="43dp"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#000"
+                                android:text="g Fett"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/mampfButton"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/dunkellila"
+                    android:text="Mampf!"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+    </ScrollView>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"

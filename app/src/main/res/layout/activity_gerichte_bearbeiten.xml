@@ -1,17 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/hellgrün"
     tools:context=".GerichteBearbeitenActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="188dp"
+            android:background="#fff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/gerichteBearbeitenHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="Gerichte bearbeiten:"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/gerichteBearbeitenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/helllila"
+                    android:text="Gericht bearbeiten"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <Space
+                    android:layout_width="14dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/neuesGerichtButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/dunkellila"
+                    android:text="neues Gericht"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#fff"
+                android:ems="10"
+                android:hint="Name angeben"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:autofillHints="food" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/kcalNoteButton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:backgroundTint="@color/hellgrün"
+                    android:contentDescription="image for neutral note"
+                    android:tint="#fff"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+
+                <EditText
+                    android:id="@+id/gerichteBearbeitenKcalEditText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:importantForAutofill="no" />
+
+                <TextView
+                    android:id="@+id/gerichteBearbeitenKcalText"
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:text="kcal"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <Space
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/protNoteButton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:backgroundTint="@color/hellgrün"
+                    android:contentDescription="image for neutral note"
+                    android:tint="#fff"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+
+                <EditText
+                    android:id="@+id/gerichteBearbeitenProtEditText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:importantForAutofill="no" />
+
+                <TextView
+                    android:id="@+id/gerichteBearbeitenProtText"
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:text="g Prot"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/khNoteButton"
+                    android:layout_width="25dp"
+                    android:layout_height="28dp"
+                    android:backgroundTint="@color/hellgrün"
+                    android:contentDescription="image for neutral note"
+                    android:tint="#fff"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+
+                <EditText
+                    android:id="@+id/gerichteBearbeitenKhEditText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:importantForAutofill="no" />
+
+                <TextView
+                    android:id="@+id/gerichteBearbeitenKhText"
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:text="g KH"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <Space
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/fettNoteButton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:backgroundTint="@color/hellgrün"
+                    android:contentDescription="image for neutral note"
+                    android:tint="#fff"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+
+                <EditText
+                    android:id="@+id/gerichteBearbeitenFettEditText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:importantForAutofill="no" />
+
+                <TextView
+                    android:id="@+id/gerichteBearbeitenFettText"
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:text="g Fett"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/gerichteBearbeitenPortionenGrammEditText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="1"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:importantForAutofill="no"/>
+
+                <Spinner
+                    android:id="@+id/portionenGrammSpinner"
+                    android:layout_width="134dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/gerichteBearbeitenBeschreibungText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Beschreibung:"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/gerichteBearbeitenBeschreibungEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="optional"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/gerichteBearbeitenLöschenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="Löschen"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dunkellila"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/gerichteBearbeitenSpeichernButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/helllila"
+                    android:text="Speichern"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

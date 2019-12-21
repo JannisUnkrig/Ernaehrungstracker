@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
             case R.id.historie:
                 Toast.makeText(MainActivity.this, "Historie ausgewählt", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, GerichteBearbeitenActivity.class);
-                startActivity(intent);
                 break;
             case R.id.gewichtSpeichern:
                 Toast.makeText(MainActivity.this, "Gewicht speichern ausgewählt", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.gerichteBearbeiten:
                 Toast.makeText(MainActivity.this, "Gerichte bearbeiten ausgewählt", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, GerichteBearbeitenActivity.class);
+                startActivity(intent);
                 break;
             case R.id.einstellungen:
                 Toast.makeText(MainActivity.this, "Einstellungen ausgewählt", Toast.LENGTH_SHORT).show();
