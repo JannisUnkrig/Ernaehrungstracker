@@ -28,6 +28,7 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         ((TextView) parent.getChildAt(0)).setTextColor(0xFFFFFFFF);
+        ((TextView) parent.getChildAt(0)).setTextSize(14);
 
         String text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();

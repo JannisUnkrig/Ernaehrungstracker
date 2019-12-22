@@ -22,7 +22,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/hellgrün" />
 
             <LinearLayout
@@ -39,7 +39,7 @@
                     android:gravity="center"
                     android:text="Tagesziele:"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#fff"
                     android:textSize="20sp" />
 
                 <LinearLayout
@@ -59,7 +59,7 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/slash1"
@@ -80,23 +80,23 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/kcalTrackerText"
-                        android:layout_width="43dp"
+                        android:layout_width="39dp"
                         android:layout_height="wrap_content"
                         android:text="kcal"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -110,7 +110,7 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/slash2"
@@ -131,23 +131,23 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/protTrackerText"
-                        android:layout_width="43dp"
+                        android:layout_width="39dp"
                         android:layout_height="wrap_content"
                         android:text="g Prot"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:visibility="visible">
@@ -162,7 +162,7 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/slash3"
@@ -183,23 +183,23 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/khTrackerText"
-                        android:layout_width="43dp"
+                        android:layout_width="39dp"
                         android:layout_height="wrap_content"
                         android:text="g KH"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:visibility="visible">
@@ -214,7 +214,7 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/slash4"
@@ -235,22 +235,22 @@
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/fettTrackerText"
-                        android:layout_width="43dp"
+                        android:layout_width="39dp"
                         android:layout_height="wrap_content"
                         android:text="g Fett"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <Space
                     android:layout_width="wrap_content"
-                    android:layout_height="16dp" />
+                    android:layout_height="12dp" />
 
             </LinearLayout>
 
@@ -264,7 +264,7 @@
                     android:id="@+id/essenEssenHeadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="24dp"
                     android:gravity="center"
                     android:text="Essen essen:"
                     android:textAlignment="center"
@@ -274,15 +274,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="2dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -292,10 +292,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/helllila"
+                            android:onClick="gerichtAuswählenButtonPressed"
                             android:text="Gericht auswählen..."
                             android:textAllCaps="false"
                             android:textColor="#fff"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -315,7 +316,7 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/toAddPortionenText"
@@ -324,7 +325,7 @@
                                 android:text="Portionen"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -352,22 +353,22 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/toAddKcalText"
-                                android:layout_width="43dp"
+                                android:layout_width="39dp"
                                 android:layout_height="wrap_content"
                                 android:text="kcal"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                         </LinearLayout>
 
                         <Space
                             android:layout_width="match_parent"
-                            android:layout_height="10dp" />
+                            android:layout_height="7dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -384,22 +385,22 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/toAddProtText"
-                                android:layout_width="43dp"
+                                android:layout_width="39dp"
                                 android:layout_height="wrap_content"
                                 android:text="g Prot"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                         </LinearLayout>
 
                         <Space
                             android:layout_width="match_parent"
-                            android:layout_height="10dp" />
+                            android:layout_height="7dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -415,21 +416,23 @@
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:inputType="numberDecimal"
-                                android:textSize="16sp" />
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/toAddKhText"
-                                android:layout_width="43dp"
+                                android:layout_width="39dp"
                                 android:layout_height="wrap_content"
                                 android:text="g KH"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                         <Space
                             android:layout_width="match_parent"
-                            android:layout_height="10dp" />
+                            android:layout_height="7dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -444,19 +447,19 @@
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:inputType="numberDecimal"
-                                android:textAlignment="viewStart"
+                                android:textAlignment="center"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/toAddFettText"
-                                android:layout_width="43dp"
+                                android:layout_width="39dp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:text="g Fett"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -464,11 +467,12 @@
 
                 <Button
                     android:id="@+id/mampfButton"
-                    android:layout_width="100dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="7dp"
                     android:backgroundTint="@color/dunkellila"
+                    android:onClick="mampfButtonPressed"
                     android:text="Mampf!"
                     android:textAlignment="center"
                     android:textAllCaps="false"

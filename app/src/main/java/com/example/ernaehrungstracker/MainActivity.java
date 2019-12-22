@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -22,11 +23,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
 
+    HeuteSpeicher heuteSpeicher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //draw menu
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
@@ -38,10 +42,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        //heute speicher
+        if(heuteSpeicher == null) heuteSpeicher = new HeuteSpeicher();
     }
 
-    public void openHistorie(View view) {
-        //something
+    public void gerichtAuswählenButtonPressed(View view) {
+        Intent intent = new Intent(this, GerichtAuswaehlenRecyclerViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void mampfButtonPressed(View view) {
+        /*String kcal = ((EditText) findViewById(R.id.toAddKcal)).getText().toString();
+        String prot = ((EditText) findViewById(R.id.toAddProt)).getText().toString();
+        String kh = ((EditText) findViewById(R.id.toAddKh)).getText().toString();
+        String fett = ((EditText) findViewById(R.id.toAddFett)).getText().toString();*/
+
+        int kcal = 0;
+        int prot = 0;
+        int kh   = 0;
+        int fett = 0;
+
+        try {
+            kcal = Integer.parseInt(((EditText) findViewById(R.id.toAddKcal)).getText().toString());
+        } catch (Exception e) {}
+        try {
+            prot = Integer.parseInt(((EditText) findViewById(R.id.toAddProt)).getText().toString());
+        } catch (Exception e) {}
+        try {
+            kh = Integer.parseInt(((EditText) findViewById(R.id.toAddKh)).getText().toString());
+        } catch (Exception e) {}
+        try {
+            fett = Integer.parseInt(((EditText) findViewById(R.id.toAddFett)).getText().toString());
+        } catch (Exception e) {}
+
+        //abbruch wenn alles 0
+        if (kcal == 0 && prot == 0 && kh == 0 && fett == 0) return;
+
+        Gericht temp = new Gericht(kcal, prot, kh, fett);
+        heuteSpeicher.gerichtEssen(temp);
+
+        //update upper editViews
+        ((EditText) findViewById(R.id.curKcal)).setText("" + heuteSpeicher.getKcalHeute());
+        ((EditText) findViewById(R.id.curProt)).setText("" + heuteSpeicher.getProtHeute());
+        ((EditText) findViewById(R.id.curKh)).setText("" + heuteSpeicher.getKhHeute());
+        ((EditText) findViewById(R.id.curFett)).setText("" + heuteSpeicher.getFettHeute());
     }
 
     @Override

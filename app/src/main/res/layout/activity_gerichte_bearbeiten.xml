@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="188dp"
+            android:layout_height="180dp"
             android:background="#fff"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -23,7 +23,7 @@
                 android:id="@+id/gerichteBearbeitenHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="46dp"
                 android:text="Gerichte bearbeiten:"
                 android:textAlignment="center"
                 android:textColor="#000"
@@ -37,21 +37,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/gerichteBearbeitenButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/helllila"
-                    android:text="Gericht bearbeiten"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:textSize="16sp" />
-
-                <Space
-                    android:layout_width="14dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
                     android:id="@+id/neuesGerichtButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +45,23 @@
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
+
+                <Space
+                    android:layout_width="14dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/gerichteBearbeitenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/helllila"
+                    android:text="Gericht bearbeiten"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -110,20 +111,20 @@
                     android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:importantForAutofill="no" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenKcalText"
-                    android:layout_width="43dp"
+                    android:layout_width="39dp"
                     android:layout_height="wrap_content"
                     android:text="kcal"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <Space
                     android:layout_width="40dp"
@@ -145,20 +146,20 @@
                     android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:importantForAutofill="no" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenProtText"
-                    android:layout_width="43dp"
+                    android:layout_width="39dp"
                     android:layout_height="wrap_content"
                     android:text="g Prot"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -185,20 +186,20 @@
                     android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:importantForAutofill="no" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenKhText"
-                    android:layout_width="43dp"
+                    android:layout_width="39dp"
                     android:layout_height="wrap_content"
                     android:text="g KH"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <Space
                     android:layout_width="40dp"
@@ -220,20 +221,20 @@
                     android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="0"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:importantForAutofill="no" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenFettText"
-                    android:layout_width="43dp"
+                    android:layout_width="39dp"
                     android:layout_height="wrap_content"
                     android:text="g Fett"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -250,15 +251,15 @@
                     android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="1"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:importantForAutofill="no"/>
+                    android:textSize="14sp" />
 
                 <Spinner
                     android:id="@+id/portionenGrammSpinner"
-                    android:layout_width="134dp"
+                    android:layout_width="124dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#fff" />
             </LinearLayout>
@@ -277,7 +278,7 @@
                     android:text="Beschreibung:"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/gerichteBearbeitenBeschreibungEditText"
@@ -291,7 +292,7 @@
                     android:inputType="textMultiLine"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -310,7 +311,7 @@
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/dunkellila"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:visibility="visible" />
 
                 <Button
@@ -322,7 +323,7 @@
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
