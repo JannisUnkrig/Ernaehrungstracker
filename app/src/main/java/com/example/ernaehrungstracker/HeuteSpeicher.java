@@ -5,18 +5,18 @@ import java.util.ArrayList;
 
 public class HeuteSpeicher {
 
-    private ArrayList<Gericht> gegesseneGerichte = new ArrayList<Gericht>();
-    private int Gewicht = -1;
+    private ArrayList<Gericht> gegesseneGerichte = new ArrayList<>();
+    private double Gewicht = -1;
 
-    private int kcalHeute = 0;
-    private int protHeute = 0;
-    private int khHeute   = 0;
-    private int fettHeute = 0;
+    private double kcalHeute = 0;
+    private double protHeute = 0;
+    private double khHeute   = 0;
+    private double fettHeute = 0;
 
-    private int kcalZielHeute = -1;
-    private int protZielHeute = -1;
-    private int khZielHeute   = -1;
-    private int fettZielHeute = -1;
+    private double kcalZielHeute = -1;
+    private double protZielHeute = -1;
+    private double khZielHeute   = -1;
+    private double fettZielHeute = -1;
 
 
 
@@ -28,42 +28,59 @@ public class HeuteSpeicher {
         protHeute += gericht.getProt();
         khHeute   += gericht.getKh();
         fettHeute += gericht.getFett();
+
+        //auf eine nachkommastelle runden
+        kcalHeute = ((double) Math.round(kcalHeute * 10)) / 10;
+        protHeute = ((double) Math.round(protHeute * 10)) / 10;
+        khHeute   = ((double) Math.round(khHeute * 10)) / 10;
+        fettHeute = ((double) Math.round(fettHeute * 10)) / 10;
+
+        //nix darf über 99999.9 sein
+        if (kcalHeute > 99999.9) kcalHeute = 99999.9;
+        if (protHeute > 99999.9) protHeute = 99999.9;
+        if (khHeute > 99999.9) khHeute = 99999.9;
+        if (fettHeute > 99999.9) fettHeute = 99999.9;
+
+        if (kcalZielHeute > 99999.9) kcalZielHeute = 99999.9;
+        if (protZielHeute > 99999.9) protZielHeute = 99999.9;
+        if (khZielHeute > 99999.9) khZielHeute = 99999.9;
+        if (fettZielHeute > 99999.9) fettZielHeute = 99999.9;
     }
 
 
-    public void setGewicht(int gewicht) {
+    public void setGewicht(double gewicht) {
         Gewicht = gewicht;
     }
 
-    public void setKcalHeute(int kcalHeute) {
+    public void setKcalHeute(double kcalHeute) {
         this.kcalHeute = kcalHeute;
     }
 
-    public void setProtHeute(int protHeute) {
+    public void setProtHeute(double protHeute) {
         this.protHeute = protHeute;
     }
 
-    public void setKhHeute(int khHeute) {
+    public void setKhHeute(double khHeute) {
         this.khHeute = khHeute;
     }
 
-    public void setFettHeute(int fettHeute) {
+    public void setFettHeute(double fettHeute) {
         this.fettHeute = fettHeute;
     }
 
-    public void setKcalZielHeute(int kcalZielHeute) {
+    public void setKcalZielHeute(double kcalZielHeute) {
         this.kcalZielHeute = kcalZielHeute;
     }
 
-    public void setProtZielHeute(int protZielHeute) {
+    public void setProtZielHeute(double protZielHeute) {
         this.protZielHeute = protZielHeute;
     }
 
-    public void setKhZielHeute(int khZielHeute) {
+    public void setKhZielHeute(double khZielHeute) {
         this.khZielHeute = khZielHeute;
     }
 
-    public void setFettZielHeute(int fettZielHeute) {
+    public void setFettZielHeute(double fettZielHeute) {
         this.fettZielHeute = fettZielHeute;
     }
 
@@ -71,39 +88,39 @@ public class HeuteSpeicher {
         return gegesseneGerichte;
     }
 
-    public int getGewicht() {
+    public double getGewicht() {
         return Gewicht;
     }
 
-    public int getKcalHeute() {
+    public double getKcalHeute() {
         return kcalHeute;
     }
 
-    public int getProtHeute() {
+    public double getProtHeute() {
         return protHeute;
     }
 
-    public int getKhHeute() {
+    public double getKhHeute() {
         return khHeute;
     }
 
-    public int getFettHeute() {
+    public double getFettHeute() {
         return fettHeute;
     }
 
-    public int getKcalZielHeute() {
+    public double getKcalZielHeute() {
         return kcalZielHeute;
     }
 
-    public int getProtZielHeute() {
+    public double getProtZielHeute() {
         return protZielHeute;
     }
 
-    public int getKhZielHeute() {
+    public double getKhZielHeute() {
         return khZielHeute;
     }
 
-    public int getFettZielHeute() {
+    public double getFettZielHeute() {
         return fettZielHeute;
     }
 }

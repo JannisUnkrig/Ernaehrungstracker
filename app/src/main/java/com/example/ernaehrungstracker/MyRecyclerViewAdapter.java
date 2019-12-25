@@ -8,19 +8,27 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private List<String> foodNamesList;
-    private List<String> foodDescriptionsList;
+    private ArrayList<Gericht> foodList;
+    private ArrayList<String> foodNamesList = new ArrayList<>();
+    private ArrayList<String> foodDescriptionsList = new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    MyRecyclerViewAdapter(Context context, List<String> foodNames, List<String> foodDescriptions) {
+    MyRecyclerViewAdapter(Context context, ArrayList<Gericht> foodList) {
         this.mInflater = LayoutInflater.from(context);
-        this.foodNamesList = foodNames;
-        this.foodDescriptionsList = foodDescriptions;
+
+        this.foodList = foodList;
+        for (Gericht i : foodList) {
+            foodNamesList.add(i.getName());
+        }
+        for (Gericht i : foodList) {
+            foodDescriptionsList.add(i.getDescription());
+        }
+
     }
 
     public interface ItemClickListener{
@@ -58,6 +66,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         holder.myNameTextView.setText(foodName);
         holder.myDescriptionTextView.setText(foodDescription);
+        if (foodDescription.equals("")) holder.myDescriptionTextView.setHeight(0);
 
     }
 
@@ -66,8 +75,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return foodNamesList.size();
     }
 
-    String getItem(int id) {
+
+    String getFoodName(int id) {
         return foodNamesList.get(id);
+    }
+
+    Gericht getFood(int position) {
+        return foodList.get(position);
     }
 
     void setmClickListener(ItemClickListener itemClickListener) {

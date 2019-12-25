@@ -5,23 +5,30 @@ import java.util.ArrayList;
 public class Gericht {
 
     private static int identificationNumber = 0;
-    private static ArrayList<Gericht> gerichteListe;
+    public static ArrayList<Gericht> gerichteListe = null;
 
-    private String name;
+    public static Gericht currentGericht = null;
+
+
+    private String name = "unbekanntes Gericht";
     private long id;
+    private String description = "";
 
-    private int kcal;
-    private int prot;
-    private int kh;
-    private int fett;
+    private double portionenGramm = 1;
+    private boolean inPortionen = true;
+
+    private double kcal;
+    private double prot;
+    private double kh;
+    private double fett;
 
     private Note kcalNote = Note.NEUTRAL;
     private Note protNote = Note.NEUTRAL;
     private Note khNote = Note.NEUTRAL;
     private Note fettNote = Note.NEUTRAL;
 
-    public Gericht(int kcal, int prot, int kh, int fett) {
-        this.name = "unbekanntes Gericht";
+
+    public Gericht(double kcal, double prot, double kh, double fett) {
         this.id = identificationNumber++;
         this.kcal = kcal;
         this.prot = prot;
@@ -29,15 +36,20 @@ public class Gericht {
         this.fett = fett;
     }
 
-    public Gericht(String name, int kcal, int prot, int kh, int fett, boolean save) {
-        new Gericht(kcal, prot, kh, fett);
+    //ab diesem konstruktor werden gerichte gespeichert
+    public Gericht(String name, String description, double portionGramm, boolean inPortionen, double kcal, double prot, double kh, double fett) {
+        this(kcal, prot, kh, fett);
         this.name = name;
+        this.description = description;
+        this.portionenGramm = portionGramm;
+        this.inPortionen = inPortionen;
+
         //TODO
-        if (save) gerichteListe.add(this);
+        gerichteListe.add(this);
     }
 
-    public Gericht(String name, int kcal, int prot, int kh, int fett, Note kcalNote, Note protNote, Note khNote, Note fettNote, boolean save) {
-        new Gericht(name, kcal, prot, kh, fett, save);
+    public Gericht(String name, String description, double portionGramm, boolean inPortionen, double kcal, double prot, double kh, double fett, Note kcalNote, Note protNote, Note khNote, Note fettNote) {
+        this(name, description, portionGramm, inPortionen, kcal, prot, kh, fett);
         this.kcalNote = kcalNote;
         this.protNote = protNote;
         this.khNote = khNote;
@@ -48,25 +60,29 @@ public class Gericht {
         return name;
     }
 
-    public long getId() {
-        return id;
+    public long getId() { return id; }
+
+    public String getDescription() {
+        return description;
     }
 
-    public int getKcal() {
+    public double getPortionenGramm() { return portionenGramm; }
+
+    public boolean isInPortionen() { return inPortionen; }
+
+    public double getKcal() {
         return kcal;
     }
 
-    public int getProt() {
+    public double getProt() {
         return prot;
     }
 
-    public int getKh() {
+    public double getKh() {
         return kh;
     }
 
-    public int getFett() {
-        return fett;
-    }
+    public double getFett() { return fett; }
 
     public Note getKcalNote() {
         return kcalNote;
@@ -82,5 +98,51 @@ public class Gericht {
 
     public Note getFettNote() {
         return fettNote;
+    }
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPortionenGramm(double portionenGramm) { this.portionenGramm = portionenGramm; }
+
+    public void setInPortionen(boolean inPortionen) { this.inPortionen = inPortionen; }
+
+    public void setKcal(double kcal) {
+        this.kcal = kcal;
+    }
+
+    public void setProt(double prot) {
+        this.prot = prot;
+    }
+
+    public void setKh(double kh) {
+        this.kh = kh;
+    }
+
+    public void setFett(double fett) {
+        this.fett = fett;
+    }
+
+    public void setKcalNote(Note kcalNote) {
+        this.kcalNote = kcalNote;
+    }
+
+    public void setProtNote(Note protNote) {
+        this.protNote = protNote;
+    }
+
+    public void setKhNote(Note khNote) {
+        this.khNote = khNote;
+    }
+
+    public void setFettNote(Note fettNote) {
+        this.fettNote = fettNote;
     }
 }

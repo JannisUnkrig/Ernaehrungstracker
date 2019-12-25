@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -19,22 +20,10 @@ public class GerichtAuswaehlenRecyclerViewActivity extends AppCompatActivity imp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gericht_auswaehlen_recycler_view);
 
-        ArrayList<String> gerichteListe = new ArrayList<>();
-        gerichteListe.add("Apfel");
-        gerichteListe.add("Birne");
-        gerichteListe.add("Banane");
-        gerichteListe.add("Kiwi");
-
-        ArrayList<String> beschreibungsListe = new ArrayList<>();
-        beschreibungsListe.add("großer Apfel (150g)");
-        beschreibungsListe.add("");
-        beschreibungsListe.add("110g");
-        beschreibungsListe.add("komplett hart");
-
         RecyclerView recyclerView = findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new MyRecyclerViewAdapter(this, gerichteListe, beschreibungsListe);
+        adapter = new MyRecyclerViewAdapter(this, Gericht.gerichteListe);
         adapter.setmClickListener(this);
         recyclerView.setAdapter(adapter);
 
@@ -42,7 +31,13 @@ public class GerichtAuswaehlenRecyclerViewActivity extends AppCompatActivity imp
 
     @Override
     public  void onItemClick(View view, int position) {
-        Toast.makeText(this, adapter.getItem(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, adapter.getFoodName(position), Toast.LENGTH_SHORT).show();
+
+        Gericht food = adapter.getFood(position);
+        Gericht.currentGericht = food;
+
+        Intent returnGericht = new Intent();
+        setResult(RESULT_OK, returnGericht);
         finish();
     }
 
