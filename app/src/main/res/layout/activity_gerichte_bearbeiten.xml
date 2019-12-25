@@ -57,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/helllila"
+                    android:onClick="gerichteBearbeitenButtonClicked"
                     android:text="Gericht bearbeiten"
                     android:textAlignment="center"
                     android:textAllCaps="false"
@@ -80,14 +81,15 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:autofillHints="food"
                 android:backgroundTint="#fff"
                 android:ems="10"
                 android:hint="Name angeben"
                 android:inputType="textPersonName"
+                android:maxLength="80"
                 android:textAlignment="center"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:autofillHints="food" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -291,6 +293,7 @@
                     android:hint="optional"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
+                    android:maxLength="140"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textSize="14sp" />
@@ -308,18 +311,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
+                    android:onClick="löschenButtonClicked"
                     android:text="Löschen"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/dunkellila"
                     android:textSize="14sp"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/gerichteBearbeitenSpeichernButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/helllila"
+                    android:onClick="speichernButtonClicked"
                     android:text="Speichern"
                     android:textAlignment="center"
                     android:textAllCaps="false"

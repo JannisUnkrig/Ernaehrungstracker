@@ -36,7 +36,6 @@ public class Gericht {
         this.fett = fett;
     }
 
-    //ab diesem konstruktor werden gerichte gespeichert
     public Gericht(String name, String description, double portionGramm, boolean inPortionen, double kcal, double prot, double kh, double fett) {
         this(kcal, prot, kh, fett);
         this.name = name;
@@ -45,7 +44,6 @@ public class Gericht {
         this.inPortionen = inPortionen;
 
         //TODO
-        gerichteListe.add(this);
     }
 
     public Gericht(String name, String description, double portionGramm, boolean inPortionen, double kcal, double prot, double kh, double fett, Note kcalNote, Note protNote, Note khNote, Note fettNote) {

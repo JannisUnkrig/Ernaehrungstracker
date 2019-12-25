@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //initale Gerichte (konstruktor speichert)
         if (Gericht.gerichteListe == null) {
             Gericht.gerichteListe = new ArrayList<>();
-            new Gericht("Apfel", "recht groß (150g)", 1, true, 80, 1, 13, 0);
-            new Gericht("Birnenmuß", "", 150, false, 85, 1, 15, 0);
-            new Gericht("Bananenmuß", "50g Banane 50g quark", 100, false, 110, 1, 12, 1);
-            new Gericht("Nuss", "steinhart", 5, true, 80, 1, 18, 0);
+            Gericht.gerichteListe.add(new Gericht("Apfel", "recht groß (150g)", 1, true, 80, 1, 13, 0));
+            Gericht.gerichteListe.add(new Gericht("Birnenmuß", "", 150, false, 85, 1, 15, 0));
+            Gericht.gerichteListe.add(new Gericht("Bananenmuß", "50g Banane 50g quark", 100, false, 110, 1, 12, 1));
+            Gericht.gerichteListe.add(new Gericht("Nuss", "steinhart", 5, true, 80, 1, 18, 0));
         }
 
         //Inputfilter
@@ -268,9 +268,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (kcal + prot + kh + fett == 0) return;
 
         //speichern
-        heuteSpeicher.gerichtEssen(Gericht.currentGericht);
+        Gericht cur = Gericht.currentGericht;
+        Gericht curCopy = new Gericht(cur.getName(), cur.getDescription(), cur.getPortionenGramm(), cur.isInPortionen(), cur.getKcal(), cur.getProt(), cur.getKh(), cur.getFett());
+        double curPortionenGramm = curCopy.getPortionenGramm();
+
+        EditText portionenGrammEditText = findViewById(R.id.toAddAmount);
+        double displayedPortionenGramm;
+        if (portionenGrammEditText.getText().toString().equals("")) {
+            if (!curCopy.isInPortionen()) {
+                displayedPortionenGramm = 100.0;
+            } else {
+                displayedPortionenGramm = 1.0;
+            }
+        } else {
+            displayedPortionenGramm = Double.parseDouble(portionenGrammEditText.getText().toString());
+        }
+
+        curCopy.setKcal((double) (Math.round(curCopy.getKcal() / curPortionenGramm * displayedPortionenGramm * 10)) / 10);
+        curCopy.setProt((double) (Math.round(curCopy.getProt() / curPortionenGramm * displayedPortionenGramm * 10)) / 10);
+        curCopy.setKh(  (double) (Math.round(curCopy.getKh()   / curPortionenGramm * displayedPortionenGramm * 10)) / 10);
+        curCopy.setFett((double) (Math.round(curCopy.getFett() / curPortionenGramm * displayedPortionenGramm * 10)) / 10);
+        curCopy.setPortionenGramm(displayedPortionenGramm);
+
+        heuteSpeicher.gerichtEssen(curCopy);
         //TODO
         Toast.makeText(MainActivity.this, "added: " + Gericht.currentGericht.getName(), Toast.LENGTH_SHORT).show();
+
 
         //update upper editViews
         ((EditText) findViewById(R.id.curKcal)).setText(doubleBeautifulizer(heuteSpeicher.getKcalHeute()));
