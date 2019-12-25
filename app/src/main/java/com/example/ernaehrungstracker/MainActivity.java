@@ -1,23 +1,22 @@
 package com.example.ernaehrungstracker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.text.TextWatcher;
-import android.text.Editable;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -30,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
 
-    HeuteSpeicher heuteSpeicher;
-
     boolean portionenLiveUpdaterActive = true;
 
 
@@ -39,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //clear focus
+        View focused = this.getCurrentFocus();
+        if (focused != null) focused.clearFocus();
 
         //draw menu
         drawerLayout = findViewById(R.id.drawer);
@@ -53,11 +54,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+
         //heute speicher initialisieren
-        if(heuteSpeicher == null) heuteSpeicher = new HeuteSpeicher();
+        //TODO
+        HeuteSpeicher heuteSpeicher3 = new HeuteSpeicher();
+        heuteSpeicher3.saveToFile(this);
+        /*try {
+            FileInputStream fis = this.openFileInput("heuteSpeicherSave");
+            fis.close();
+        } catch (FileNotFoundException e) {
+            HeuteSpeicher heuteSpeicher = new HeuteSpeicher();
+            heuteSpeicher.saveToFile(this);
+
+        } catch (Exception e) {}*/
 
 
-        //initale Gerichte (konstruktor speichert)
+        //initale Gerichte
         if (Gericht.gerichteListe == null) {
             Gericht.gerichteListe = new ArrayList<>();
             Gericht.gerichteListe.add(new Gericht("Apfel", "recht groß (150g)", 1, true, 80, 1, 13, 0));
@@ -290,8 +302,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         curCopy.setFett((double) (Math.round(curCopy.getFett() / curPortionenGramm * displayedPortionenGramm * 10)) / 10);
         curCopy.setPortionenGramm(displayedPortionenGramm);
 
-        heuteSpeicher.gerichtEssen(curCopy);
+        //load heuteSpeicher
         //TODO
+        HeuteSpeicher heuteSpeicher = HeuteSpeicher.readFromFile(this);
+
+        //gericht hinzufügen
+        heuteSpeicher.gerichtEssen(curCopy);
         Toast.makeText(MainActivity.this, "added: " + Gericht.currentGericht.getName(), Toast.LENGTH_SHORT).show();
 
 
@@ -300,6 +316,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ((EditText) findViewById(R.id.curProt)).setText(doubleBeautifulizer(heuteSpeicher.getProtHeute()));
         ((EditText) findViewById(R.id.curKh)).setText(doubleBeautifulizer(heuteSpeicher.getKhHeute()));
         ((EditText) findViewById(R.id.curFett)).setText(doubleBeautifulizer(heuteSpeicher.getFettHeute()));
+
+        //save heuteSpeicher
+        //TODO
+        heuteSpeicher.saveToFile(this);
     }
 
 

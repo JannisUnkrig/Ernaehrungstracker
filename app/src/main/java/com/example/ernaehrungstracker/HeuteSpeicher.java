@@ -1,9 +1,18 @@
 package com.example.ernaehrungstracker;
 
 
+import android.content.Context;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class HeuteSpeicher {
+public class HeuteSpeicher implements Serializable {
 
     private ArrayList<Gericht> gegesseneGerichte = new ArrayList<>();
     private double Gewicht = -1;
@@ -47,6 +56,42 @@ public class HeuteSpeicher {
         if (fettZielHeute > 99999.9) fettZielHeute = 99999.9;
     }
 
+    // Serializes an object and saves it to a file
+    public void saveToFile(Context context) {
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput("heuteSpeicher.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // Creates an object by reading it from a file
+    public static HeuteSpeicher readFromFile(Context context) {
+        HeuteSpeicher createResumeForm = null;
+        try {
+            FileInputStream fileInputStream = context.openFileInput("heuteSpeicher.ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            createResumeForm = (HeuteSpeicher) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            /*HeuteSpeicher myHeuteSpeicher  = new HeuteSpeicher();
+            myHeuteSpeicher.saveToFile(context);
+            readFromFile(context);*/
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return createResumeForm;
+    }
 
     public void setGewicht(double gewicht) {
         Gewicht = gewicht;

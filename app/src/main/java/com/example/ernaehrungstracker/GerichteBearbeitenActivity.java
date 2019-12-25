@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,11 +21,20 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
     private boolean inPortionen = true;
     private boolean neuesGerichtModus = true;
 
+    private Note kcalNote = Note.NEUTRAL;
+    private Note protNote = Note.NEUTRAL;
+    private Note khNote   = Note.NEUTRAL;
+    private Note fettNote = Note.NEUTRAL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerichte_bearbeiten);
+
+        //clear focus
+        View focused = this.getCurrentFocus();
+        if (focused != null) focused.clearFocus();
 
         Spinner spinner = findViewById(R.id.portionenGrammSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.portionenGramm, android.R.layout.simple_spinner_item);
@@ -79,6 +89,81 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
     }
 
 
+    public void kcalNoteButtonClicked(View view) {
+        if (kcalNote == Note.NEUTRAL) {
+            kcalNote = Note.HIGH;
+            ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+            return;
+        }
+        if (kcalNote == Note.HIGH){
+            kcalNote = Note.LOW;
+            ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+            return;
+        }
+        if (kcalNote == Note.LOW) {
+            kcalNote = Note.NEUTRAL;
+            ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+            return;
+        }
+    }
+
+
+    public void protNoteButtonClicked(View view) {
+        if (protNote == Note.NEUTRAL) {
+            protNote = Note.HIGH;
+            ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+            return;
+        }
+        if (protNote == Note.HIGH){
+            protNote = Note.LOW;
+            ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+            return;
+        }
+        if (protNote == Note.LOW) {
+            protNote = Note.NEUTRAL;
+            ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+            return;
+        }
+    }
+
+
+    public void khNoteButtonClicked(View view) {
+        if (khNote == Note.NEUTRAL) {
+            khNote = Note.HIGH;
+            ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+            return;
+        }
+        if (khNote == Note.HIGH){
+            khNote = Note.LOW;
+            ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+            return;
+        }
+        if (khNote == Note.LOW) {
+            khNote = Note.NEUTRAL;
+            ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+            return;
+        }
+    }
+
+
+    public void fettNoteButtonClicked(View view) {
+        if (fettNote == Note.NEUTRAL) {
+            fettNote = Note.HIGH;
+            ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+            return;
+        }
+        if (fettNote == Note.HIGH){
+            fettNote = Note.LOW;
+            ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+            return;
+        }
+        if (fettNote == Note.LOW) {
+            fettNote = Note.NEUTRAL;
+            ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+            return;
+        }
+    }
+
 
     public void löschenButtonClicked(View view) {
         if (neuesGerichtModus) return;
@@ -125,6 +210,12 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
                 return;
             }
 
+            //fehler: name verboten
+            if (userInputName.equals("unbekanntes Gericht")) {
+                Toast.makeText(this, "anderen Namen angeben", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             //fehler: name & beschreibung bereits vorhanden
             for(Gericht i : Gericht.gerichteListe) {
                 if (i.getName().equals(userInputName)) {
@@ -143,7 +234,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
             }
 
             //gericht speichern
-            Gericht.gerichteListe.add(new Gericht(userInputName, userInputDescription, displayedPortionenGramm, inPortionen, userInputKcalD, userInputProtD, userInputKhD, userInputFettD));
+            Gericht.gerichteListe.add(new Gericht(  userInputName, userInputDescription, displayedPortionenGramm, inPortionen,
+                                                    userInputKcalD, userInputProtD, userInputKhD, userInputFettD, kcalNote, protNote, khNote, fettNote));
             Toast.makeText(this, "" + userInputName + " gespeichert", Toast.LENGTH_SHORT).show();
         }
 

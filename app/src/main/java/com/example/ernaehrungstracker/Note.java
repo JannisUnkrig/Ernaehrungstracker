@@ -1,7 +1,7 @@
 package com.example.ernaehrungstracker;
 
 public enum Note {
-    GOOD,
+    HIGH,
     NEUTRAL,
-    BAD
+    LOW
 }

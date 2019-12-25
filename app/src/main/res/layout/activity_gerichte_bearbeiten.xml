@@ -104,6 +104,7 @@
                     android:layout_height="28dp"
                     android:backgroundTint="@color/hellgrün"
                     android:contentDescription="image for neutral note"
+                    android:onClick="kcalNoteButtonClicked"
                     android:tint="#fff"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -139,6 +140,7 @@
                     android:layout_height="28dp"
                     android:backgroundTint="@color/hellgrün"
                     android:contentDescription="image for neutral note"
+                    android:onClick="protNoteButtonClicked"
                     android:tint="#fff"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -179,6 +181,7 @@
                     android:layout_height="28dp"
                     android:backgroundTint="@color/hellgrün"
                     android:contentDescription="image for neutral note"
+                    android:onClick="khNoteButtonClicked"
                     android:tint="#fff"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -214,6 +217,7 @@
                     android:layout_height="28dp"
                     android:backgroundTint="@color/hellgrün"
                     android:contentDescription="image for neutral note"
+                    android:onClick="fettNoteButtonClicked"
                     android:tint="#fff"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -262,7 +266,7 @@
 
                 <Spinner
                     android:id="@+id/portionenGrammSpinner"
-                    android:layout_width="124dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#fff" />
             </LinearLayout>
