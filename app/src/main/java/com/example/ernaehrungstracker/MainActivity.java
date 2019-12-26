@@ -1,6 +1,7 @@
 package com.example.ernaehrungstracker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -19,7 +20,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle toggle;
 
     boolean portionenLiveUpdaterActive = true;
+    ArrayList<HeuteSpeicher> heuteSpeicherListe;
 
 
     @Override
@@ -56,17 +61,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //heute speicher initialisieren
-        //TODO
-        HeuteSpeicher heuteSpeicher3 = new HeuteSpeicher();
-        heuteSpeicher3.saveToFile(this);
-        /*try {
-            FileInputStream fis = this.openFileInput("heuteSpeicherSave");
-            fis.close();
-        } catch (FileNotFoundException e) {
-            HeuteSpeicher heuteSpeicher = new HeuteSpeicher();
-            heuteSpeicher.saveToFile(this);
+        loadFromSP();
+        updateUpperEditTexts(heuteSpeicherListe.get(0));
 
-        } catch (Exception e) {}*/
 
 
         //initale Gerichte
@@ -303,28 +300,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         curCopy.setPortionenGramm(displayedPortionenGramm);
 
         //load heuteSpeicher
-        //TODO
-        HeuteSpeicher heuteSpeicher = HeuteSpeicher.readFromFile(this);
+        loadFromSP();
 
         //gericht hinzufügen
-        heuteSpeicher.gerichtEssen(curCopy);
+        heuteSpeicherListe.get(0).gerichtEssen(curCopy);
         Toast.makeText(MainActivity.this, "added: " + Gericht.currentGericht.getName(), Toast.LENGTH_SHORT).show();
 
 
         //update upper editViews
-        ((EditText) findViewById(R.id.curKcal)).setText(doubleBeautifulizer(heuteSpeicher.getKcalHeute()));
-        ((EditText) findViewById(R.id.curProt)).setText(doubleBeautifulizer(heuteSpeicher.getProtHeute()));
-        ((EditText) findViewById(R.id.curKh)).setText(doubleBeautifulizer(heuteSpeicher.getKhHeute()));
-        ((EditText) findViewById(R.id.curFett)).setText(doubleBeautifulizer(heuteSpeicher.getFettHeute()));
+        updateUpperEditTextsCur(heuteSpeicherListe.get(0));
 
         //save heuteSpeicher
-        //TODO
-        heuteSpeicher.saveToFile(this);
+
+        saveToSP();
     }
 
 
     public String doubleBeautifulizer(double enemy) {
         if (Math.abs(enemy) < 0.001) return "";
+        if (((int) (enemy * 10)) % 10 == 0) return "" + ((int) enemy);
+        return "" + enemy;
+    }
+
+    public String doubleBeautifulizerNull(double enemy) {
         if (((int) (enemy * 10)) % 10 == 0) return "" + ((int) enemy);
         return "" + enemy;
     }
@@ -347,5 +345,63 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
         return false;
+    }
+
+    private void updateUpperEditTexts(HeuteSpeicher curHeuteSpeicher) {
+        ((EditText) findViewById(R.id.curKcal)).setText(doubleBeautifulizer(curHeuteSpeicher.getKcalHeute()));
+        ((EditText) findViewById(R.id.curProt)).setText(doubleBeautifulizer(curHeuteSpeicher.getProtHeute()));
+        ((EditText) findViewById(R.id.curKh)).setText(doubleBeautifulizer(curHeuteSpeicher.getKhHeute()));
+        ((EditText) findViewById(R.id.curFett)).setText(doubleBeautifulizer(curHeuteSpeicher.getFettHeute()));
+
+        if (curHeuteSpeicher.getKcalZielHeute() == -1) {
+            ((EditText) findViewById(R.id.goalKcal)).setText("");
+        } else {
+            ((EditText) findViewById(R.id.goalKcal)).setText(doubleBeautifulizerNull(curHeuteSpeicher.getKcalZielHeute()));
+        }
+        if (curHeuteSpeicher.getProtZielHeute() == -1) {
+            ((EditText) findViewById(R.id.goalProt)).setText("");
+        } else {
+            ((EditText) findViewById(R.id.goalProt)).setText(doubleBeautifulizerNull(curHeuteSpeicher.getProtZielHeute()));
+        }
+        if (curHeuteSpeicher.getKhZielHeute() == -1) {
+            ((EditText) findViewById(R.id.goalKh)).setText("");
+        } else {
+            ((EditText) findViewById(R.id.goalKh)).setText(doubleBeautifulizerNull(curHeuteSpeicher.getKhZielHeute()));
+        }
+        if (curHeuteSpeicher.getKhZielHeute() == -1) {
+            ((EditText) findViewById(R.id.goalFett)).setText("");
+        } else {
+            ((EditText) findViewById(R.id.goalFett)).setText(doubleBeautifulizerNull(curHeuteSpeicher.getFettZielHeute()));
+        }
+    }
+
+
+    private void updateUpperEditTextsCur(HeuteSpeicher curHeuteSpeicher) {
+        ((EditText) findViewById(R.id.curKcal)).setText(doubleBeautifulizer(curHeuteSpeicher.getKcalHeute()));
+        ((EditText) findViewById(R.id.curProt)).setText(doubleBeautifulizer(curHeuteSpeicher.getProtHeute()));
+        ((EditText) findViewById(R.id.curKh)).setText(doubleBeautifulizer(curHeuteSpeicher.getKhHeute()));
+        ((EditText) findViewById(R.id.curFett)).setText(doubleBeautifulizer(curHeuteSpeicher.getFettHeute()));
+    }
+
+    private void saveToSP() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(heuteSpeicherListe);
+        editor.putString("task list", json);
+        editor.apply();
+    }
+
+    private void loadFromSP() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list", null);
+        Type type = new TypeToken<ArrayList<HeuteSpeicher>>() {}.getType();
+        heuteSpeicherListe = gson.fromJson(json, type);
+
+        if (heuteSpeicherListe == null) {
+            heuteSpeicherListe = new ArrayList<>();
+            heuteSpeicherListe.add(new HeuteSpeicher());
+        }
     }
 }
