@@ -1,17 +1,9 @@
 package com.example.ernaehrungstracker;
 
-import java.util.ArrayList;
-
+@SuppressWarnings("WeakerAccess")
 public class Gericht {
 
-    private static int identificationNumber = 0;
-    public static ArrayList<Gericht> gerichteListe = null;
-
-    public static Gericht currentGericht = null;
-
-
     private String name = "unbekanntes Gericht";
-    private long id;
     private String description = "";
 
     private double portionenGramm = 1;
@@ -29,7 +21,6 @@ public class Gericht {
 
 
     public Gericht(double kcal, double prot, double kh, double fett) {
-        this.id = identificationNumber++;
         this.kcal = kcal;
         this.prot = prot;
         this.kh = kh;
@@ -42,8 +33,6 @@ public class Gericht {
         this.description = description;
         this.portionenGramm = portionGramm;
         this.inPortionen = inPortionen;
-
-        //TODO
     }
 
     public Gericht(String name, String description, double portionGramm, boolean inPortionen, double kcal, double prot, double kh, double fett, Note kcalNote, Note protNote, Note khNote, Note fettNote) {
@@ -57,8 +46,6 @@ public class Gericht {
     public String getName() {
         return name;
     }
-
-    public long getId() { return id; }
 
     public String getDescription() {
         return description;
@@ -142,5 +129,26 @@ public class Gericht {
 
     public void setFettNote(Note fettNote) {
         this.fettNote = fettNote;
+    }
+
+
+    public void addPortionenGramm(double portionenGramm) {
+        this.portionenGramm += portionenGramm;
+    }
+
+    public void addKcal(double kcal) {
+        this.kcal += kcal;
+    }
+
+    public void addProt(double prot) {
+        this.prot += prot;
+    }
+
+    public void addKh(double kh) {
+        this.kh += kh;
+    }
+
+    public void addFett(double fett) {
+        this.fett += fett;
     }
 }

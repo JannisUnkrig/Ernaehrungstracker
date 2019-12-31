@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#ffaba7ff</color>
+    <color name="colorPrimaryDark">#345c04</color>
+    <color name="colorAccent">#81594d</color>
 
-    <color name="hellgrün">#ffa3c71b</color>
-    <color name="helllila">#ffaba7ff</color>
-    <color name="dunkellila">#ff8b87ff</color>
+    <color name="hellgrün">#9dcb00</color>
+    <color name="helllila">#e5beae</color>
+    <color name="dunkellila">#81594d</color>
 
 
 </resources>

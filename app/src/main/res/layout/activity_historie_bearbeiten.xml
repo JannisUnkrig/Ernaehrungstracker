@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistorieBearbeitenActivity"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/hellgrün"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/HeadlineDateHistorisch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40sp"
+                android:layout_marginBottom="2sp"
+                android:gravity="center"
+                android:text="37 Feb. 3019"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/curKcalHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/goalKcalHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="Ziel"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="39sp"
+                    android:layout_height="wrap_content"
+                    android:text="kcal"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/curProtHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/goalProtHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="Ziel"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="39sp"
+                    android:layout_height="wrap_content"
+                    android:text="g Prot"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <EditText
+                    android:id="@+id/curKhHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/goalKhHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="Ziel"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="39sp"
+                    android:layout_height="wrap_content"
+                    android:text="g KH"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <EditText
+                    android:id="@+id/curFettHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="0"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/goalFettHistorisch"
+                    android:layout_width="70sp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#fff"
+                    android:ems="10"
+                    android:hint="Ziel"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="39sp"
+                    android:layout_height="wrap_content"
+                    android:text="g Fett"
+                    android:textAlignment="viewStart"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24sp"
+                android:text="gegessenes Essen"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyViewHistorisch"
+                android:layout_width="match_parent"
+                android:layout_height="290sp"
+                android:layout_marginTop="14sp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/nichtsGetracktLayoutHistorisch"
+                android:layout_width="wrap_content"
+                android:layout_height="290sp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18sp"
+                    android:text="¯\\_(ツ)_/¯"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30sp"
+                    android:text="nichts getrackt"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

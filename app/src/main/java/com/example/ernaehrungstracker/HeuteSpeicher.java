@@ -1,9 +1,14 @@
 package com.example.ernaehrungstracker;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+@SuppressWarnings({"WeakerAccess","unused"})
 public class HeuteSpeicher {
+
+    private String date;
 
     private ArrayList<Gericht> gegesseneGerichte = new ArrayList<>();
     private double Gewicht = -1;
@@ -18,6 +23,12 @@ public class HeuteSpeicher {
     private double khZielHeute   = -1;
     private double fettZielHeute = -1;
 
+
+    public HeuteSpeicher() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
+        Date date = new Date();
+        this.date = formatter.format(date);
+    }
 
 
     public void gerichtEssen(Gericht gericht) {
@@ -68,6 +79,22 @@ public class HeuteSpeicher {
         this.fettHeute = fettHeute;
     }
 
+    public void addKcalHeute(double kcalHeute) {
+        this.kcalHeute += kcalHeute;
+    }
+
+    public void addProtHeute(double protHeute) {
+        this.protHeute += protHeute;
+    }
+
+    public void addKhHeute(double khHeute) {
+        this.khHeute += khHeute;
+    }
+
+    public void addFettHeute(double fettHeute) {
+        this.fettHeute += fettHeute;
+    }
+
     public void setKcalZielHeute(double kcalZielHeute) {
         this.kcalZielHeute = kcalZielHeute;
     }
@@ -83,6 +110,8 @@ public class HeuteSpeicher {
     public void setFettZielHeute(double fettZielHeute) {
         this.fettZielHeute = fettZielHeute;
     }
+
+    public String getDate() { return date; }
 
     public ArrayList<Gericht> getGegesseneGerichte() {
         return gegesseneGerichte;

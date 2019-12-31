@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14sp"
+        android:layout_marginTop="7sp"
+        android:layout_marginEnd="14sp"
+        android:gravity="bottom|start"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/hDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13. Dec. 2019"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/hGewicht"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0sp"
+            android:text="    |   74.4kg" />
+
+
+    </LinearLayout>
+
+    <org.apmem.tools.layouts.FlowLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginBottom="7sp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hKcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2654"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/hKcalGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/3200 kcal"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/strich1h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  "
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hProt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="124"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/hProtGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/160g Prot"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/strich2h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  "
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hKh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="260"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/hKhGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/330g KH"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/strich3h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  "
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hFett"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="56"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/hFettGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/60g Fett"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </org.apmem.tools.layouts.FlowLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8sp"
+        android:layout_marginEnd="8sp"
+        android:background="?android:attr/listDivider" />
+
+</LinearLayout>

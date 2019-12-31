@@ -11,7 +11,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="40sp"
                 android:background="@color/hellgrün" />
 
             <LinearLayout
@@ -36,8 +37,9 @@
                     android:id="@+id/tageszieleHeadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="2sp"
                     android:gravity="center"
-                    android:text="Tagesziele:"
+                    android:text="Tagesziele"
                     android:textAlignment="center"
                     android:textColor="#fff"
                     android:textSize="20sp" />
@@ -45,17 +47,18 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8sp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/curKcal"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="0"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -63,7 +66,7 @@
 
                     <TextView
                         android:id="@+id/slash1"
-                        android:layout_width="10dp"
+                        android:layout_width="10sp"
                         android:layout_height="wrap_content"
                         android:text="/"
                         android:textAlignment="center"
@@ -72,11 +75,12 @@
 
                     <EditText
                         android:id="@+id/goalKcal"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="Ziel"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -84,7 +88,7 @@
 
                     <TextView
                         android:id="@+id/kcalTrackerText"
-                        android:layout_width="39dp"
+                        android:layout_width="39sp"
                         android:layout_height="wrap_content"
                         android:text="kcal"
                         android:textAlignment="viewStart"
@@ -96,17 +100,18 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="8sp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/curProt"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="0"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -114,7 +119,7 @@
 
                     <TextView
                         android:id="@+id/slash2"
-                        android:layout_width="10dp"
+                        android:layout_width="10sp"
                         android:layout_height="wrap_content"
                         android:text="/"
                         android:textAlignment="center"
@@ -123,11 +128,12 @@
 
                     <EditText
                         android:id="@+id/goalProt"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="Ziel"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -135,7 +141,7 @@
 
                     <TextView
                         android:id="@+id/protTrackerText"
-                        android:layout_width="39dp"
+                        android:layout_width="39sp"
                         android:layout_height="wrap_content"
                         android:text="g Prot"
                         android:textAlignment="viewStart"
@@ -147,18 +153,19 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="8sp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
                     <EditText
                         android:id="@+id/curKh"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="0"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -166,7 +173,7 @@
 
                     <TextView
                         android:id="@+id/slash3"
-                        android:layout_width="10dp"
+                        android:layout_width="10sp"
                         android:layout_height="wrap_content"
                         android:text="/"
                         android:textAlignment="center"
@@ -175,11 +182,12 @@
 
                     <EditText
                         android:id="@+id/goalKh"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="Ziel"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -187,7 +195,7 @@
 
                     <TextView
                         android:id="@+id/khTrackerText"
-                        android:layout_width="39dp"
+                        android:layout_width="39sp"
                         android:layout_height="wrap_content"
                         android:text="g KH"
                         android:textAlignment="viewStart"
@@ -199,18 +207,19 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="8sp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
                     <EditText
                         android:id="@+id/curFett"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="0"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -218,7 +227,7 @@
 
                     <TextView
                         android:id="@+id/slash4"
-                        android:layout_width="10dp"
+                        android:layout_width="10sp"
                         android:layout_height="wrap_content"
                         android:text="/"
                         android:textAlignment="center"
@@ -227,11 +236,12 @@
 
                     <EditText
                         android:id="@+id/goalFett"
-                        android:layout_width="70dp"
+                        android:layout_width="70sp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
                         android:hint="Ziel"
+                        android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#fff"
@@ -239,7 +249,7 @@
 
                     <TextView
                         android:id="@+id/fettTrackerText"
-                        android:layout_width="39dp"
+                        android:layout_width="39sp"
                         android:layout_height="wrap_content"
                         android:text="g Fett"
                         android:textAlignment="viewStart"
@@ -250,7 +260,7 @@
 
                 <Space
                     android:layout_width="wrap_content"
-                    android:layout_height="12dp" />
+                    android:layout_height="12sp" />
 
             </LinearLayout>
 
@@ -264,9 +274,9 @@
                     android:id="@+id/essenEssenHeadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="24sp"
                     android:gravity="center"
-                    android:text="Essen essen:"
+                    android:text="Essen essen"
                     android:textAlignment="center"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -274,15 +284,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="14sp"
+                    android:baselineAligned="false"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="2sp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -293,7 +304,7 @@
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/helllila"
                             android:maxHeight="120sp"
-                            android:onClick="gerichtAuswählenButtonPressed"
+                            android:onClick="gerichtAuswaehlenButtonPressed"
                             android:text="Gericht auswählen..."
                             android:textAllCaps="false"
                             android:textColor="#fff"
@@ -302,18 +313,19 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="6dp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginBottom="6sp"
                             android:gravity="center"
                             android:orientation="horizontal">
 
                             <EditText
                                 android:id="@+id/toAddAmount"
-                                android:layout_width="70dp"
+                                android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:hint="1"
+                                android:importantForAutofill="no"
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
@@ -334,7 +346,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="20sp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -347,11 +359,12 @@
 
                             <EditText
                                 android:id="@+id/toAddKcal"
-                                android:layout_width="70dp"
+                                android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:hint="0"
+                                android:importantForAutofill="no"
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
@@ -359,7 +372,7 @@
 
                             <TextView
                                 android:id="@+id/toAddKcalText"
-                                android:layout_width="39dp"
+                                android:layout_width="39sp"
                                 android:layout_height="wrap_content"
                                 android:text="kcal"
                                 android:textAlignment="viewStart"
@@ -380,11 +393,12 @@
 
                             <EditText
                                 android:id="@+id/toAddProt"
-                                android:layout_width="70dp"
+                                android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:hint="0"
+                                android:importantForAutofill="no"
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
@@ -392,7 +406,7 @@
 
                             <TextView
                                 android:id="@+id/toAddProtText"
-                                android:layout_width="39dp"
+                                android:layout_width="39sp"
                                 android:layout_height="wrap_content"
                                 android:text="g Prot"
                                 android:textAlignment="viewStart"
@@ -414,11 +428,12 @@
 
                             <EditText
                                 android:id="@+id/toAddKh"
-                                android:layout_width="70dp"
+                                android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:hint="0"
+                                android:importantForAutofill="no"
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
@@ -426,7 +441,7 @@
 
                             <TextView
                                 android:id="@+id/toAddKhText"
-                                android:layout_width="39dp"
+                                android:layout_width="39sp"
                                 android:layout_height="wrap_content"
                                 android:text="g KH"
                                 android:textAlignment="viewStart"
@@ -446,11 +461,12 @@
 
                             <EditText
                                 android:id="@+id/toAddFett"
-                                android:layout_width="70dp"
+                                android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:ems="10"
                                 android:hint="0"
+                                android:importantForAutofill="no"
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="#000"
@@ -458,7 +474,7 @@
 
                             <TextView
                                 android:id="@+id/toAddFettText"
-                                android:layout_width="39dp"
+                                android:layout_width="39sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
                                 android:text="g Fett"
@@ -472,10 +488,10 @@
 
                 <Button
                     android:id="@+id/mampfButton"
-                    android:layout_width="330dp"
+                    android:layout_width="330sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginBottom="7sp"
                     android:backgroundTint="@color/dunkellila"
                     android:onClick="mampfButtonPressed"
                     android:text="Mampf!"

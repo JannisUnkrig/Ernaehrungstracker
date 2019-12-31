@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/hellgrün"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14sp"
+        android:layout_marginTop="7sp"
+        android:layout_marginEnd="14sp"
+        android:gravity="bottom|start"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/hhFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14sp"
+            android:text="ein Name"
+            android:textAlignment="viewStart"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/hhFoodPortionenGramm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100 Gramm"
+            android:textColor="#BFFFFFFF" />
+
+    </LinearLayout>
+
+    <org.apmem.tools.layouts.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="7sp">
+
+        <TextView
+            android:id="@+id/hhFoodKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2654 kcal"
+            android:textColor="#BFFFFFFF" />
+
+        <TextView
+            android:id="@+id/strich1hh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  "
+            android:textColor="#BFFFFFFF" />
+
+        <TextView
+            android:id="@+id/hhFoodProt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="124 g Prot"
+            android:textColor="#BFFFFFFF" />
+
+        <TextView
+            android:id="@+id/strich2hh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  "
+            android:textColor="#BFFFFFFF" />
+
+        <TextView
+            android:id="@+id/hhFoodKh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="260 g KH"
+            android:textColor="#BFFFFFFF" />
+
+        <TextView
+            android:id="@+id/strich3hh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  |  "
+            android:textColor="#BFFFFFFF" />
+
+        <TextView
+            android:id="@+id/hhFoodFett"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="56 g Fett"
+            android:textColor="#BFFFFFFF" />
+    </org.apmem.tools.layouts.FlowLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8sp"
+        android:layout_marginEnd="8sp"
+        android:background="#BFFFFFFF" />
+</LinearLayout>

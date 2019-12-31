@@ -1,20 +1,20 @@
 package com.example.ernaehrungstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
-
-import android.content.res.ColorStateList;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class GerichteBearbeitenActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -26,21 +26,29 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
     private Note khNote   = Note.NEUTRAL;
     private Note fettNote = Note.NEUTRAL;
 
+    Gericht currentGericht = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerichte_bearbeiten);
 
-        //clear focus
-        View focused = this.getCurrentFocus();
-        if (focused != null) focused.clearFocus();
-
         Spinner spinner = findViewById(R.id.portionenGrammSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.portionenGramm, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        //Inputfilter
+        InputFilter[] ifd = new InputFilter[]{new InputFilterDecimal(4, 1)};
+        InputFilter[] ifd2 = new InputFilter[]{new InputFilterDecimal(4, 2)};
+
+        ((EditText) findViewById(R.id.gerichteBearbeitenKcalEditText)).setFilters(ifd);
+        ((EditText) findViewById(R.id.gerichteBearbeitenProtEditText)).setFilters(ifd);
+        ((EditText) findViewById(R.id.gerichteBearbeitenKhEditText)).setFilters(ifd);
+        ((EditText) findViewById(R.id.gerichteBearbeitenFettEditText)).setFilters(ifd);
+
+        ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setFilters(ifd2);
     }
 
     @Override
@@ -55,12 +63,12 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
         if (position == 0) {
             inPortionen = true;
             ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setHint("1");
-            Toast.makeText(this, "portionen", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "portionen", Toast.LENGTH_SHORT).show();
         }
         if (position == 1) {
             inPortionen = false;
             ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setHint("100");
-            Toast.makeText(this, "Gramm", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Gramm", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -71,21 +79,122 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
 
     public void neuesGerichtButtonClicked(View view) {
+        activateNeuesGerichtModus();
+    }
+
+    private void activateNeuesGerichtModus() {
         neuesGerichtModus = true;
         findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.dunkellila));
         findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.helllila));
         findViewById(R.id.gerichteBearbeitenLöschenButton).setVisibility(View.GONE);
-        //Toast.makeText(this, "neuesGericht = true", Toast.LENGTH_SHORT).show();
+
+        currentGericht = null;
+        ((EditText) findViewById(R.id.nameEditText)).setText("");
+        ((EditText) findViewById(R.id.gerichteBearbeitenBeschreibungEditText)).setText("");
+        ((EditText) findViewById(R.id.gerichteBearbeitenKcalEditText)).setText("");
+        ((EditText) findViewById(R.id.gerichteBearbeitenProtEditText)).setText("");
+        ((EditText) findViewById(R.id.gerichteBearbeitenKhEditText)).setText("");
+        ((EditText) findViewById(R.id.gerichteBearbeitenFettEditText)).setText("");
+
+        kcalNote = Note.NEUTRAL;
+        protNote = Note.NEUTRAL;
+        khNote   = Note.NEUTRAL;
+        fettNote = Note.NEUTRAL;
+
+        ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+        ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+        ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+        ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+
+        ((Spinner) findViewById(R.id.portionenGrammSpinner)).setSelection(0);
+        ((TextView) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setHint("1");
+        ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setText("");
     }
 
 
+
     public void gerichteBearbeitenButtonClicked(View view) {
-        neuesGerichtModus = false;
-        findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.helllila));
-        findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.dunkellila));
-        findViewById(R.id.gerichteBearbeitenLöschenButton).setVisibility(View.VISIBLE);
-        //Toast.makeText(this, "neuesGericht = false", Toast.LENGTH_SHORT).show();
-        //TODO recy öffnen
+        Intent intent = new Intent(this, GerichtAuswaehlenRecyclerViewActivity.class);
+        startActivityForResult(intent, 2);
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent returnGericht) {
+
+        super.onActivityResult(requestCode, resultCode, returnGericht);
+
+        if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                neuesGerichtModus = false;
+                findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.helllila));
+                findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.dunkellila));
+                findViewById(R.id.gerichteBearbeitenLöschenButton).setVisibility(View.VISIBLE);
+
+                currentGericht = GerichtAuswaehlenRecyclerViewActivity.uebergabeGericht;
+                ((EditText) findViewById(R.id.nameEditText)).setText(currentGericht.getName());
+                ((EditText) findViewById(R.id.gerichteBearbeitenBeschreibungEditText)).setText(currentGericht.getDescription());
+                ((EditText) findViewById(R.id.gerichteBearbeitenKcalEditText)).setText(MainActivity.doubleBeautifulizer(currentGericht.getKcal()));
+                ((EditText) findViewById(R.id.gerichteBearbeitenProtEditText)).setText(MainActivity.doubleBeautifulizer(currentGericht.getProt()));
+                ((EditText) findViewById(R.id.gerichteBearbeitenKhEditText)).setText(MainActivity.doubleBeautifulizer(currentGericht.getKh()));
+                ((EditText) findViewById(R.id.gerichteBearbeitenFettEditText)).setText(MainActivity.doubleBeautifulizer(currentGericht.getFett()));
+
+                kcalNote = currentGericht.getKcalNote();
+                protNote = currentGericht.getProtNote();
+                khNote   = currentGericht.getKhNote();
+                fettNote = currentGericht.getFettNote();
+
+                if (kcalNote == Note.NEUTRAL) {
+                    ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+                } else if (kcalNote == Note.HIGH) {
+                    ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+                } else {
+                    ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+                }
+
+                if (protNote == Note.NEUTRAL) {
+                    ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+                } else if (protNote == Note.HIGH) {
+                    ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+                } else {
+                    ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+                }
+
+                if (khNote == Note.NEUTRAL) {
+                    ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+                } else if (khNote == Note.HIGH) {
+                    ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+                } else {
+                    ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+                }
+
+                if (fettNote == Note.NEUTRAL) {
+                    ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.ic_input_add);
+                } else if (fettNote == Note.HIGH) {
+                    ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.arrow_up_float);
+                } else {
+                    ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.arrow_down_float);
+                }
+
+                if (currentGericht.isInPortionen()) {
+                    ((Spinner) findViewById(R.id.portionenGrammSpinner)).setSelection(0);
+                    ((TextView) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setHint("1");
+                    if (currentGericht.getPortionenGramm() != 1) {
+                        ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setText(MainActivity.doubleBeautifulizer(currentGericht.getPortionenGramm()));
+                    } else {
+                        ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setText("");
+                    }
+                } else {
+                    ((Spinner) findViewById(R.id.portionenGrammSpinner)).setSelection(1);
+                    ((TextView) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setHint("100");
+                    if (currentGericht.getPortionenGramm() != 100) {
+                        ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setText(MainActivity.doubleBeautifulizer(currentGericht.getPortionenGramm()));
+                    } else {
+                        ((EditText) findViewById(R.id.gerichteBearbeitenPortionenGrammEditText)).setText("");
+                    }
+                }
+
+            }
+        }
     }
 
 
@@ -103,7 +212,6 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
         if (kcalNote == Note.LOW) {
             kcalNote = Note.NEUTRAL;
             ((ImageButton) findViewById(R.id.kcalNoteButton)).setImageResource(android.R.drawable.ic_input_add);
-            return;
         }
     }
 
@@ -122,7 +230,6 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
         if (protNote == Note.LOW) {
             protNote = Note.NEUTRAL;
             ((ImageButton) findViewById(R.id.protNoteButton)).setImageResource(android.R.drawable.ic_input_add);
-            return;
         }
     }
 
@@ -141,7 +248,6 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
         if (khNote == Note.LOW) {
             khNote = Note.NEUTRAL;
             ((ImageButton) findViewById(R.id.khNoteButton)).setImageResource(android.R.drawable.ic_input_add);
-            return;
         }
     }
 
@@ -160,14 +266,17 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
         if (fettNote == Note.LOW) {
             fettNote = Note.NEUTRAL;
             ((ImageButton) findViewById(R.id.fettNoteButton)).setImageResource(android.R.drawable.ic_input_add);
-            return;
         }
     }
 
 
-    public void löschenButtonClicked(View view) {
+    public void loeschenButtonClicked(View view) {
         if (neuesGerichtModus) return;
-        //TODO löschen
+        ArrayList<Gericht> curGerichteListe = Speicher.loadGerichteListe(this);
+        Toast.makeText(this, "" + curGerichteListe.get(0).getName() + " gelöscht", Toast.LENGTH_SHORT).show();
+        curGerichteListe.remove(0);
+        Speicher.saveGerichteListe(this, curGerichteListe);
+        activateNeuesGerichtModus();
     }
 
 
@@ -203,21 +312,31 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
             displayedPortionenGramm = Double.parseDouble(portionenGrammEditText.getText().toString());
         }
 
-        if (neuesGerichtModus) {
+
             //fehler: name leer
-            if (userInputName.equals("")) {
-                Toast.makeText(this, "Namen angeben", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (userInputName.equals("")) {
+            Toast.makeText(this, "Namen angeben", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
             //fehler: name verboten
-            if (userInputName.equals("unbekanntes Gericht")) {
-                Toast.makeText(this, "anderen Namen angeben", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (userInputName.toLowerCase().equals("unbekanntes gericht") || userInputName.toLowerCase().equals("manuelle änderung")) {
+            Toast.makeText(this, "anderen Namen angeben", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+            //fehler: alle nährwerte == 0
+        if (userInputKcalD == 0 && userInputProtD == 0 && userInputKhD == 0 && userInputFettD == 0) {
+            Toast.makeText(this, "Mindestens einen Nährwert angeben", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ArrayList<Gericht> curGerichteListe = Speicher.loadGerichteListe(this);
+
+        if (neuesGerichtModus) {
 
             //fehler: name & beschreibung bereits vorhanden
-            for(Gericht i : Gericht.gerichteListe) {
+            for(Gericht i : curGerichteListe) {
                 if (i.getName().equals(userInputName)) {
                     if (i.getDescription().equals(userInputDescription)) {
                         Toast.makeText(this, "Gericht bereits gespeichert", Toast.LENGTH_SHORT).show();
@@ -227,18 +346,45 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
                 }
             }
 
-            //fehler: alle nährwerte == 0
-            if (userInputKcalD == 0 && userInputProtD == 0 && userInputKhD == 0 && userInputFettD == 0) {
-                Toast.makeText(this, "Mindestens einen Nährwert angeben", Toast.LENGTH_SHORT).show();
-                return;
+            //gericht speichern
+            curGerichteListe.add(0, new Gericht(   userInputName, userInputDescription, displayedPortionenGramm, inPortionen,
+                                                userInputKcalD, userInputProtD, userInputKhD, userInputFettD, kcalNote, protNote, khNote, fettNote));
+            Speicher.saveGerichteListe(this, curGerichteListe);
+            Toast.makeText(this, "" + userInputName + " gespeichert", Toast.LENGTH_SHORT).show();
+            activateNeuesGerichtModus();
+
+        } else {
+
+            //fehler: name & beschreibung bereits vorhanden
+            for(int i = 1; i < curGerichteListe.size(); i++) {
+                if (curGerichteListe.get(i).getName().equals(userInputName)) {
+                    if (curGerichteListe.get(i).getDescription().equals(userInputDescription)) {
+                        Toast.makeText(this, "Gericht bereits gespeichert", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Namen oder Beschreibung ändern", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
             }
 
             //gericht speichern
-            Gericht.gerichteListe.add(new Gericht(  userInputName, userInputDescription, displayedPortionenGramm, inPortionen,
-                                                    userInputKcalD, userInputProtD, userInputKhD, userInputFettD, kcalNote, protNote, khNote, fettNote));
-            Toast.makeText(this, "" + userInputName + " gespeichert", Toast.LENGTH_SHORT).show();
+            Gericht toChange = curGerichteListe.get(0);
+            toChange.setName(userInputName);
+            toChange.setDescription(userInputDescription);
+            toChange.setPortionenGramm(displayedPortionenGramm);
+            toChange.setInPortionen(inPortionen);
+            toChange.setKcal(userInputKcalD);
+            toChange.setProt(userInputProtD);
+            toChange.setKh(userInputKhD);
+            toChange.setFett(userInputFettD);
+            toChange.setKcalNote(kcalNote);
+            toChange.setProtNote(protNote);
+            toChange.setKhNote(khNote);
+            toChange.setFettNote(fettNote);
+
+
+            Speicher.saveGerichteListe(this, curGerichteListe);
+            Toast.makeText(this, "Änderungen an " + userInputName + " gespeichert", Toast.LENGTH_SHORT).show();
         }
 
-        //TODO änderung speichern
     }
 }

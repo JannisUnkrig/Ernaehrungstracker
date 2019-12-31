@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/historie"
-        android:title="Historie"/>
+        android:title="Historie"
+        android:icon="@drawable/liste_icon"/>
 
     <item
         android:id="@+id/gewichtSpeichern"
-        android:title="Gewicht speichern"/>
+        android:title="Gewicht speichern"
+        android:icon="@drawable/waage_icon"/>
 
     <item
         android:id="@+id/gerichteBearbeiten"
-        android:title="Gerichte bearbeiten"/>
+        android:title="Gerichte bearbeiten"
+        android:icon="@drawable/stift_icon"/>
 
     <item
         android:id="@+id/einstellungen"
-        android:title="Einstellungen"/>
+        android:title="Einstellungen"
+        android:icon="@drawable/gears_icon"/>
 
 </menu>

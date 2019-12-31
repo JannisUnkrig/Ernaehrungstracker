@@ -3,6 +3,7 @@ package com.example.ernaehrungstracker;
 import android.text.Spanned;
 import android.text.method.DigitsKeyListener;
 
+@SuppressWarnings("WeakerAccess")
 public class InputFilterDecimal extends DigitsKeyListener {
 
     private final int beforeDecimal;

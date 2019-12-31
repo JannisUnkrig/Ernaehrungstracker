@@ -24,8 +24,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         this.foodList = foodList;
         for (Gericht i : foodList) {
             foodNamesList.add(i.getName());
-        }
-        for (Gericht i : foodList) {
             foodDescriptionsList.add(i.getDescription());
         }
 
@@ -72,12 +70,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public  int getItemCount() {
-        return foodNamesList.size();
-    }
-
-
-    String getFoodName(int id) {
-        return foodNamesList.get(id);
+        return foodList.size();
     }
 
     Gericht getFood(int position) {
