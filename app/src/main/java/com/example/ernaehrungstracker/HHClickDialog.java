@@ -78,7 +78,7 @@ public class HHClickDialog extends AppCompatDialogFragment {
                     }
                 });
 
-        if (gericht.getName().equals("unbekanntes Gericht") || gericht.getName().equals("manuelle Änderung")) {
+        if (gericht.getName().equals("unbekanntes Gericht") || gericht.getName().equals("manuelle Änderung") || gericht.getName().equals("nachträgliche Änderung")) {
             builder.setNeutralButton("umbenennen", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

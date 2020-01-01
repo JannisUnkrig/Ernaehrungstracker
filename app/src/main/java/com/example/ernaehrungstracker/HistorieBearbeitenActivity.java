@@ -5,9 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -27,6 +32,8 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
     EditText goalFett;
 
     int posDay;
+    private boolean curWatcherActive = true;
+    private boolean goalWatcherActive = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +58,149 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         goalProt = findViewById(R.id.goalProtHistorisch);
         goalKh   = findViewById(R.id.goalKhHistorisch);
         goalFett = findViewById(R.id.goalFettHistorisch);
+
+        //Inputfilter
+        InputFilter[] ifd = new InputFilter[]{new InputFilterDecimal(5, 1)};
+
+        curKcal.setFilters(ifd);
+        curProt.setFilters(ifd);
+        curKh.setFilters(ifd);
+        curFett.setFilters(ifd);
+        goalKcal.setFilters(ifd);
+        goalProt.setFilters(ifd);
+        goalKh.setFilters(ifd);
+        goalFett.setFilters(ifd);
         
         //upper initialisieren
         updateUpperEditTexts(HSL);
 
         //recy View initialisieren
+        recyView.setHasFixedSize(true);
+        recyView.setLayoutManager(new LinearLayoutManager(this));
         updateLowerRecyView(HSL);
 
-        //TODO add listeners (nachträgliche Änderungen)
+
+        //set curListener
+        TextWatcher curWatcher = new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Fires right as the text is being changed (even supplies the range of text)
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Fires right before text is changing
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!curWatcherActive) return;
+                ArrayList<HeuteSpeicher> curHSL = Speicher.loadHeuteSpeicherListe(getApplicationContext());
+                HeuteSpeicher curHS = curHSL.get(posDay);
+
+                String kcalString = curKcal.getText().toString();
+                String protString = curProt.getText().toString();
+                String khString = curKh.getText().toString();
+                String fettString = curFett.getText().toString();
+
+                double kcalDouble = 0;
+                double protDouble = 0;
+                double khDouble = 0;
+                double fettDouble = 0;
+
+                if (!kcalString.equals("")) kcalDouble = Double.parseDouble(kcalString);
+                if (!protString.equals("")) protDouble = Double.parseDouble(protString);
+                if (!khString.equals("")) khDouble = Double.parseDouble(khString);
+                if (!fettString.equals("")) fettDouble = Double.parseDouble(fettString);
+
+                double kcalDelta = (double) (Math.round((kcalDouble - curHS.getKcalHeute()) * 10)) / 10;
+                double protDelta = (double) (Math.round((protDouble - curHS.getProtHeute()) * 10)) / 10;
+                double khDelta = (double) (Math.round((khDouble - curHS.getKhHeute()) * 10)) / 10;
+                double fettDelta = (double) (Math.round((fettDouble - curHS.getFettHeute()) * 10)) / 10;
+
+                //Toast.makeText(MainActivity.curMainAct, "" + kcalDelta + "  " + protDelta + "  " + khDelta + "  " + fettDelta, Toast.LENGTH_SHORT).show();
+
+                if (!curHS.getGegesseneGerichte().isEmpty()) {
+                    Gericht letztes = curHS.getGegesseneGerichte().get(curHS.getGegesseneGerichte().size() - 1);
+
+                    if (letztes.getName().equals("nachträgliche Änderung")) {
+                        curHS.addKcalHeute(kcalDelta);
+                        curHS.addProtHeute(protDelta);
+                        curHS.addKhHeute(khDelta);
+                        curHS.addFettHeute(fettDelta);
+                        letztes.addKcal(kcalDelta);
+                        letztes.addProt(protDelta);
+                        letztes.addKh(khDelta);
+                        letztes.addFett(fettDelta);
+                        if (letztes.getKcal() == 0 && letztes.getProt() == 0 && letztes.getKh() == 0 && letztes.getFett() == 0) {
+                            curHS.getGegesseneGerichte().remove(curHS.getGegesseneGerichte().size() - 1);
+                        }
+                    } else {
+                        if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
+                            Gericht nachträglAenderung = new Gericht("nachträgliche Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                            curHS.gerichtEssen(nachträglAenderung);
+                        }
+                    }
+                } else {
+                    if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
+                        Gericht manuelleAenderung = new Gericht("nachträgliche Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                        curHS.gerichtEssen(manuelleAenderung);
+                    }
+                }
+
+                Speicher.saveHeuteSpeicherListe(getApplicationContext(), curHSL);
+                updateLowerRecyView(curHSL);
+            }
+        };
+
+        curKcal.addTextChangedListener(curWatcher);
+        curProt.addTextChangedListener(curWatcher);
+        curKh.addTextChangedListener(curWatcher);
+        curFett.addTextChangedListener(curWatcher);
+
+        //manuelle änderungen Ziel
+        TextWatcher goalWatcher = new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Fires right as the text is being changed (even supplies the range of text)
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Fires right before text is changing
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Fires right after the text has changed
+                if (!goalWatcherActive) return;
+                ArrayList<HeuteSpeicher> curHSL = Speicher.loadHeuteSpeicherListe(getApplicationContext());
+                HeuteSpeicher curHS = curHSL.get(posDay);
+
+                String kcalString = goalKcal.getText().toString();
+                String protString = goalProt.getText().toString();
+                String khString   = goalKh.getText().toString();
+                String fettString = goalFett.getText().toString();
+
+                double kcalDouble = -1;
+                double protDouble = -1;
+                double khDouble   = -1;
+                double fettDouble = -1;
+
+                if (!kcalString.equals("")) kcalDouble = Double.parseDouble(kcalString);
+                if (!protString.equals("")) protDouble = Double.parseDouble(protString);
+                if (!khString.equals(""))   khDouble   = Double.parseDouble(khString);
+                if (!fettString.equals("")) fettDouble = Double.parseDouble(fettString);
+
+                curHS.setKcalZielHeute(kcalDouble);
+                curHS.setProtZielHeute(protDouble);
+                curHS.setKhZielHeute(khDouble);
+                curHS.setFettZielHeute(fettDouble);
+
+                Speicher.saveHeuteSpeicherListe(getApplicationContext(), curHSL);
+            }
+        };
+
+        goalKcal.addTextChangedListener(goalWatcher);
+        goalProt.addTextChangedListener(goalWatcher);
+        goalKh.addTextChangedListener(goalWatcher);
+        goalFett.addTextChangedListener(goalWatcher);
     }
 
     @Override
@@ -83,22 +225,22 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
 
 
     private void updateUpperEditTexts(ArrayList<HeuteSpeicher> HSL) {
+        curWatcherActive = false;
         HeuteSpeicher HS = HSL.get(posDay);
 
-        curKcal.setText("" + HS.getKcalHeute());
-        curProt.setText("" + HS.getProtHeute());
-        curKh.setText(  "" + HS.getKhHeute());
-        curFett.setText("" + HS.getFettHeute());
-        goalKcal.setText("" + HS.getKcalZielHeute());
-        goalProt.setText("" + HS.getProtZielHeute());
-        goalKh  .setText("" + HS.getKhZielHeute());
-        goalFett.setText("" + HS.getFettZielHeute());
+        curKcal.setText(MainActivity.doubleBeautifulizerNull(HS.getKcalHeute()));
+        curProt.setText(MainActivity.doubleBeautifulizerNull(HS.getProtHeute()));
+        curKh.setText(MainActivity.doubleBeautifulizerNull(HS.getKhHeute()));
+        curFett.setText(MainActivity.doubleBeautifulizerNull(HS.getFettHeute()));
+        if (HS.getKcalZielHeute() != -1) goalKcal.setText(MainActivity.doubleBeautifulizerNull(HS.getKcalZielHeute()));
+        if (HS.getProtZielHeute() != -1) goalProt.setText(MainActivity.doubleBeautifulizerNull(HS.getProtZielHeute()));
+        if (HS.getKhZielHeute() != -1)     goalKh.setText(MainActivity.doubleBeautifulizerNull(HS.getKhZielHeute()));
+        if (HS.getFettZielHeute() != -1) goalFett.setText(MainActivity.doubleBeautifulizerNull(HS.getFettZielHeute()));
 
+        curWatcherActive = true;
     }
 
     private void updateLowerRecyView(ArrayList<HeuteSpeicher> HSL) {
-        recyView.setHasFixedSize(true);
-        recyView.setLayoutManager(new LinearLayoutManager(this));
         HistorischeGerichteAdapter HGA = new HistorischeGerichteAdapter(this, HSL.get(posDay).getGegesseneGerichte());
         HGA.setmClickListener(this);
         recyView.setAdapter(HGA);

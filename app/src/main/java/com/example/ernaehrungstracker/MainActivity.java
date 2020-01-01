@@ -1,5 +1,6 @@
 package com.example.ernaehrungstracker;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
-    static MainActivity curMainAct; //TODO remove
 
     boolean portionenLiveUpdaterActive = true;
     boolean curWatcherActive = true;
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        curMainAct = this;
-
 
         //draw menu
         drawerLayout = findViewById(R.id.drawer);
@@ -315,14 +313,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             curHS.getGegesseneGerichte().remove(curHS.getGegesseneGerichte().size() - 1);
                         }
                     } else {
-                        if (letztes.getKcal() != 0 || letztes.getProt() != 0 || letztes.getKh() != 0 || letztes.getFett() != 0) {
+                        if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
                             Gericht manuelleAenderung = new Gericht("manuelle Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
                             curHS.gerichtEssen(manuelleAenderung);
                         }
                     }
                 } else {
-                    Gericht manuelleAenderung = new Gericht("manuelle Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
-                    curHS.gerichtEssen(manuelleAenderung);
+                    if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
+                        Gericht manuelleAenderung = new Gericht("manuelle Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                        curHS.gerichtEssen(manuelleAenderung);
+                    }
                 }
 
                 Speicher.saveHeuteSpeicherListe(getApplicationContext(), curHSL);
@@ -525,7 +525,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             case R.id.einstellungen:
-                Toast.makeText(MainActivity.this, "Einstellungen ausgewählt", Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(this, SettingsActivity.class);
+                startActivity(intent4);
                 break;
         }
 
