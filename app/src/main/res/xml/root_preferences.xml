@@ -16,36 +16,54 @@
 
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="Tracker">
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="displayTrackerKcal"
+            app:title="Kalorien tracken" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="displayTrackerProt"
+            app:title="Proteine tracken" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="displayTrackerKh"
+            app:title="Kohlenhydrate tracken" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="displayTrackerFett"
+            app:title="Fette tracken" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Historie">
+
+        <SwitchPreferenceCompat
+            app:key="naehrwerteInListe"
+            app:title="Nährwerte direkt anzeigen"
+            app:summaryOff="Nährwerte einzelner Gerichte werden nur in der Detailansicht angezeigt"
+            app:summaryOn="Nährwerte einzelner Gerichte werden direkt in der heutigen Historie angezeigt"
+            app:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
+            app:key="limitStorage"
+            app:title="Historie begrenzen"
+            app:summary="alte Einträge werden gelöscht" />
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:defaultValue="1096"
+            app:dependency="limitStorage"
+            app:entries="@array/limit_storage_entries"
+            app:entryValues="@array/limit_storage_values"
+            app:key="limitStorageTo"
+            app:title="Historie begrenzt auf"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
-
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
-
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>

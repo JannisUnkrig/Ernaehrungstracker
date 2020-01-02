@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -38,6 +39,9 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
         TextView myKhGoalTextView;
         TextView myFettTextView;
         TextView myFettGoalTextView;
+        TextView myStrich1h;
+        TextView myStrich2h;
+        TextView myStrich3h;
 
         ViewHolderH(View itemview) {
             super(itemview);
@@ -51,6 +55,9 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
             myProtGoalTextView = itemview.findViewById(R.id.hProtGoal);
             myKhGoalTextView = itemview.findViewById(R.id.hKhGoal);
             myFettGoalTextView = itemview.findViewById(R.id.hFettGoal);
+            myStrich1h = itemview.findViewById(R.id.strich1h);
+            myStrich2h = itemview.findViewById(R.id.strich2h);
+            myStrich3h = itemview.findViewById(R.id.strich3h);
 
             itemview.setOnClickListener(this);
         }
@@ -88,6 +95,55 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
         } else {
             holder.myGewichtTextView.setText("    |   " + MainActivity.doubleBeautifulizerNull(gewichtH) + "kg");
         }
+
+
+
+        if (HS.isTrackKcal()) {
+            holder.myKcalTextView.setVisibility(View.VISIBLE);
+            holder.myKcalGoalTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myKcalTextView.setVisibility(View.GONE);
+            holder.myKcalGoalTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackProt()) {
+            holder.myProtTextView.setVisibility(View.VISIBLE);
+            holder.myProtGoalTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myProtTextView.setVisibility(View.GONE);
+            holder.myProtGoalTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackKh()) {
+            holder.myKhTextView.setVisibility(View.VISIBLE);
+            holder.myKhGoalTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myKhTextView.setVisibility(View.GONE);
+            holder.myKhGoalTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackFett()) {
+            holder.myFettTextView.setVisibility(View.VISIBLE);
+            holder.myFettGoalTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myFettTextView.setVisibility(View.GONE);
+            holder.myFettGoalTextView.setVisibility(View.GONE);
+        }
+
+
+        if (HS.isTrackKcal() && HS.isTrackProt()) {
+            holder.myStrich1h.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich1h.setVisibility(View.GONE);
+        }
+        if ((HS.isTrackKcal() || HS.isTrackProt()) && HS.isTrackKh()) {
+            holder.myStrich2h.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich2h.setVisibility(View.GONE);
+        }
+        if ((HS.isTrackKcal() || HS.isTrackProt() || HS.isTrackKh()) && HS.isTrackFett()) {
+            holder.myStrich3h.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich3h.setVisibility(View.GONE);
+        }
+
 
         holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(kcalH));
         if (kcalGoalH != -1) {

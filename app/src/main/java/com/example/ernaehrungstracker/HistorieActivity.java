@@ -1,17 +1,20 @@
 package com.example.ernaehrungstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class HistorieActivity extends AppCompatActivity implements HeuteHistorieAdapter.ItemClickListener, HistorieAdapter.ItemClickListener, HHClickDialog.HHClickDialogListener, UmbenennenDialog.UmbenennenDialogListener {
+
+    Boolean displayDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +23,14 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
 
         ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
 
+        displayDetails = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("naehrwerteInListe", true);
+
         //upper recyclerView
         updateUpperRecyView(HSL);
 
         //lower recyclerView
         updateLowerRecyView(HSL);
+
     }
 
     @Override
@@ -74,7 +80,7 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
         RecyclerView hhRecyView = findViewById(R.id.heuteHistorieRecyclerView);
         hhRecyView.setHasFixedSize(true);
         hhRecyView.setLayoutManager(new LinearLayoutManager(this));
-        HeuteHistorieAdapter HHA = new HeuteHistorieAdapter(this, HSL.get(0).getGegesseneGerichte());
+        HeuteHistorieAdapter HHA = new HeuteHistorieAdapter(this, HSL.get(0), displayDetails);
         HHA.setmClickListener(this);
         hhRecyView.setAdapter(HHA);
 

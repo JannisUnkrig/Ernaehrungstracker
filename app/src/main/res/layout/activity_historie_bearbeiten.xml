@@ -33,6 +33,7 @@
                 android:textSize="20sp" />
 
             <LinearLayout
+                android:id="@+id/kcalTrackerLayoutHistorisch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
@@ -84,6 +85,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/protTrackerLayoutHistorisch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
@@ -135,6 +137,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/khTrackerLayoutHistorisch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
@@ -187,6 +190,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/fettTrackerLayoutHistorisch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
@@ -263,7 +267,7 @@
                 android:id="@+id/RecyViewHistorisch"
                 android:layout_width="match_parent"
                 android:layout_height="290sp"
-                android:layout_marginTop="14sp"
+                android:layout_marginTop="10sp"
                 android:visibility="visible" />
 
             <LinearLayout

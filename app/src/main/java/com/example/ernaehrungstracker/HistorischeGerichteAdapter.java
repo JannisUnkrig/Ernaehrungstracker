@@ -12,16 +12,20 @@ import java.util.ArrayList;
 
 public class HistorischeGerichteAdapter extends RecyclerView.Adapter<HistorischeGerichteAdapter.ViewHolderHG> {
 
+    private HeuteSpeicher HS;
     private ArrayList<Gericht> foodList;
     private ArrayList<String> foodPortionenGrammList = new ArrayList<>();
 
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    HistorischeGerichteAdapter(Context context, ArrayList<Gericht> foodList) {
-        this.mInflater = LayoutInflater.from(context);
+    private Boolean displayDetails;
 
-        this.foodList = foodList;
+    HistorischeGerichteAdapter(Context context, HeuteSpeicher HS, Boolean displayDetails) {
+        this.mInflater = LayoutInflater.from(context);
+        this.HS = HS;
+        this.displayDetails = displayDetails;
+        this.foodList = HS.getGegesseneGerichte();
         for (Gericht i : foodList) {
             if (i.isInPortionen()) {
                 if (i.getPortionenGramm() == 1) {
@@ -51,6 +55,10 @@ public class HistorischeGerichteAdapter extends RecyclerView.Adapter<Historische
         TextView myProtTextView;
         TextView myKhTextView;
         TextView myFettTextView;
+        View myNaehrwerteLayout;
+        TextView myStrich1hg;
+        TextView myStrich2hg;
+        TextView myStrich3hg;
 
         ViewHolderHG(View itemview) {
             super(itemview);
@@ -60,6 +68,10 @@ public class HistorischeGerichteAdapter extends RecyclerView.Adapter<Historische
             myProtTextView = itemview.findViewById(R.id.hgFoodProt);
             myKhTextView = itemview.findViewById(R.id.hgFoodKh);
             myFettTextView = itemview.findViewById(R.id.hgFoodFett);
+            myNaehrwerteLayout = itemview.findViewById(R.id.hgNaehrwerteLayout);
+            myStrich1hg = itemview.findViewById(R.id.strich1hg);
+            myStrich2hg = itemview.findViewById(R.id.strich2hg);
+            myStrich3hg = itemview.findViewById(R.id.strich3hg);
 
             itemview.setOnClickListener(this);
         }
@@ -88,12 +100,55 @@ public class HistorischeGerichteAdapter extends RecyclerView.Adapter<Historische
 
         holder.myNameTextView.setText(foodNameHG);
         holder.myPortionenGrammTextView.setText(foodPortionenGrammHG);
-        holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHG) + " kcal");
-        holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHG) + " g Prot");
-        holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHG)   + " g KH");
-        holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHG) + " g Fett");
 
-        //if (foodDescription.equals("")) holder.myDescriptionTextView.setHeight(0);
+
+        if (HS.isTrackKcal()) {
+            holder.myKcalTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myKcalTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackProt()) {
+            holder.myProtTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myProtTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackKh()) {
+            holder.myKhTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myKhTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackFett()) {
+            holder.myFettTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myFettTextView.setVisibility(View.GONE);
+        }
+
+
+        if (HS.isTrackKcal() && HS.isTrackProt()) {
+            holder.myStrich1hg.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich1hg.setVisibility(View.GONE);
+        }
+        if ((HS.isTrackKcal() || HS.isTrackProt()) && HS.isTrackKh()) {
+            holder.myStrich2hg.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich2hg.setVisibility(View.GONE);
+        }
+        if ((HS.isTrackKcal() || HS.isTrackProt() || HS.isTrackKh()) && HS.isTrackFett()) {
+            holder.myStrich3hg.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich3hg.setVisibility(View.GONE);
+        }
+
+
+        if (displayDetails) {
+            holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHG) + " kcal");
+            holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHG) + " g Prot");
+            holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHG) + " g KH");
+            holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHG) + " g Fett");
+        } else {
+            holder.myNaehrwerteLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.example.ernaehrungstracker;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,11 +41,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     boolean goalWatcherActive = true;
     public Gericht currentGericht = null;
 
+    public static Context curMainAct;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        curMainAct = this;
 
         //draw menu
         drawerLayout = findViewById(R.id.drawer);
@@ -58,22 +65,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        //heute speicher initialisieren & daily reset
+        //heute speicher initialisieren
         ArrayList<HeuteSpeicher> curHSL = Speicher.loadHeuteSpeicherListe(this);
         HeuteSpeicher curHS = curHSL.get(0);
 
+        //display trackers?
+        updateTrackerDisplayed(curHSL);
+
+        //daily reset(muss nach updateTrackerDisplay bleiben)
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
         Date today = new Date();
 
         if (!curHS.getDate().equals(formatter.format(today))) {
             //TODO rückblick
-            Toast.makeText(this, "new day", Toast.LENGTH_SHORT);
+            //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
             HeuteSpeicher newHS = new HeuteSpeicher();
             newHS.setKcalZielHeute(curHS.getKcalZielHeute());
             newHS.setProtZielHeute(curHS.getProtZielHeute());
             newHS.setKhZielHeute(curHS.getKhZielHeute());
             newHS.setFettZielHeute(curHS.getFettZielHeute());
             curHSL.add(0, newHS);
+
+            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("limitStorage", false)) {
+                int limitTo = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("limitStorageTo", "0x7fffffff"));
+                while (curHSL.size() > limitTo + 1) {
+                    curHSL.remove(curHSL.size() - 1);
+                }
+            }
         }
         Speicher.saveHeuteSpeicherListe(this, curHSL);
         updateUpperEditTexts(curHSL.get(0));
@@ -401,11 +419,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         HeuteSpeicher curHeuteSpeicher = curHeuteSpeicherListe.get(0);
         ArrayList<Gericht> curGegesseneGerichte = curHeuteSpeicher.getGegesseneGerichte();
 
+        if (!curHeuteSpeicher.isTrackKcal()) curCopy.setKcal(0);
+        if (!curHeuteSpeicher.isTrackProt()) curCopy.setProt(0);
+        if (!curHeuteSpeicher.isTrackKh()  ) curCopy.setKh(0);
+        if (!curHeuteSpeicher.isTrackFett()) curCopy.setFett(0);
+
         //gericht hinzufügen
         if (curGegesseneGerichte.size() > 0) {
             Gericht letztes = curGegesseneGerichte.get(curGegesseneGerichte.size() - 1);
 
-            if (letztes.getName().equals(curCopy.getName()) && !curCopy.getName().equals("unbekanntes Gericht")) {
+            if (letztes.getName().equals(curCopy.getName()) && letztes.getDescription().equals(curCopy.getDescription()) && !curCopy.getName().equals("unbekanntes Gericht")) {
                 letztes.addPortionenGramm(curCopy.getPortionenGramm());
                 letztes.addKcal(curCopy.getKcal());
                 letztes.addProt(curCopy.getProt());
@@ -489,6 +512,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (requestCode == 3) {
             updateUpperEditTextsCur(Speicher.loadHeuteSpeicherListe(this).get(0));
         }
+
+        //after settings
+        if (requestCode == 5) {
+            ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
+
+            updateTrackerDisplayed(HSL);
+
+            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("limitStorage", false)) {
+                int limitTo = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("limitStorageTo", "0x7fffffff"));
+                while (HSL.size() > limitTo + 1) {
+                    HSL.remove(HSL.size() - 1);
+                }
+                Speicher.saveHeuteSpeicherListe(this, HSL);
+            }
+        }
     }
 
 
@@ -526,7 +564,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.einstellungen:
                 Intent intent4 = new Intent(this, SettingsActivity.class);
-                startActivity(intent4);
+                startActivityForResult(intent4, 5);
                 break;
         }
 
@@ -573,6 +611,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ((EditText) findViewById(R.id.curKh)).setText(doubleBeautifulizer(curHeuteSpeicher.getKhHeute()));
         ((EditText) findViewById(R.id.curFett)).setText(doubleBeautifulizer(curHeuteSpeicher.getFettHeute()));
         curWatcherActive = true;
+    }
+
+    private void updateTrackerDisplayed(ArrayList<HeuteSpeicher> HSL) {
+        boolean kcalTrackerDisplayed = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("displayTrackerKcal", true);
+        boolean protTrackerDisplayed = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("displayTrackerProt", true);
+        boolean khTrackerDisplayed   = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("displayTrackerKh",   true);
+        boolean fettTrackerDisplayed = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("displayTrackerFett", true);
+
+        HeuteSpeicher HS = HSL.get(0);
+
+        HS.setTrackKcal(kcalTrackerDisplayed);
+        HS.setTrackProt(protTrackerDisplayed);
+        HS.setTrackKh(khTrackerDisplayed);
+        HS.setTrackFett(fettTrackerDisplayed);
+
+        Speicher.saveHeuteSpeicherListe(this, HSL);
+
+        View upperKcal = findViewById(R.id.kcalTrackerLayout);
+        View upperProt = findViewById(R.id.protTrackerLayout);
+        View upperKh   = findViewById(R.id.khTrackerLayout);
+        View upperFett = findViewById(R.id.fettTrackerLayout);
+        View lowerKcal = findViewById(R.id.kcalToAddLayout);
+        View lowerProt = findViewById(R.id.protToAddLayout);
+        View lowerKh   = findViewById(R.id.khToAddLayout);
+        View lowerFett = findViewById(R.id.fettToAddLayout);
+
+        if (kcalTrackerDisplayed) {
+            upperKcal.setVisibility(View.VISIBLE);
+            lowerKcal.setVisibility(View.VISIBLE);
+        } else {
+            upperKcal.setVisibility(View.GONE);
+            lowerKcal.setVisibility(View.GONE);
+        }
+        if (protTrackerDisplayed) {
+            upperProt.setVisibility(View.VISIBLE);
+            lowerProt.setVisibility(View.VISIBLE);
+        } else {
+            upperProt.setVisibility(View.GONE);
+            lowerProt.setVisibility(View.GONE);
+        }
+        if (khTrackerDisplayed) {
+            upperKh.setVisibility(View.VISIBLE);
+            lowerKh.setVisibility(View.VISIBLE);
+        } else {
+            upperKh.setVisibility(View.GONE);
+            lowerKh.setVisibility(View.GONE);
+        }
+        if (fettTrackerDisplayed) {
+            upperFett.setVisibility(View.VISIBLE);
+            lowerFett.setVisibility(View.VISIBLE);
+        } else {
+            upperFett.setVisibility(View.GONE);
+            lowerFett.setVisibility(View.GONE);
+        }
     }
 
 }

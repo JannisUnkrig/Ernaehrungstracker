@@ -5,8 +5,8 @@
     android:background="@color/hellgrün"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <org.apmem.tools.layouts.FlowLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14sp"
         android:layout_marginTop="7sp"
@@ -31,15 +31,15 @@
             android:text="100 Gramm"
             android:textColor="#BFFFFFFF" />
 
-    </LinearLayout>
+    </org.apmem.tools.layouts.FlowLayout>
 
     <org.apmem.tools.layouts.FlowLayout
+        android:id="@+id/hhNaehrwerteLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14sp"
         android:layout_marginTop="2sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginBottom="7sp">
+        android:layout_marginEnd="10sp">
 
         <TextView
             android:id="@+id/hhFoodKcal"
@@ -90,6 +90,10 @@
             android:text="56 g Fett"
             android:textColor="#BFFFFFFF" />
     </org.apmem.tools.layouts.FlowLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="7dp" />
 
     <View
         android:id="@+id/divider2"

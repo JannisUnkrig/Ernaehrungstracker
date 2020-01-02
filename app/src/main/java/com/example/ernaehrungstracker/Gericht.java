@@ -43,6 +43,7 @@ public class Gericht {
         this.fettNote = fettNote;
     }
 
+
     public String getName() {
         return name;
     }
@@ -55,9 +56,7 @@ public class Gericht {
 
     public boolean isInPortionen() { return inPortionen; }
 
-    public double getKcal() {
-        return kcal;
-    }
+    public double getKcal() { return kcal; }
 
     public double getProt() {
         return prot;
@@ -134,21 +133,26 @@ public class Gericht {
 
     public void addPortionenGramm(double portionenGramm) {
         this.portionenGramm += portionenGramm;
+        this.portionenGramm = ((double) Math.round(this.portionenGramm * 100)) / 100;
     }
 
     public void addKcal(double kcal) {
         this.kcal += kcal;
+        this.kcal = ((double) Math.round(this.kcal * 10)) / 10;
     }
 
     public void addProt(double prot) {
         this.prot += prot;
+        this.prot = ((double) Math.round(this.prot * 10)) / 10;
     }
 
     public void addKh(double kh) {
         this.kh += kh;
+        this.kh = ((double) Math.round(this.kh * 10)) / 10;
     }
 
     public void addFett(double fett) {
         this.fett += fett;
+        this.fett = ((double) Math.round(this.fett * 10)) / 10;
     }
 }

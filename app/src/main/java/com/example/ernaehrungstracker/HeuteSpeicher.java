@@ -1,6 +1,8 @@
 package com.example.ernaehrungstracker;
 
 
+import androidx.preference.PreferenceManager;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,11 +25,21 @@ public class HeuteSpeicher {
     private double khZielHeute   = -1;
     private double fettZielHeute = -1;
 
+    private boolean trackKcal;
+    private boolean trackProt;
+    private boolean trackKh;
+    private boolean trackFett;
+
 
     public HeuteSpeicher() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
         Date date = new Date();
         this.date = formatter.format(date);
+
+        trackKcal = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerKcal", true);
+        trackProt = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerProt", true);
+        trackKh   = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerKh",   true);
+        trackFett = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerFett", true);
     }
 
 
@@ -35,27 +47,10 @@ public class HeuteSpeicher {
 
         gegesseneGerichte.add(gericht);
 
-        kcalHeute += gericht.getKcal();
-        protHeute += gericht.getProt();
-        khHeute   += gericht.getKh();
-        fettHeute += gericht.getFett();
-
-        //auf eine nachkommastelle runden
-        kcalHeute = ((double) Math.round(kcalHeute * 10)) / 10;
-        protHeute = ((double) Math.round(protHeute * 10)) / 10;
-        khHeute   = ((double) Math.round(khHeute * 10)) / 10;
-        fettHeute = ((double) Math.round(fettHeute * 10)) / 10;
-
-        //nix darf über 99999.9 sein
-        if (kcalHeute > 99999.9) kcalHeute = 99999.9;
-        if (protHeute > 99999.9) protHeute = 99999.9;
-        if (khHeute > 99999.9) khHeute = 99999.9;
-        if (fettHeute > 99999.9) fettHeute = 99999.9;
-
-        if (kcalZielHeute > 99999.9) kcalZielHeute = 99999.9;
-        if (protZielHeute > 99999.9) protZielHeute = 99999.9;
-        if (khZielHeute > 99999.9) khZielHeute = 99999.9;
-        if (fettZielHeute > 99999.9) fettZielHeute = 99999.9;
+        addKcalHeute(gericht.getKcal());
+        addProtHeute(gericht.getProt());
+        addKhHeute(gericht.getKh());
+        addFettHeute(gericht.getFett());
     }
 
 
@@ -80,19 +75,35 @@ public class HeuteSpeicher {
     }
 
     public void addKcalHeute(double kcalHeute) {
+        if (!trackKcal) return;
         this.kcalHeute += kcalHeute;
+
+        this.kcalHeute = ((double) Math.round(this.kcalHeute * 10)) / 10;
+        if (this.kcalHeute > 99999.9) this.kcalHeute = 99999.9;
     }
 
     public void addProtHeute(double protHeute) {
+        if (!trackProt) return;
         this.protHeute += protHeute;
+
+        this.protHeute = ((double) Math.round(this.protHeute * 10)) / 10;
+        if (this.protHeute > 99999.9) this.protHeute = 99999.9;
     }
 
     public void addKhHeute(double khHeute) {
+        if (!trackKh) return;
         this.khHeute += khHeute;
+
+        this.khHeute = ((double) Math.round(this.khHeute * 10)) / 10;
+        if (this.khHeute > 99999.9) this.khHeute = 99999.9;
     }
 
     public void addFettHeute(double fettHeute) {
+        if (!trackFett) return;
         this.fettHeute += fettHeute;
+
+        this.fettHeute = ((double) Math.round(this.fettHeute * 10)) / 10;
+        if (this.fettHeute > 99999.9) this.fettHeute = 99999.9;
     }
 
     public void setKcalZielHeute(double kcalZielHeute) {
@@ -111,7 +122,7 @@ public class HeuteSpeicher {
         this.fettZielHeute = fettZielHeute;
     }
 
-    public String getDate() { return date; }
+
 
     public ArrayList<Gericht> getGegesseneGerichte() {
         return gegesseneGerichte;
@@ -152,4 +163,24 @@ public class HeuteSpeicher {
     public double getFettZielHeute() {
         return fettZielHeute;
     }
+
+
+
+    public boolean isTrackKcal() { return trackKcal; }
+
+    public void setTrackKcal(boolean trackKcal) { this.trackKcal = trackKcal; }
+
+    public boolean isTrackProt() { return trackProt; }
+
+    public void setTrackProt(boolean trackProt) { this.trackProt = trackProt; }
+
+    public boolean isTrackKh() { return trackKh; }
+
+    public void setTrackKh(boolean trackKh) { this.trackKh = trackKh; }
+
+    public boolean isTrackFett() { return trackFett; }
+
+    public void setTrackFett(boolean trackFett) { this.trackFett = trackFett; }
+
+    public String getDate() { return date; }
 }

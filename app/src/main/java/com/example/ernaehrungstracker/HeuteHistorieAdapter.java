@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdapter.ViewHolderHH> {
 
+    private HeuteSpeicher HS;
     private ArrayList<Gericht> foodList;
     private ArrayList<String> foodNamesList = new ArrayList<>();
     private ArrayList<String> foodPortionenGrammList = new ArrayList<>();
@@ -23,10 +24,14 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    HeuteHistorieAdapter(Context context, ArrayList<Gericht> foodList) {
-        this.mInflater = LayoutInflater.from(context);
+    private Boolean displayDetails;
 
-        this.foodList = foodList;
+    HeuteHistorieAdapter(Context context, HeuteSpeicher HS, Boolean displayDetails) {
+        this.mInflater = LayoutInflater.from(context);
+        this.displayDetails = displayDetails;
+        this.HS = HS;
+
+        this.foodList = HS.getGegesseneGerichte();
         for (Gericht i : foodList) {
             foodNamesList.add(i.getName());
             if (i.isInPortionen()) {
@@ -61,6 +66,10 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
         TextView myProtTextView;
         TextView myKhTextView;
         TextView myFettTextView;
+        View myNaehrwerteLayout;
+        TextView myStrich1hh;
+        TextView myStrich2hh;
+        TextView myStrich3hh;
 
         ViewHolderHH(View itemview) {
             super(itemview);
@@ -70,6 +79,10 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
             myProtTextView = itemview.findViewById(R.id.hhFoodProt);
             myKhTextView = itemview.findViewById(R.id.hhFoodKh);
             myFettTextView = itemview.findViewById(R.id.hhFoodFett);
+            myNaehrwerteLayout = itemview.findViewById(R.id.hhNaehrwerteLayout);
+            myStrich1hh = itemview.findViewById(R.id.strich1hh);
+            myStrich2hh = itemview.findViewById(R.id.strich2hh);
+            myStrich3hh = itemview.findViewById(R.id.strich3hh);
 
             itemview.setOnClickListener(this);
         }
@@ -97,12 +110,55 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
 
         holder.myNameTextView.setText(foodNameHH);
         holder.myPortionenGrammTextView.setText(foodPortionenGrammHH);
-        holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHH) + " kcal");
-        holder.myProtTextView.setText("" + MainActivity.doubleBeautifulizerNull(foodProtHH) + " g Prot");
-        holder.myKhTextView.setText("" + MainActivity.doubleBeautifulizerNull(foodKhHH) + " g KH");
-        holder.myFettTextView.setText("" + MainActivity.doubleBeautifulizerNull(foodFettHH) + " g Fett");
 
-        //if (foodDescription.equals("")) holder.myDescriptionTextView.setHeight(0);
+
+        if (HS.isTrackKcal()) {
+            holder.myKcalTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myKcalTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackProt()) {
+            holder.myProtTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myProtTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackKh()) {
+            holder.myKhTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myKhTextView.setVisibility(View.GONE);
+        }
+        if (HS.isTrackFett()) {
+            holder.myFettTextView.setVisibility(View.VISIBLE);
+        } else {
+            holder.myFettTextView.setVisibility(View.GONE);
+        }
+
+
+        if (HS.isTrackKcal() && HS.isTrackProt()) {
+            holder.myStrich1hh.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich1hh.setVisibility(View.GONE);
+        }
+        if ((HS.isTrackKcal() || HS.isTrackProt()) && HS.isTrackKh()) {
+            holder.myStrich2hh.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich2hh.setVisibility(View.GONE);
+        }
+        if ((HS.isTrackKcal() || HS.isTrackProt() || HS.isTrackKh()) && HS.isTrackFett()) {
+            holder.myStrich3hh.setVisibility(View.VISIBLE);
+        } else {
+            holder.myStrich3hh.setVisibility(View.GONE);
+        }
+
+
+        if (displayDetails) {
+            holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHH) + " kcal");
+            holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHH) + " g Prot");
+            holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHH  ) + " g KH");
+            holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHH) + " g Fett");
+        } else {
+            holder.myNaehrwerteLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override

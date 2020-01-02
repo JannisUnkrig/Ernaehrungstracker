@@ -38,22 +38,32 @@ public class HHClickDialog extends AppCompatDialogFragment {
             if (gericht.getPortionenGramm() == 1) {
                 //mach nix
             } else {
-                title += " (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " Portionen)";
+                title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " Portionen)";
             }
         } else {
             if (gericht.getPortionenGramm() == 1) {
-                title += " (ein Gramm)";
+                title += "  (ein Gramm)";
             } else {
-                title += " (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " Gramm)";
+                title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " Gramm)";
             }
         }
 
         String message = "";
         if (!gericht.getDescription().equals("")) message += gericht.getDescription() + "\n\n";
-        message += MainActivity.doubleBeautifulizerNull(gericht.getKcal()) + " kcal  |  ";
-        message += MainActivity.doubleBeautifulizerNull(gericht.getProt()) + "g Prot  |  ";
-        message += MainActivity.doubleBeautifulizerNull(gericht.getKh())   + "g KH  |  ";
-        message += MainActivity.doubleBeautifulizerNull(gericht.getFett()) + "g Fett";
+
+
+        if (HS.isTrackKcal()) message += MainActivity.doubleBeautifulizerNull(gericht.getKcal()) + " kcal";
+
+        if (HS.isTrackProt() && HS.isTrackKcal()) message += "  |  ";
+        if (HS.isTrackProt()) message += MainActivity.doubleBeautifulizerNull(gericht.getProt()) + "g Prot";
+
+        if (HS.isTrackKh() && (HS.isTrackProt() || HS.isTrackKcal())) message += "  |  ";
+        if (HS.isTrackKh())   message += MainActivity.doubleBeautifulizerNull(gericht.getKh())   + "g KH";
+
+        if (HS.isTrackFett() && (HS.isTrackProt() || HS.isTrackKcal() || HS.isTrackKh())) message += "  |  ";
+        if (HS.isTrackFett()) message += MainActivity.doubleBeautifulizerNull(gericht.getFett()) + "g Fett";
+
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title)

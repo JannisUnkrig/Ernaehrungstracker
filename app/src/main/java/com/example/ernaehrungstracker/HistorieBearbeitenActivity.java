@@ -1,18 +1,18 @@
 package com.example.ernaehrungstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -35,10 +35,14 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
     private boolean curWatcherActive = true;
     private boolean goalWatcherActive = true;
 
+    private boolean displayDetails;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historie_bearbeiten);
+
+        displayDetails = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("naehrwerteInListe", true);
 
         //receive posDay
         Bundle extras = getIntent().getExtras();
@@ -47,6 +51,8 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         }
 
         HSL = Speicher.loadHeuteSpeicherListe(this);
+
+        ((TextView) findViewById(R.id.HeadlineDateHistorisch)).setText(HSL.get(posDay).getDate());
         
         recyView = findViewById(R.id.RecyViewHistorisch);
         nixGetracktLayout = findViewById(R.id.nichtsGetracktLayoutHistorisch);
@@ -72,6 +78,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         goalFett.setFilters(ifd);
         
         //upper initialisieren
+        updateTrackerDisplayed(HSL.get(posDay));
         updateUpperEditTexts(HSL);
 
         //recy View initialisieren
@@ -241,7 +248,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
     }
 
     private void updateLowerRecyView(ArrayList<HeuteSpeicher> HSL) {
-        HistorischeGerichteAdapter HGA = new HistorischeGerichteAdapter(this, HSL.get(posDay).getGegesseneGerichte());
+        HistorischeGerichteAdapter HGA = new HistorischeGerichteAdapter(this, HSL.get(posDay), displayDetails);
         HGA.setmClickListener(this);
         recyView.setAdapter(HGA);
 
@@ -251,6 +258,39 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         } else {
             recyView.setVisibility(View.GONE);
             nixGetracktLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    private void updateTrackerDisplayed(HeuteSpeicher HS) {
+        View upperKcal = findViewById(R.id.kcalTrackerLayoutHistorisch);
+        View upperProt = findViewById(R.id.protTrackerLayoutHistorisch);
+        View upperKh   = findViewById(R.id.khTrackerLayoutHistorisch);
+        View upperFett = findViewById(R.id.fettTrackerLayoutHistorisch);
+
+
+        if (HS.isTrackKcal()) {
+            upperKcal.setVisibility(View.VISIBLE);
+        } else {
+            upperKcal.setVisibility(View.GONE);
+        }
+
+        if (HS.isTrackProt()) {
+            upperProt.setVisibility(View.VISIBLE);
+        } else {
+            upperProt.setVisibility(View.GONE);
+        }
+
+        if (HS.isTrackKh()) {
+            upperKh.setVisibility(View.VISIBLE);
+        } else {
+            upperKh.setVisibility(View.GONE);
+        }
+
+        if (HS.isTrackFett()) {
+            upperFett.setVisibility(View.VISIBLE);
+        } else {
+            upperFett.setVisibility(View.GONE);
         }
     }
     
