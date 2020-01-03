@@ -31,13 +31,13 @@ public class HistorischeGerichteAdapter extends RecyclerView.Adapter<Historische
                 if (i.getPortionenGramm() == 1) {
                     foodPortionenGrammList.add("");
                 } else {
-                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " Portionen");
+                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " " + MainActivity.curMainAct.getString(R.string.portionen));
                 }
             } else  {
                 if (i.getPortionenGramm() == 1) {
-                    foodPortionenGrammList.add("ein Gramm");
+                    foodPortionenGrammList.add(MainActivity.curMainAct.getString(R.string.ein_gramm));
                 } else {
-                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " Gramm");
+                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " " + MainActivity.curMainAct.getString(R.string.gramm));
                 }
             }
         }
@@ -142,10 +142,10 @@ public class HistorischeGerichteAdapter extends RecyclerView.Adapter<Historische
 
 
         if (displayDetails) {
-            holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHG) + " kcal");
-            holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHG) + " g Prot");
-            holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHG) + " g KH");
-            holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHG) + " g Fett");
+            holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHG) + " " + MainActivity.curMainAct.getString(R.string.kcal));
+            holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHG) + MainActivity.curMainAct.getString(R.string.g_prot));
+            holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHG) + MainActivity.curMainAct.getString(R.string.g_kh));
+            holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHG) + MainActivity.curMainAct.getString(R.string.g_fett));
         } else {
             holder.myNaehrwerteLayout.setVisibility(View.GONE);
         }
@@ -154,10 +154,6 @@ public class HistorischeGerichteAdapter extends RecyclerView.Adapter<Historische
     @Override
     public  int getItemCount() {
         return foodList.size();
-    }
-
-    Gericht getFood(int position) {
-        return foodList.get(position);
     }
 
     void setmClickListener(ItemClickListener itemClickListener) {

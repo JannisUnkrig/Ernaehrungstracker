@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -93,7 +92,7 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
         if (gewichtH == -1) {
             holder.myGewichtTextView.setText("");
         } else {
-            holder.myGewichtTextView.setText("    |   " + MainActivity.doubleBeautifulizerNull(gewichtH) + "kg");
+            holder.myGewichtTextView.setText("    |   " + MainActivity.doubleBeautifulizerNull(gewichtH) + MainActivity.curMainAct.getString(R.string.kg));
         }
 
 
@@ -147,30 +146,30 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
 
         holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(kcalH));
         if (kcalGoalH != -1) {
-            holder.myKcalGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(kcalGoalH) + " kcal");
+            holder.myKcalGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(kcalGoalH) + " " + MainActivity.curMainAct.getString(R.string.kcal));
         } else {
-            holder.myKcalGoalTextView.setText(" kcal");
+            holder.myKcalGoalTextView.setText(" " + MainActivity.curMainAct.getString(R.string.kcal));
         }
 
         holder.myProtTextView.setText("" + MainActivity.doubleBeautifulizerNull(protH));
         if (protGoalH != -1) {
-            holder.myProtGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(protGoalH) + "g Prot");
+            holder.myProtGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(protGoalH) + MainActivity.curMainAct.getString(R.string.g_prot));
         } else {
-            holder.myProtGoalTextView.setText("g Prot");
+            holder.myProtGoalTextView.setText(MainActivity.curMainAct.getString(R.string.g_prot));
         }
 
         holder.myKhTextView.setText("" + MainActivity.doubleBeautifulizerNull(khH));
         if (khGoalH != -1) {
-            holder.myKhGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(khGoalH) + "g KH");
+            holder.myKhGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(khGoalH) + MainActivity.curMainAct.getString(R.string.g_kh));
         } else {
-            holder.myKhGoalTextView.setText("g KH");
+            holder.myKhGoalTextView.setText(MainActivity.curMainAct.getString(R.string.g_kh));
         }
 
         holder.myFettTextView.setText("" + MainActivity.doubleBeautifulizerNull(fettH));
         if (fettGoalH != -1) {
-            holder.myFettGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(fettGoalH) + "g Fett");
+            holder.myFettGoalTextView.setText("/" + MainActivity.doubleBeautifulizerNull(fettGoalH) + MainActivity.curMainAct.getString(R.string.g_fett));
         } else {
-            holder.myFettGoalTextView.setText("g Fett");
+            holder.myFettGoalTextView.setText(MainActivity.curMainAct.getString(R.string.g_fett));
         }
 
         //if (foodDescription.equals("")) holder.myDescriptionTextView.setHeight(0);

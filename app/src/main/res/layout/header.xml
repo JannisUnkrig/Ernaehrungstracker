@@ -9,7 +9,6 @@
         android:layout_width="120sp"
         android:layout_height="120sp"
         android:layout_gravity="center"
-        android:contentDescription="a test image"
         android:src="@drawable/ic_launcher_background" />
 
 </LinearLayout>

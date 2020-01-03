@@ -19,7 +19,9 @@
         </activity>
         <activity android:name=".HistorieBearbeitenActivity" />
         <activity android:name=".HistorieActivity" />
-        <activity android:name=".GerichtAuswaehlenRecyclerViewActivity" />
+        <activity android:name=".GerichtAuswaehlenRecyclerViewActivity"
+            android:theme="@style/AppThemeGerichtWaehlen"
+            android:label="Gericht auswählen" />
         <activity
             android:name=".GerichteBearbeitenActivity"
             android:parentActivityName=".MainActivity">

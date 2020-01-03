@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2sp"
                     android:gravity="center"
-                    android:text="Tagesziele"
+                    android:text="@string/tageszieleHeadline"
                     android:textAlignment="center"
                     android:textColor="#fff"
                     android:textSize="20sp" />
@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
-                        android:hint="Ziel"
+                        android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
@@ -91,7 +91,7 @@
                         android:id="@+id/kcalTrackerText"
                         android:layout_width="39sp"
                         android:layout_height="wrap_content"
-                        android:text="kcal"
+                        android:text="@string/kcal"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
                         android:textSize="14sp" />
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
-                        android:hint="Ziel"
+                        android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
@@ -145,7 +145,7 @@
                         android:id="@+id/protTrackerText"
                         android:layout_width="39sp"
                         android:layout_height="wrap_content"
-                        android:text="g Prot"
+                        android:text="@string/g_prot"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
                         android:textSize="14sp" />
@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
-                        android:hint="Ziel"
+                        android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
@@ -200,7 +200,7 @@
                         android:id="@+id/khTrackerText"
                         android:layout_width="39sp"
                         android:layout_height="wrap_content"
-                        android:text="g KH"
+                        android:text="@string/g_kh"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
                         android:textSize="14sp" />
@@ -244,7 +244,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#fff"
                         android:ems="10"
-                        android:hint="Ziel"
+                        android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
@@ -255,7 +255,7 @@
                         android:id="@+id/fettTrackerText"
                         android:layout_width="39sp"
                         android:layout_height="wrap_content"
-                        android:text="g Fett"
+                        android:text="@string/g_fett"
                         android:textAlignment="viewStart"
                         android:textColor="#fff"
                         android:textSize="14sp" />
@@ -280,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24sp"
                     android:gravity="center"
-                    android:text="Essen essen"
+                    android:text="@string/essen_essen_headline"
                     android:textAlignment="center"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -309,10 +309,26 @@
                             android:backgroundTint="@color/helllila"
                             android:maxHeight="120sp"
                             android:onClick="gerichtAuswaehlenButtonPressed"
-                            android:text="Gericht auswählen..."
+                            android:text="@string/gericht_auswaehlen_button"
                             android:textAllCaps="false"
                             android:textColor="#fff"
                             android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/entfernenButton"
+                            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20sp"
+                            android:layout_marginTop="4dp"
+                            android:background="#00000000"
+                            android:onClick="entfernenButtonPressed"
+                            android:text="@string/entfernenButtonText"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textAppearance="@android:style/TextAppearance.Material"
+                            android:textColor="#DD000000"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -339,7 +355,7 @@
                                 android:id="@+id/toAddPortionenText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Portionen"
+                                android:text="@string/portionen"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
                                 android:textSize="14sp" />
@@ -380,7 +396,7 @@
                                 android:id="@+id/toAddKcalText"
                                 android:layout_width="39sp"
                                 android:layout_height="wrap_content"
-                                android:text="kcal"
+                                android:text="@string/kcal"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
                                 android:textSize="14sp" />
@@ -412,7 +428,7 @@
                                 android:id="@+id/toAddProtText"
                                 android:layout_width="39sp"
                                 android:layout_height="wrap_content"
-                                android:text="g Prot"
+                                android:text="@string/g_prot"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
                                 android:textSize="14sp" />
@@ -445,7 +461,7 @@
                                 android:id="@+id/toAddKhText"
                                 android:layout_width="39sp"
                                 android:layout_height="wrap_content"
-                                android:text="g KH"
+                                android:text="@string/g_kh"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
                                 android:textSize="14sp" />
@@ -477,7 +493,7 @@
                                 android:layout_width="39sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#000"
-                                android:text="g Fett"
+                                android:text="@string/g_fett"
                                 android:textAlignment="viewStart"
                                 android:textColor="#000"
                                 android:textSize="14sp" />
@@ -494,7 +510,7 @@
                     android:layout_marginBottom="7sp"
                     android:backgroundTint="@color/dunkellila"
                     android:onClick="mampfButtonPressed"
-                    android:text="Mampf!"
+                    android:text="@string/mampf_button"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="#fff"

@@ -273,7 +273,7 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
     public void loeschenButtonClicked(View view) {
         if (neuesGerichtModus) return;
         ArrayList<Gericht> curGerichteListe = Speicher.loadGerichteListe(this);
-        Toast.makeText(this, "" + curGerichteListe.get(0).getName() + " gelöscht", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + curGerichteListe.get(0).getName() + " " + this.getResources().getString(R.string.geloescht), Toast.LENGTH_SHORT).show();
         curGerichteListe.remove(0);
         Speicher.saveGerichteListe(this, curGerichteListe);
         activateNeuesGerichtModus();
@@ -315,19 +315,19 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
             //fehler: name leer
         if (userInputName.equals("")) {
-            Toast.makeText(this, "Namen angeben", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getResources().getString(R.string.name_angeben), Toast.LENGTH_SHORT).show();
             return;
         }
 
             //fehler: name verboten
-        if (userInputName.toLowerCase().equals("unbekanntes gericht") || userInputName.toLowerCase().equals("manuelle änderung")) {
-            Toast.makeText(this, "anderen Namen angeben", Toast.LENGTH_SHORT).show();
+        if (userInputName.toLowerCase().equals(this.getResources().getString(R.string.unbekanntes_gericht)) || userInputName.toLowerCase().equals(this.getResources().getString(R.string.manuelle_aenderung))) {
+            Toast.makeText(this, this.getResources().getString(R.string.anderen_namen_angeben), Toast.LENGTH_SHORT).show();
             return;
         }
 
             //fehler: alle nährwerte == 0
         if (userInputKcalD == 0 && userInputProtD == 0 && userInputKhD == 0 && userInputFettD == 0) {
-            Toast.makeText(this, "Mindestens einen Nährwert angeben", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getResources().getString(R.string.mindestens_einen_naehrwert_angeben), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -339,8 +339,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
             for(Gericht i : curGerichteListe) {
                 if (i.getName().equals(userInputName)) {
                     if (i.getDescription().equals(userInputDescription)) {
-                        Toast.makeText(this, "Gericht bereits gespeichert", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(this, "Namen oder Beschreibung ändern", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, this.getResources().getString(R.string.gericht_bereits_gespeichert), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, this.getResources().getString(R.string.namen_oder_beschreibung_aendern), Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -350,7 +350,7 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
             curGerichteListe.add(0, new Gericht(   userInputName, userInputDescription, displayedPortionenGramm, inPortionen,
                                                 userInputKcalD, userInputProtD, userInputKhD, userInputFettD, kcalNote, protNote, khNote, fettNote));
             Speicher.saveGerichteListe(this, curGerichteListe);
-            Toast.makeText(this, "" + userInputName + " gespeichert", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "" + userInputName + " " + this.getResources().getString(R.string.gespeichert), Toast.LENGTH_SHORT).show();
             activateNeuesGerichtModus();
 
         } else {
@@ -359,8 +359,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
             for(int i = 1; i < curGerichteListe.size(); i++) {
                 if (curGerichteListe.get(i).getName().equals(userInputName)) {
                     if (curGerichteListe.get(i).getDescription().equals(userInputDescription)) {
-                        Toast.makeText(this, "Gericht bereits gespeichert", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(this, "Namen oder Beschreibung ändern", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, this.getResources().getString(R.string.gericht_bereits_gespeichert), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, this.getResources().getString(R.string.namen_oder_beschreibung_aendern), Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -383,7 +383,7 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
 
             Speicher.saveGerichteListe(this, curGerichteListe);
-            Toast.makeText(this, "Änderungen an " + userInputName + " gespeichert", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getResources().getString(R.string.aenderungen_an) + " " + userInputName + " " + this.getResources().getString(R.string.gespeichert), Toast.LENGTH_SHORT).show();
         }
 
     }

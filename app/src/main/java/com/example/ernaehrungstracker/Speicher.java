@@ -56,9 +56,15 @@ public abstract class Speicher {
 
         if (gerichteListe == null) {
             gerichteListe = new ArrayList<>();
-            gerichteListe.add(new Gericht("Apfel", "groß. ohne Stumpen 200g", 1, true, 104, 0.7, 22.9, 0.8, Note.LOW, Note.LOW, Note.HIGH, Note.LOW));
-            gerichteListe.add(new Gericht("Banane", "mittelgroß. ohne Schale 110g", 1, true, 104, 1.2, 23.5, 0.2, Note.LOW, Note.LOW, Note.HIGH, Note.LOW));
-            gerichteListe.add(new Gericht("Skyr mit Geschmack (Desira)", "Durchschnittswert von Vanille-, Himbeere- u. Honiggeschmack", 250, false, 184, 22.9, 21.4, 0.2, Note.LOW, Note.HIGH, Note.NEUTRAL, Note.LOW));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.apfel),                    MainActivity.curMainAct.getString(R.string.apfel_desc), 1, true, 104, 0.7, 22.9, 0.8, Note.LOW, Note.LOW, Note.HIGH, Note.LOW));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.banane),                   MainActivity.curMainAct.getString(R.string.banane_desc), 1, true, 104, 1.2, 23.5, 0.2, Note.LOW, Note.LOW, Note.HIGH, Note.LOW));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.skyr_mit_geschmack_desira),MainActivity.curMainAct.getString(R.string.skyr_mit_geschmack_desira_desc), 250, false, 184, 22.9, 21.4, 0.2, Note.LOW, Note.HIGH, Note.NEUTRAL, Note.LOW));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.lachs),                    MainActivity.curMainAct.getString(R.string.lachs_desc), 125, false, 273, 33.3, 0, 15.5, Note.NEUTRAL, Note.HIGH, Note.LOW, Note.NEUTRAL));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.sojaflocken),              MainActivity.curMainAct.getString(R.string.sojaflocken_desc), 100, false, 403, 41, 3.1, 21, Note.NEUTRAL, Note.HIGH, Note.LOW, Note.HIGH));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.skyr_mit_sojaflocken),     MainActivity.curMainAct.getString(R.string.skyr_mit_sojaflocken_desc), 1, true, 486, 54, 24, 16, Note.NEUTRAL, Note.HIGH, Note.LOW, Note.NEUTRAL));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.milch),                    MainActivity.curMainAct.getString(R.string.milch_desc), 100, false, 47, 3.4, 4.9, 1.5, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.schuessel_muesli),         MainActivity.curMainAct.getString(R.string.schuessel_muesli_desc), 1, true, 550, 22, 84, 12, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
+
         }
         return gerichteListe;
     }

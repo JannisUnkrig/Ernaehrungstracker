@@ -42,7 +42,7 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
     @Override
     public void onItemClickH(View view, int position) {
         if (position == 0) {
-            Toast.makeText(getApplicationContext(), "nur vergangene Tage nachbearbeitbar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.nur_vergangene_tage_nachbearbeitbar), Toast.LENGTH_SHORT).show();
             return;
         }
         Intent intent3 = new Intent(this, HistorieBearbeitenActivity.class);

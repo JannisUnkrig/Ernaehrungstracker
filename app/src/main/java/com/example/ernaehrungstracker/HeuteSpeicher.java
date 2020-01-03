@@ -5,6 +5,7 @@ import androidx.preference.PreferenceManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 @SuppressWarnings({"WeakerAccess","unused"})
@@ -33,8 +34,12 @@ public class HeuteSpeicher {
 
     public HeuteSpeicher() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
-        Date date = new Date();
-        this.date = formatter.format(date);
+        Date today = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.add(Calendar.HOUR_OF_DAY, -3);
+        today = calendar.getTime();
+        this.date = formatter.format(today);
 
         trackKcal = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerKcal", true);
         trackProt = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerProt", true);

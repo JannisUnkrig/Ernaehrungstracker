@@ -38,13 +38,13 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
                 if (i.getPortionenGramm() == 1) {
                     foodPortionenGrammList.add("");
                 } else {
-                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " Portionen");
+                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " " + MainActivity.curMainAct.getResources().getString(R.string.portionen));
                 }
             } else  {
                 if (i.getPortionenGramm() == 1) {
-                    foodPortionenGrammList.add("ein Gramm");
+                    foodPortionenGrammList.add(MainActivity.curMainAct.getResources().getString(R.string.ein_gramm));
                 } else {
-                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " Gramm");
+                    foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " " + MainActivity.curMainAct.getResources().getString(R.string.gramm));
                 }
             }
             foodKcalList.add(i.getKcal());
@@ -152,10 +152,10 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
 
 
         if (displayDetails) {
-            holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHH) + " kcal");
-            holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHH) + " g Prot");
-            holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHH  ) + " g KH");
-            holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHH) + " g Fett");
+            holder.myKcalTextView.setText(MainActivity.doubleBeautifulizerNull(foodKcalHH) + " " + MainActivity.curMainAct.getResources().getString(R.string.kcal));
+            holder.myProtTextView.setText(MainActivity.doubleBeautifulizerNull(foodProtHH) + " " + MainActivity.curMainAct.getResources().getString(R.string.g_prot));
+            holder.myKhTextView.setText(  MainActivity.doubleBeautifulizerNull(foodKhHH  ) + " " + MainActivity.curMainAct.getResources().getString(R.string.g_kh));
+            holder.myFettTextView.setText(MainActivity.doubleBeautifulizerNull(foodFettHH) + " " + MainActivity.curMainAct.getResources().getString(R.string.g_fett));
         } else {
             holder.myNaehrwerteLayout.setVisibility(View.GONE);
         }
@@ -164,10 +164,6 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
     @Override
     public  int getItemCount() {
         return foodList.size();
-    }
-
-    Gericht getFood(int position) {
-        return foodList.get(position);
     }
 
     void setmClickListener(ItemClickListener itemClickListener) {

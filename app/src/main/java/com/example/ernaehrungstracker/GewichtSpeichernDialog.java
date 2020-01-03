@@ -33,25 +33,25 @@ public class GewichtSpeichernDialog extends AppCompatDialogFragment {
         if (tempHSL.get(0).getGewicht() != -1) gewichtInput.setHint("" + MainActivity.doubleBeautifulizerNull(tempHSL.get(0).getGewicht()));
 
         builder.setView(view)
-                .setNegativeButton("abbrechen", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getActivity().getResources().getString(R.string.abbrechen_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //nix machen
                     }
                 })
-                .setPositiveButton("speichern", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getActivity().getResources().getString(R.string.speichern_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                             String input = gewichtInput.getText().toString();
                             if (input.equals("")) {
                                 //TODO offen lassen?
-                                Toast.makeText(getContext(), "kein Gewicht angegeben", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getActivity().getResources().getString(R.string.kein_gewicht_angegeben), Toast.LENGTH_SHORT).show();
                             } else {
                                 double inputD = ((double) (Math.round(Double.parseDouble(input) * 10)) / 10);
                                 tempHSL.get(0).setGewicht(inputD);
                                 Speicher.saveHeuteSpeicherListe(getActivity(), tempHSL);
-                                Toast.makeText(getContext(), "Gewicht (" + inputD + "kg) gespeichert", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "" + getActivity().getResources().getString(R.string.gewicht) + " (" + inputD + getActivity().getResources().getString(R.string.kg) + ") " + getActivity().getResources().getString(R.string.gespeichert), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

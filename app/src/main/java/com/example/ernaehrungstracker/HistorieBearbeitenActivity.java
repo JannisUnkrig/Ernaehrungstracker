@@ -128,7 +128,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
                 if (!curHS.getGegesseneGerichte().isEmpty()) {
                     Gericht letztes = curHS.getGegesseneGerichte().get(curHS.getGegesseneGerichte().size() - 1);
 
-                    if (letztes.getName().equals("nachträgliche Änderung")) {
+                    if (letztes.getName().equals(getString(R.string.nachtraegliche_aenderung))) {
                         curHS.addKcalHeute(kcalDelta);
                         curHS.addProtHeute(protDelta);
                         curHS.addKhHeute(khDelta);
@@ -142,15 +142,16 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
                         }
                     } else {
                         if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
-                            Gericht nachträglAenderung = new Gericht("nachträgliche Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
-                            curHS.gerichtEssen(nachträglAenderung);
+                            Gericht nachtraeglAenderung = new Gericht(getString(R.string.nachtraegliche_aenderung), "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                            curHS.gerichtEssen(nachtraeglAenderung);
                         }
                     }
                 } else {
                     if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
-                        Gericht manuelleAenderung = new Gericht("nachträgliche Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
-                        curHS.gerichtEssen(manuelleAenderung);
+                        Gericht nachtrAenderung = new Gericht(getString(R.string.nachtraegliche_aenderung), "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                        curHS.gerichtEssen(nachtrAenderung);
                     }
+
                 }
 
                 Speicher.saveHeuteSpeicherListe(getApplicationContext(), curHSL);

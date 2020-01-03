@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -42,25 +41,25 @@ public class UmbenennenDialog extends AppCompatDialogFragment {
         final EditText nameInput = view.findViewById(R.id.toSaveNameEditText);
 
         builder.setView(view)
-                .setNegativeButton("abbrechen", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.abbrechen_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //nix machen
                     }
                 })
-                .setPositiveButton("speichern", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.speichern_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                         String input = nameInput.getText().toString();
                         if (input.equals("")) {
                             //TODO offen lassen?
-                            Toast.makeText(getContext(), "keinen Namen angegeben", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.keinen_Namen_angegeben), Toast.LENGTH_SHORT).show();
                         } else {
                             HSL.get(posDay).getGegesseneGerichte().get(pos).setName(input);
                             Speicher.saveHeuteSpeicherListe(getActivity(), HSL);
                             listener.applyUmbenennen(HSL);
-                            Toast.makeText(getContext(), "zu " + input + " umbenannt", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.zu) + " " + input + " " + getString(R.string.umbenannt), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

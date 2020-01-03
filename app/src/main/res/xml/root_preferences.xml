@@ -21,22 +21,22 @@
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="displayTrackerKcal"
-            app:title="Kalorien tracken" />
+            app:title="@string/kalorien_tracken" />
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="displayTrackerProt"
-            app:title="Proteine tracken" />
+            app:title="@string/proteine_tracken" />
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="displayTrackerKh"
-            app:title="Kohlenhydrate tracken" />
+            app:title="@string/kohlenhydrate_tracken" />
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="displayTrackerFett"
-            app:title="Fette tracken" />
+            app:title="@string/fette_tracken" />
 
     </PreferenceCategory>
 
@@ -44,15 +44,15 @@
 
         <SwitchPreferenceCompat
             app:key="naehrwerteInListe"
-            app:title="Nährwerte direkt anzeigen"
-            app:summaryOff="Nährwerte einzelner Gerichte werden nur in der Detailansicht angezeigt"
-            app:summaryOn="Nährwerte einzelner Gerichte werden direkt in der heutigen Historie angezeigt"
+            app:title="@string/naehrwerte_direkt_anzeigen"
+            app:summaryOff="@string/naehrwerte_direkt_anzeigen_sum_off"
+            app:summaryOn="@string/naehrwerte_direkt_anzeigen_sum_on"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="limitStorage"
-            app:title="Historie begrenzen"
-            app:summary="alte Einträge werden gelöscht" />
+            app:title="@string/historie_begrenzen"
+            app:summary="@string/historie_begrenzen_sum" />
 
         <ListPreference
             app:defaultValue="1096"
@@ -60,7 +60,7 @@
             app:entries="@array/limit_storage_entries"
             app:entryValues="@array/limit_storage_values"
             app:key="limitStorageTo"
-            app:title="Historie begrenzt auf"
+            app:title="@string/historie_begrenzen_auf"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

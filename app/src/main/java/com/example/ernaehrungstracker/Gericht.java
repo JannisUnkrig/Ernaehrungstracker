@@ -3,7 +3,7 @@ package com.example.ernaehrungstracker;
 @SuppressWarnings("WeakerAccess")
 public class Gericht {
 
-    private String name = "unbekanntes Gericht";
+    private String name = MainActivity.curMainAct.getResources().getString(R.string.unbekanntes_gericht);
     private String description = "";
 
     private double portionenGramm = 1;

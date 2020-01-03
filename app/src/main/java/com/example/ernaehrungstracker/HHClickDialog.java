@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("WeakerAccess")
 public class HHClickDialog extends AppCompatDialogFragment {
 
     private int pos;
@@ -35,16 +36,14 @@ public class HHClickDialog extends AppCompatDialogFragment {
 
         String title = gericht.getName();
         if (gericht.isInPortionen()) {
-            if (gericht.getPortionenGramm() == 1) {
-                //mach nix
-            } else {
-                title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " Portionen)";
+            if (gericht.getPortionenGramm() != 1) {
+                title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " " + getString(R.string.portionen) + ")";
             }
         } else {
             if (gericht.getPortionenGramm() == 1) {
-                title += "  (ein Gramm)";
+                title += "  (" + getString(R.string.ein_gramm) + ")";
             } else {
-                title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " Gramm)";
+                title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " " + getString(R.string.gramm) + ")";
             }
         }
 
@@ -52,23 +51,23 @@ public class HHClickDialog extends AppCompatDialogFragment {
         if (!gericht.getDescription().equals("")) message += gericht.getDescription() + "\n\n";
 
 
-        if (HS.isTrackKcal()) message += MainActivity.doubleBeautifulizerNull(gericht.getKcal()) + " kcal";
+        if (HS.isTrackKcal()) message += MainActivity.doubleBeautifulizerNull(gericht.getKcal()) + " " + getString(R.string.kcal);
 
         if (HS.isTrackProt() && HS.isTrackKcal()) message += "  |  ";
-        if (HS.isTrackProt()) message += MainActivity.doubleBeautifulizerNull(gericht.getProt()) + "g Prot";
+        if (HS.isTrackProt()) message += MainActivity.doubleBeautifulizerNull(gericht.getProt()) + getString(R.string.g_prot);
 
         if (HS.isTrackKh() && (HS.isTrackProt() || HS.isTrackKcal())) message += "  |  ";
-        if (HS.isTrackKh())   message += MainActivity.doubleBeautifulizerNull(gericht.getKh())   + "g KH";
+        if (HS.isTrackKh())   message += MainActivity.doubleBeautifulizerNull(gericht.getKh())   + getString(R.string.g_kh);
 
         if (HS.isTrackFett() && (HS.isTrackProt() || HS.isTrackKcal() || HS.isTrackKh())) message += "  |  ";
-        if (HS.isTrackFett()) message += MainActivity.doubleBeautifulizerNull(gericht.getFett()) + "g Fett";
+        if (HS.isTrackFett()) message += MainActivity.doubleBeautifulizerNull(gericht.getFett()) + getString(R.string.g_fett);
 
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title)
                 .setMessage(message)
-                .setNegativeButton("entfernen", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.loeschen_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         HS.addKcalHeute(gericht.getKcal() * -1);
@@ -78,18 +77,18 @@ public class HHClickDialog extends AppCompatDialogFragment {
                         gegesseneGerichte.remove(pos);
                         Speicher.saveHeuteSpeicherListe(getActivity(), HSL);
                         listener.applyHHChange(HSL);
-                        Toast.makeText(getContext(), gericht.getName() + " entfernt", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), gericht.getName() + " " + getString(R.string.geloescht), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setPositiveButton("zurück", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.zurueck_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //nix machen
                     }
                 });
 
-        if (gericht.getName().equals("unbekanntes Gericht") || gericht.getName().equals("manuelle Änderung") || gericht.getName().equals("nachträgliche Änderung")) {
-            builder.setNeutralButton("umbenennen", new DialogInterface.OnClickListener() {
+        if (gericht.getName().equals(getString(R.string.unbekanntes_gericht)) || gericht.getName().equals(getString(R.string.manuelle_aenderung)) || gericht.getName().equals(getString(R.string.nachtraegliche_aenderung))) {
+            builder.setNeutralButton(getString(R.string.benennen), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     UmbenennenDialog umbenennenDialog = new UmbenennenDialog(HSL, pos, posDay);

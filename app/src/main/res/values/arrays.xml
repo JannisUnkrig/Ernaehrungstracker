@@ -2,12 +2,12 @@
 
     <!-- Für Speicher begrenzen -->
     <string-array name="limit_storage_entries">
-        <item>keine Historie führen</item>
-        <item>eine Woche</item>
-        <item>ein Monat</item>
-        <item>sechs Monate</item>
-        <item>ein Jahr</item>
-        <item>drei Jahre</item>
+        <item>@string/keine_historie_fuehren</item>
+        <item>@string/eine_woche</item>
+        <item>@string/ein_monat</item>
+        <item>@string/sechs_monate</item>
+        <item>@string/ein_jahr</item>
+        <item>@string/drei_jahre</item>
     </string-array>
 
     <string-array name="limit_storage_values">

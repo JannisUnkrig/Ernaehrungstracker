@@ -1,16 +1,119 @@
 <resources>
-    <string name="app_name">Ernaehrungstracker</string>
+    <string name="app_name">Ernährungstracker</string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
+    <string name="title_activity_settings">Settings</string>
 
     <string-array name="portionenGramm">
         <item>Portionen</item>
         <item>Gramm</item>
     </string-array>
-    <string name="title_activity_historie">historieActivity</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_settings">Settings</string>
+    <string-array name="vielWenig">
+        <item> </item>
+        <item>viel</item>
+        <item>wenig</item>
+    </string-array>
 
+    <string-array name="wovon">
+        <item> </item>
+        <item>kcal</item>
+        <item>prot</item>
+        <item>kh</item>
+        <item>fett</item>
+    </string-array>
+
+    <string name="entfernenButtonText"><u>entfernen</u></string>
+    <string name="tageszieleHeadline">Tagesziele</string>
+    <string name="ziel">Ziel</string>
+    <string name="kcal">kcal</string>
+    <string name="g_prot">g Prot</string>
+    <string name="g_kh">g KH</string>
+    <string name="g_fett">g Fett</string>
+    <string name="essen_essen_headline">Essen essen</string>
+    <string name="gericht_auswaehlen_button">Gericht auswählen...</string>
+    <string name="portionen">Portionen</string>
+    <string name="mampf_button">Mampf!</string>
+    <string name="gerichte_hinzufuegen_und_bearbeiten_headline"><![CDATA[Gerichte hinzufügen & bearbeiten]]></string>
+    <string name="neues_gericht_button">neues Gericht</string>
+    <string name="gericht_bearbeiten_button">Gericht bearbeiten...</string>
+    <string name="name_angeben">Name angeben</string>
+    <string name="beschreibung_doppelpunkt">Beschreibung:</string>
+    <string name="optional">optional</string>
+    <string name="loeschen_button">Löschen</string>
+    <string name="speichern_button">Speichern</string>
+    <string name="heute_headline">Heute</string>
+    <string name="shrug">¯\\_(ツ)_/¯</string>
+    <string name="noch_nichts_getrackt">noch nichts getrackt</string>
+    <string name="historie_headline">Historie</string>
+    <string name="gegessenes_essen_headline">gegessenes Essen</string>
+    <string name="nichts_getrackt">nichts getrackt</string>
+    <string name="gewicht_angeben_doppelpunkt">Gewicht angeben:</string>
+    <string name="kg">kg</string>
+    <string name="date_spaceholder">13. Dec. 2019</string>
+    <string name="neuer_name_doppelpunkt">neuer Name:</string>
+    <string name="unbekanntes_gericht">unbekanntes Gericht</string>
+    <string name="manuelle_aenderung">manuelle Änderung</string>
+    <string name="anderen_namen_angeben">anderen Namen angeben</string>
+    <string name="mindestens_einen_naehrwert_angeben">mindestens einen Nährwert angeben</string>
+    <string name="geloescht">gelöscht</string>
+    <string name="gericht_bereits_gespeichert">Gericht bereits gespeichert</string>
+    <string name="namen_oder_beschreibung_aendern">Namen oder Beschreibung ändern</string>
+    <string name="gespeichert">gespeichert</string>
+    <string name="aenderungen_an">änderungen an</string>
+    <string name="abbrechen_button">abbrechen</string>
+    <string name="kein_gewicht_angegeben">kein Gewicht angegeben</string>
+    <string name="gewicht">Gewicht</string>
+    <string name="ein_gramm">ein Gramm</string>
+    <string name="gramm">Gramm</string>
+    <string name="zurueck_button">zurück</string>
+    <string name="nachtraegliche_aenderung">nachträgliche Änderung</string>
+    <string name="benennen">benennen</string>
+    <string name="nur_vergangene_tage_nachbearbeitbar">nur vergangene Tage nachbearbeitbar</string>
+    <string name="eine_portion">eine Portion</string>
+    <string name="hinzugefügt">hinzugefügt</string>
+    <string name="tagesbilanz_vom">Tagesbilanz vom</string>
+    <string name="keine_naehrwerte_getrackt">keine Nährwerte getrackt</string>
+    <string name="ok_button">OK</string>
+    <string name="keinen_Namen_angegeben">keinen Namen angegeben</string>
+    <string name="zu">zu</string>
+    <string name="umbenannt">umbenannt</string>
+    <string name="apfel">Apfel</string>
+    <string name="banane">Banane</string>
+    <string name="skyr_mit_geschmack_desira">Skyr mit Geschmack (Desira)</string>
+    <string name="lachs">Lachs</string>
+    <string name="sojaflocken">Sojaflocken</string>
+    <string name="skyr_mit_sojaflocken">Skyr mit Sojaflocken</string>
+    <string name="milch">Milch</string>
+    <string name="schuessel_muesli">Schüssel Müsli</string>
+    <string name="apfel_desc">groß. ohne Stumpen 200g</string>
+    <string name="banane_desc">mittelgroß. ohne Schale 110g</string>
+    <string name="skyr_mit_geschmack_desira_desc">Durchschnittswert von Vanille-, Himbeere- u. Honiggeschmack</string>
+    <string name="lachs_desc">Stremmel-Lachs. naturbelassen</string>
+    <string name="sojaflocken_desc"></string>
+    <string name="skyr_mit_sojaflocken_desc">250g Skyr mit Geschmack mit 75g Sojaflocken</string>
+    <string name="milch_desc">H-Milch 1.5% Fett</string>
+    <string name="schuessel_muesli_desc">100g Seitenbacher Müsli mit 333ml 1.5% Fett Milch</string>
+    <string name="keine_historie_fuehren">keine Historie führen</string>
+    <string name="eine_woche">eine Woche</string>
+    <string name="ein_monat">ein Monat</string>
+    <string name="sechs_monate">sechs Monate</string>
+    <string name="ein_jahr">ein Jahr</string>
+    <string name="drei_jahre">drei Jahre</string>
+    <string name="historie">Historie</string>
+    <string name="gewicht_speichern">Gewicht speichern</string>
+    <string name="gerichte_bearbeiten">Gerichte bearbeiten</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="suchen">Suchen</string>
+    <string name="kalorien_tracken">Kalorien tracken</string>
+    <string name="proteine_tracken">Proteine tracken</string>
+    <string name="kohlenhydrate_tracken">Kohlenhydrate tracken</string>
+    <string name="fette_tracken">Fette tracken</string>
+    <string name="naehrwerte_direkt_anzeigen">Nährwerte direkt anzeigen</string>
+    <string name="naehrwerte_direkt_anzeigen_sum_off">Nährwerte einzelner Gerichte werden nur in der Detailansicht angezeigt</string>
+    <string name="naehrwerte_direkt_anzeigen_sum_on">Nährwerte einzelner Gerichte werden direkt in der heutigen Historie angezeigt</string>
+    <string name="historie_begrenzen">Historie begrenzen</string>
+    <string name="historie_begrenzen_sum">alte Einträge werden gelöscht</string>
+    <string name="historie_begrenzen_auf">Historie begrenzt auf</string>
 
 </resources>

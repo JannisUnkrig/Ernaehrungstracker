@@ -27,7 +27,7 @@
                 android:layout_marginTop="40sp"
                 android:layout_marginBottom="2sp"
                 android:gravity="center"
-                android:text="37 Feb. 3019"
+                android:text="@string/date_spaceholder"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="20sp" />
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#fff"
                     android:ems="10"
-                    android:hint="Ziel"
+                    android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
@@ -77,7 +77,7 @@
                 <TextView
                     android:layout_width="39sp"
                     android:layout_height="wrap_content"
-                    android:text="kcal"
+                    android:text="@string/kcal"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textSize="14sp" />
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#fff"
                     android:ems="10"
-                    android:hint="Ziel"
+                    android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
@@ -129,7 +129,7 @@
                 <TextView
                     android:layout_width="39sp"
                     android:layout_height="wrap_content"
-                    android:text="g Prot"
+                    android:text="@string/g_prot"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textSize="14sp" />
@@ -172,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#fff"
                     android:ems="10"
-                    android:hint="Ziel"
+                    android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
@@ -182,7 +182,7 @@
                 <TextView
                     android:layout_width="39sp"
                     android:layout_height="wrap_content"
-                    android:text="g KH"
+                    android:text="@string/g_kh"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textSize="14sp" />
@@ -225,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#fff"
                     android:ems="10"
-                    android:hint="Ziel"
+                    android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
@@ -235,7 +235,7 @@
                 <TextView
                     android:layout_width="39sp"
                     android:layout_height="wrap_content"
-                    android:text="g Fett"
+                    android:text="@string/g_fett"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textSize="14sp" />
@@ -259,7 +259,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24sp"
-                android:text="gegessenes Essen"
+                android:text="@string/gegessenes_essen_headline"
                 android:textColor="#000"
                 android:textSize="20sp" />
 
@@ -282,7 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18sp"
-                    android:text="¯\\_(ツ)_/¯"
+                    android:text="@string/shrug"
                     android:textAlignment="center"
                     android:textColor="#000"
                     android:textSize="18sp" />
@@ -291,7 +291,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30sp"
-                    android:text="nichts getrackt"
+                    android:text="@string/nichts_getrackt"
                     android:textColor="#000"
                     android:textSize="16sp" />
 

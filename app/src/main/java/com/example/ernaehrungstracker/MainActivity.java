@@ -1,12 +1,10 @@
 package com.example.ernaehrungstracker;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
-import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     boolean portionenLiveUpdaterActive = true;
     boolean curWatcherActive = true;
     boolean goalWatcherActive = true;
+    boolean changeToUnknownCurGerichtWatcherActive = true;
     public Gericht currentGericht = null;
 
     public static Context curMainAct;
@@ -75,9 +75,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //daily reset(muss nach updateTrackerDisplay bleiben)
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
         Date today = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.add(Calendar.HOUR_OF_DAY, -3);
+        today = calendar.getTime();
 
         if (!curHS.getDate().equals(formatter.format(today))) {
-            //TODO rückblick
+
+            RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
+            rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
             //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
             HeuteSpeicher newHS = new HeuteSpeicher();
             newHS.setKcalZielHeute(curHS.getKcalZielHeute());
@@ -141,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void afterTextChanged(Editable s) {
                 // Fires right after the text has changed
                 if (!portionenLiveUpdaterActive || currentGericht == null) return;
+                changeToUnknownCurGerichtWatcherActive = false;
 
                 double curPortionenGramm = currentGericht.getPortionenGramm();
                 double displayedPortionenGramm;
@@ -168,6 +175,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toAddProtEditText.setText(doubleBeautifulizer(nextProt));
                 toAddKhEditText.setText(doubleBeautifulizer(nextKh));
                 toAddFettEditText.setText(doubleBeautifulizer(nextFett));
+
+                changeToUnknownCurGerichtWatcherActive = true;
             }
         });
 
@@ -185,41 +194,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void afterTextChanged(Editable s) {
                 // Fires right after the text has changed
-                if (toAddKcalEditText.isFocused() || toAddProtEditText.isFocused() || toAddKhEditText.isFocused() || toAddFettEditText.isFocused()) {
+                if (!changeToUnknownCurGerichtWatcherActive) return;
+                //if (toAddKcalEditText.isFocused() || toAddProtEditText.isFocused() || toAddKhEditText.isFocused() || toAddFettEditText.isFocused()) {
 
                     portionenLiveUpdaterActive = false;
-                    ((Button) findViewById(R.id.gerichtAuswählenButton)).setText("Gericht auswählen...");
-                    portionenGrammEditText.setText("");
-                    portionenGrammEditText.setHint("1");
-                    ((TextView) findViewById(R.id.toAddPortionenText)).setText("Portionen");
 
                     String kcalString = toAddKcalEditText.getText().toString();
                     String protString = toAddProtEditText.getText().toString();
                     String khString   = toAddKhEditText.getText().toString();
                     String fettString = toAddFettEditText.getText().toString();
 
-                    double kcalDouble = 0.0;
-                    double protDouble = 0.0;
-                    double khDouble = 0.0;
-                    double fettDouble = 0.0;
+                    portionenGrammEditText.setText("");
+                    portionenGrammEditText.setHint("1");
+                    ((TextView) findViewById(R.id.toAddPortionenText)).setText(getString(R.string.portionen));
 
-                    if (!kcalString.equals("")) kcalDouble = Double.parseDouble(kcalString);
-                    if (!protString.equals("")) protDouble = Double.parseDouble(protString);
-                    if (!khString.equals(""))   khDouble   = Double.parseDouble(khString);
-                    if (!fettString.equals("")) fettDouble = Double.parseDouble(fettString);
-
-                    if (currentGericht == null) {
-                        currentGericht = new Gericht(kcalDouble, protDouble, khDouble, fettDouble);
-                    } else if (currentGericht.getName().equals("unbekanntes Gericht")) {
-                        currentGericht.setKcal(kcalDouble);
-                        currentGericht.setProt(protDouble);
-                        currentGericht.setKh(khDouble);
-                        currentGericht.setFett(fettDouble);
+                    if (toAddKcalEditText.getText().toString().equals("") && toAddProtEditText.getText().toString().equals("") && toAddKhEditText.getText().toString().equals("") && toAddFettEditText.getText().toString().equals("")) {
+                        ((Button) findViewById(R.id.gerichtAuswählenButton)).setText(getString(R.string.gericht_auswaehlen_button));
+                        findViewById(R.id.entfernenButton).setVisibility(View.GONE);
+                        currentGericht = null;
                     } else {
-                        currentGericht = new Gericht(kcalDouble, protDouble, khDouble, fettDouble);
+                        ((Button) findViewById(R.id.gerichtAuswählenButton)).setText(getString(R.string.unbekanntes_gericht));
+                        findViewById(R.id.entfernenButton).setVisibility(View.VISIBLE);
+
+                        double kcalDouble = 0.0;
+                        double protDouble = 0.0;
+                        double khDouble = 0.0;
+                        double fettDouble = 0.0;
+
+                        if (!kcalString.equals("")) kcalDouble = Double.parseDouble(kcalString);
+                        if (!protString.equals("")) protDouble = Double.parseDouble(protString);
+                        if (!khString.equals("")) khDouble = Double.parseDouble(khString);
+                        if (!fettString.equals("")) fettDouble = Double.parseDouble(fettString);
+
+                        if (currentGericht == null) {
+                            currentGericht = new Gericht(kcalDouble, protDouble, khDouble, fettDouble);
+                        } else if (currentGericht.getName().equals(getString(R.string.unbekanntes_gericht))) {
+                            currentGericht.setKcal(kcalDouble);
+                            currentGericht.setProt(protDouble);
+                            currentGericht.setKh(khDouble);
+                            currentGericht.setFett(fettDouble);
+                        } else {
+                            currentGericht = new Gericht(kcalDouble, protDouble, khDouble, fettDouble);
+                        }
+                        portionenLiveUpdaterActive = true;
                     }
-                    portionenLiveUpdaterActive = true;
-                }
+                //}
             }
         };
 
@@ -318,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (!curHS.getGegesseneGerichte().isEmpty()) {
                     Gericht letztes = curHS.getGegesseneGerichte().get(curHS.getGegesseneGerichte().size() - 1);
 
-                    if (letztes.getName().equals("manuelle Änderung")) {
+                    if (letztes.getName().equals(getString(R.string.manuelle_aenderung))) {
                         curHS.addKcalHeute(kcalDelta);
                         curHS.addProtHeute(protDelta);
                         curHS.addKhHeute(khDelta);
@@ -332,13 +351,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     } else {
                         if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
-                            Gericht manuelleAenderung = new Gericht("manuelle Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                            Gericht manuelleAenderung = new Gericht(getString(R.string.manuelle_aenderung), "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
                             curHS.gerichtEssen(manuelleAenderung);
                         }
                     }
                 } else {
                     if (kcalDelta != 0 || protDelta != 0 || khDelta != 0 || fettDelta != 0) {
-                        Gericht manuelleAenderung = new Gericht("manuelle Änderung", "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
+                        Gericht manuelleAenderung = new Gericht(getString(R.string.manuelle_aenderung), "", 1, true, kcalDelta, protDelta, khDelta, fettDelta);
                         curHS.gerichtEssen(manuelleAenderung);
                     }
                 }
@@ -355,6 +374,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    public void entfernenButtonPressed(View view) {
+        changeToUnknownCurGerichtWatcherActive = false;
+        ((EditText) findViewById(R.id.toAddKcal)).setText("");
+        ((EditText) findViewById(R.id.toAddProt)).setText("");
+        ((EditText) findViewById(R.id.toAddKh)).setText("");
+        ((EditText) findViewById(R.id.toAddFett)).setText("1");
+        changeToUnknownCurGerichtWatcherActive = true;
+        ((EditText) findViewById(R.id.toAddFett)).setText("");
+    }
+
 
     public void gerichtAuswaehlenButtonPressed(View view) {
         Intent intent = new Intent(this, GerichtAuswaehlenRecyclerViewActivity.class);
@@ -368,7 +397,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     public void mampfButtonPressed(View view) {
-        //abbruch wenn (warum auch immer) currentGericht == null
+        //abbruch wenn currentGericht == null
         if (currentGericht == null) return;
         curWatcherActive = false;
 
@@ -428,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (curGegesseneGerichte.size() > 0) {
             Gericht letztes = curGegesseneGerichte.get(curGegesseneGerichte.size() - 1);
 
-            if (letztes.getName().equals(curCopy.getName()) && letztes.getDescription().equals(curCopy.getDescription()) && !curCopy.getName().equals("unbekanntes Gericht")) {
+            if (letztes.getName().equals(curCopy.getName()) && letztes.getDescription().equals(curCopy.getDescription()) && !curCopy.getName().equals(getString(R.string.unbekanntes_gericht))) {
                 letztes.addPortionenGramm(curCopy.getPortionenGramm());
                 letztes.addKcal(curCopy.getKcal());
                 letztes.addProt(curCopy.getProt());
@@ -450,21 +479,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Speicher.saveHeuteSpeicherListe(this, curHeuteSpeicherListe);
 
         //Toast ausgeben
-        String builtString = "";
+        String builtString;
         if (curCopy.isInPortionen()) {
             if (curCopy.getPortionenGramm() == 1) {
-                builtString = "eine Portion ";
+                builtString = getString(R.string.eine_portion) + " ";
             } else {
-                builtString = doubleBeautifulizerNull(curCopy.getPortionenGramm()) + " Portionen ";
+                builtString = doubleBeautifulizerNull(curCopy.getPortionenGramm()) + " " + getString(R.string.portionen) + " ";
             }
         } else {
             if (curCopy.getPortionenGramm() == 1) {
-                builtString = "ein Gramm ";
+                builtString = getString(R.string.ein_gramm) + " ";
             } else {
-                builtString = doubleBeautifulizerNull(curCopy.getPortionenGramm()) + " Gramm ";
+                builtString = doubleBeautifulizerNull(curCopy.getPortionenGramm()) + " " + getString(R.string.gramm) + " ";
             }
         }
-        Toast.makeText(MainActivity.this, builtString + currentGericht.getName() + " hinzugefügt", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, builtString + currentGericht.getName() + " " + getString(R.string.hinzugefügt), Toast.LENGTH_SHORT).show();
 
         curWatcherActive = true;
     }
@@ -480,15 +509,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (resultCode == RESULT_OK) {
 
                 portionenLiveUpdaterActive = false;
+                changeToUnknownCurGerichtWatcherActive = false;
                 currentGericht = GerichtAuswaehlenRecyclerViewActivity.uebergabeGericht;
+                HeuteSpeicher HS = Speicher.loadHeuteSpeicherListe(this).get(0);
+
+                findViewById(R.id.entfernenButton).setVisibility(View.VISIBLE);
                 ((Button) findViewById(R.id.gerichtAuswählenButton)).setText(currentGericht.getName());
-                ((EditText) findViewById(R.id.toAddKcal)).setText(doubleBeautifulizer(currentGericht.getKcal()));
-                ((EditText) findViewById(R.id.toAddProt)).setText(doubleBeautifulizer(currentGericht.getProt()));
-                ((EditText) findViewById(R.id.toAddKh)).setText(doubleBeautifulizer(currentGericht.getKh()));
-                ((EditText) findViewById(R.id.toAddFett)).setText(doubleBeautifulizer(currentGericht.getFett()));
+                if (HS.isTrackKcal()) ((EditText) findViewById(R.id.toAddKcal)).setText(doubleBeautifulizer(currentGericht.getKcal()));
+                if (HS.isTrackProt()) ((EditText) findViewById(R.id.toAddProt)).setText(doubleBeautifulizer(currentGericht.getProt()));
+                if (HS.isTrackKh())   ((EditText) findViewById(R.id.toAddKh)).setText(doubleBeautifulizer(currentGericht.getKh()));
+                if (HS.isTrackFett()) ((EditText) findViewById(R.id.toAddFett)).setText(doubleBeautifulizer(currentGericht.getFett()));
 
                 if (currentGericht.isInPortionen()) {
-                    ((TextView) findViewById(R.id.toAddPortionenText)).setText("Portionen");
+                    ((TextView) findViewById(R.id.toAddPortionenText)).setText(getString(R.string.portionen));
                     ((TextView) findViewById(R.id.toAddAmount)).setHint("1");
                     if (currentGericht.getPortionenGramm() != 1) {
                         ((EditText) findViewById(R.id.toAddAmount)).setText(doubleBeautifulizer(currentGericht.getPortionenGramm()));
@@ -496,7 +529,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         ((EditText) findViewById(R.id.toAddAmount)).setText("");
                     }
                 } else {
-                    ((TextView) findViewById(R.id.toAddPortionenText)).setText("Gramm");
+                    ((TextView) findViewById(R.id.toAddPortionenText)).setText(getString(R.string.gramm));
                     ((TextView) findViewById(R.id.toAddAmount)).setHint("100");
                     if (currentGericht.getPortionenGramm() != 100) {
                         ((EditText) findViewById(R.id.toAddAmount)).setText(doubleBeautifulizer(currentGericht.getPortionenGramm()));
@@ -504,6 +537,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         ((EditText) findViewById(R.id.toAddAmount)).setText("");
                     }
                 }
+                changeToUnknownCurGerichtWatcherActive = true;
                 portionenLiveUpdaterActive = true;
             }
         }
@@ -515,6 +549,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //after settings
         if (requestCode == 5) {
+            ((EditText) findViewById(R.id.toAddKcal)).setText("");
+            ((EditText) findViewById(R.id.toAddProt)).setText("");
+            ((EditText) findViewById(R.id.toAddKh)).setText("");
+            ((EditText) findViewById(R.id.toAddFett)).setText("");
+
             ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
 
             updateTrackerDisplayed(HSL);
