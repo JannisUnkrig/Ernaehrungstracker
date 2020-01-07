@@ -14,9 +14,10 @@
   ~ limitations under the License.
   -->
 
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="Tracker">
+    <PreferenceCategory app:title="@string/tracker">
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
@@ -40,19 +41,19 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Historie">
+    <PreferenceCategory app:title="@string/historie">
 
         <SwitchPreferenceCompat
+            app:defaultValue="true"
             app:key="naehrwerteInListe"
-            app:title="@string/naehrwerte_direkt_anzeigen"
             app:summaryOff="@string/naehrwerte_direkt_anzeigen_sum_off"
             app:summaryOn="@string/naehrwerte_direkt_anzeigen_sum_on"
-            app:defaultValue="true"/>
+            app:title="@string/naehrwerte_direkt_anzeigen" />
 
         <SwitchPreferenceCompat
             app:key="limitStorage"
-            app:title="@string/historie_begrenzen"
-            app:summary="@string/historie_begrenzen_sum" />
+            app:summary="@string/historie_begrenzen_sum"
+            app:title="@string/historie_begrenzen" />
 
         <ListPreference
             app:defaultValue="1096"

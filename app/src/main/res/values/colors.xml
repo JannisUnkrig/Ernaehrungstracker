@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#9dcb00</color>
+    <color name="colorPrimary">#65D633</color>
     <color name="colorPrimaryDark">#345c04</color>
-    <color name="colorAccent">#81594d</color>
+    <color name="colorAccent">#345c04</color>
 
-    <color name="hellgrün">#9dcb00</color>
-    <color name="helllila">#e5beae</color>
-    <color name="dunkellila">#81594d</color>
+    <color name="buttonHell">#b5bd50</color>
+    <color name="buttonDunkel">#959d30</color>
+    <color name="darkText">#000</color>
+    <color name="mittelDarkText">#222</color>
+    <color name="hintergrund">#FCF8F1</color>
 
 
 </resources>

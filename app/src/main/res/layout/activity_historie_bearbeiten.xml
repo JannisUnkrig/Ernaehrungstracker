@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HistorieBearbeitenActivity"
-    android:focusableInTouchMode="true">
+    android:background="@color/hintergrund"
+    android:focusableInTouchMode="true"
+    tools:context=".HistorieBearbeitenActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +15,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/hellgrün"
+            android:layout_height="270sp"
+            android:background="@drawable/wheateckebreit"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -29,60 +29,67 @@
                 android:gravity="center"
                 android:text="@string/date_spaceholder"
                 android:textAlignment="center"
-                android:textColor="#fff"
+                android:textColor="@color/darkText"
                 android:textSize="20sp" />
 
             <LinearLayout
-                android:id="@+id/kcalTrackerLayoutHistorisch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/curKcalHistorisch"
-                    android:layout_width="70sp"
+                <LinearLayout
+                    android:id="@+id/kcalTrackerLayoutHistorisch"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="0"
-                    android:importantForAutofill="no"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="8sp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    tools:visibility="visible">
 
-                <TextView
-                    android:layout_width="10sp"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textAlignment="center"
-                    android:textColor="#fff"
-                    android:textSize="16sp" />
+                    <EditText
+                        android:id="@+id/curKcalHistorisch"
+                        android:layout_width="70sp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/darkText"
+                        android:ems="10"
+                        android:hint="0"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="@color/darkText"
+                        android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/goalKcalHistorisch"
-                    android:layout_width="70sp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
-                    android:ems="10"
-                    android:hint="@string/ziel"
-                    android:importantForAutofill="no"
-                    android:inputType="numberDecimal"
-                    android:textAlignment="center"
-                    android:textColor="#fff"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="10sp"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textAlignment="center"
+                        android:textColor="@color/mittelDarkText"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="39sp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/kcal"
-                    android:textAlignment="viewStart"
-                    android:textColor="#fff"
-                    android:textSize="14sp" />
+                    <EditText
+                        android:id="@+id/goalKcalHistorisch"
+                        android:layout_width="70sp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/darkText"
+                        android:ems="10"
+                        android:hint="@string/ziel"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textColor="@color/darkText"
+                        android:textSize="14sp" />
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="47sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kcal"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/mittelDarkText"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/protTrackerLayoutHistorisch"
@@ -96,13 +103,13 @@
                     android:id="@+id/curProtHistorisch"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
@@ -110,28 +117,28 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/goalProtHistorisch"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/g_prot"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -149,13 +156,13 @@
                     android:id="@+id/curKhHistorisch"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
@@ -163,28 +170,28 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/goalKhHistorisch"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/g_kh"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -202,13 +209,13 @@
                     android:id="@+id/curFettHistorisch"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
@@ -216,28 +223,28 @@
                     android:layout_height="wrap_content"
                     android:text="/"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/goalFettHistorisch"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="@string/ziel"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/g_fett"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -248,20 +255,31 @@
 
         </LinearLayout>
 
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|top"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24sp"
-                android:text="@string/gegessenes_essen_headline"
-                android:textColor="#000"
-                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:background="@drawable/verlaufgruen3"
+                android:gravity="center_horizontal|top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24sp"
+                    android:text="@string/gegessenes_essen_headline"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RecyViewHistorisch"

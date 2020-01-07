@@ -11,7 +11,7 @@ import java.util.Date;
 @SuppressWarnings({"WeakerAccess","unused"})
 public class HeuteSpeicher {
 
-    private String date;
+    private Date date;
 
     private ArrayList<Gericht> gegesseneGerichte = new ArrayList<>();
     private double Gewicht = -1;
@@ -33,13 +33,12 @@ public class HeuteSpeicher {
 
 
     public HeuteSpeicher() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
         Date today = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(today);
         calendar.add(Calendar.HOUR_OF_DAY, -3);
         today = calendar.getTime();
-        this.date = formatter.format(today);
+        this.date = today;
 
         trackKcal = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerKcal", true);
         trackProt = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerProt", true);
@@ -187,5 +186,5 @@ public class HeuteSpeicher {
 
     public void setTrackFett(boolean trackFett) { this.trackFett = trackFett; }
 
-    public String getDate() { return date; }
+    public Date getDate() { return date; }
 }

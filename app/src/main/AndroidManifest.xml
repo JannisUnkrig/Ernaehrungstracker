@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ernaehrungstracker">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/getreide"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -12,24 +13,30 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ernaehrungstracker.MainActivity" />
         </activity>
-        <activity android:name=".HistorieBearbeitenActivity" />
-        <activity android:name=".HistorieActivity" />
+        <activity android:name=".HistorieBearbeitenActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HistorieActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".GerichtAuswaehlenRecyclerViewActivity"
             android:theme="@style/AppThemeGerichtWaehlen"
-            android:label="Gericht auswählen" />
+            android:label="@string/gericht_auswählen"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GerichteBearbeitenActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

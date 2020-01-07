@@ -64,8 +64,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         holder.myNameTextView.setText(foodName);
         holder.myDescriptionTextView.setText(foodDescription);
-        if (foodDescription.equals("")) holder.myDescriptionTextView.setHeight(0);
 
+        //TODO fix this shit
+        //if (foodDescription.equals("")) holder.myDescriptionTextView.setHeight(0);
     }
 
     @Override

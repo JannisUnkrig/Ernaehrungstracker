@@ -12,8 +12,9 @@
 
     <item
         android:id="@+id/gerichteBearbeiten"
+        android:icon="@drawable/stift_icon"
         android:title="@string/gerichte_bearbeiten"
-        android:icon="@drawable/stift_icon"/>
+        android:titleCondensed="@string/gerichte_bearbeiten_cond" />
 
     <item
         android:id="@+id/einstellungen"

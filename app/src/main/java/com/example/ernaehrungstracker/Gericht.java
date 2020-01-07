@@ -6,8 +6,8 @@ public class Gericht {
     private String name = MainActivity.curMainAct.getResources().getString(R.string.unbekanntes_gericht);
     private String description = "";
 
-    private double portionenGramm = 1;
-    private boolean inPortionen = true;
+    private double portionenGramm = 100;
+    private boolean inPortionen = false;
 
     private double kcal;
     private double prot;

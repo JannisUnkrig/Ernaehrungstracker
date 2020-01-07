@@ -14,6 +14,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class HistorieBearbeitenActivity extends AppCompatActivity implements HistorischeGerichteAdapter.ItemClickListener, HHClickDialog.HHClickDialogListener, UmbenennenDialog.UmbenennenDialogListener {
@@ -52,7 +53,8 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
 
         HSL = Speicher.loadHeuteSpeicherListe(this);
 
-        ((TextView) findViewById(R.id.HeadlineDateHistorisch)).setText(HSL.get(posDay).getDate());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
+        ((TextView) findViewById(R.id.HeadlineDateHistorisch)).setText(formatter.format(HSL.get(posDay).getDate()));
         
         recyView = findViewById(R.id.RecyViewHistorisch);
         nixGetracktLayout = findViewById(R.id.nichtsGetracktLayoutHistorisch);

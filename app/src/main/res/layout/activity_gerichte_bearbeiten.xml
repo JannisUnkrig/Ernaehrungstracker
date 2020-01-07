@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hellgrün"
+    android:background="@color/hintergrund"
     android:focusableInTouchMode="true"
     tools:context=".GerichteBearbeitenActivity">
 
@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="180sp"
-            android:background="#fff"
+            android:background="@drawable/wheateckebreit"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -41,7 +41,7 @@
                     android:id="@+id/neuesGerichtButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/dunkellila"
+                    android:backgroundTint="@color/buttonDunkel"
                     android:onClick="neuesGerichtButtonClicked"
                     android:text="@string/neues_gericht_button"
                     android:textAlignment="center"
@@ -57,7 +57,7 @@
                     android:id="@+id/gerichteBearbeitenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/helllila"
+                    android:backgroundTint="@color/buttonHell"
                     android:onClick="gerichteBearbeitenButtonClicked"
                     android:text="@string/gericht_bearbeiten_button"
                     android:textAlignment="center"
@@ -83,13 +83,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24sp"
                 android:autofillHints="food"
-                android:backgroundTint="#fff"
+                android:backgroundTint="@color/darkText"
                 android:ems="10"
                 android:hint="@string/name_angeben"
                 android:inputType="textPersonName"
                 android:maxLength="80"
                 android:textAlignment="center"
-                android:textColor="#fff"
+                android:textColor="@color/darkText"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -103,31 +103,31 @@
                     android:id="@+id/kcalNoteButton"
                     android:layout_width="28sp"
                     android:layout_height="28sp"
-                    android:backgroundTint="@color/hellgrün"
+                    android:backgroundTint="@color/hintergrund"
                     android:onClick="kcalNoteButtonClicked"
-                    android:tint="#fff"
+                    android:tint="@color/buttonHell"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
                 <EditText
                     android:id="@+id/gerichteBearbeitenKcalEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenKcalText"
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/kcal"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
                 <Space
@@ -138,31 +138,31 @@
                     android:id="@+id/protNoteButton"
                     android:layout_width="28sp"
                     android:layout_height="28sp"
-                    android:backgroundTint="@color/hellgrün"
+                    android:backgroundTint="@color/hintergrund"
                     android:onClick="protNoteButtonClicked"
-                    android:tint="#fff"
+                    android:tint="@color/buttonHell"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
                 <EditText
                     android:id="@+id/gerichteBearbeitenProtEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenProtText"
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/g_prot"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -178,31 +178,31 @@
                     android:id="@+id/khNoteButton"
                     android:layout_width="25sp"
                     android:layout_height="28sp"
-                    android:backgroundTint="@color/hellgrün"
+                    android:backgroundTint="@color/hintergrund"
                     android:onClick="khNoteButtonClicked"
-                    android:tint="#fff"
+                    android:tint="@color/buttonHell"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
                 <EditText
                     android:id="@+id/gerichteBearbeitenKhEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenKhText"
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/g_kh"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
                 <Space
@@ -213,31 +213,31 @@
                     android:id="@+id/fettNoteButton"
                     android:layout_width="28sp"
                     android:layout_height="28sp"
-                    android:backgroundTint="@color/hellgrün"
+                    android:backgroundTint="@color/hintergrund"
                     android:onClick="fettNoteButtonClicked"
-                    android:tint="#fff"
+                    android:tint="@color/buttonHell"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
                 <EditText
                     android:id="@+id/gerichteBearbeitenFettEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="0"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenFettText"
-                    android:layout_width="39sp"
+                    android:layout_width="47sp"
                     android:layout_height="wrap_content"
                     android:text="@string/g_fett"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -252,20 +252,20 @@
                     android:id="@+id/gerichteBearbeitenPortionenGrammEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:hint="1"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
 
                 <Spinner
                     android:id="@+id/portionenGrammSpinner"
                     android:layout_width="130sp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff" />
+                    android:backgroundTint="@color/mittelDarkText" />
             </LinearLayout>
 
             <LinearLayout
@@ -281,14 +281,14 @@
                     android:layout_marginStart="4sp"
                     android:text="@string/beschreibung_doppelpunkt"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/gerichteBearbeitenBeschreibungEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#fff"
+                    android:backgroundTint="@color/darkText"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/optional"
@@ -296,7 +296,7 @@
                     android:inputType="textMultiLine"
                     android:maxLength="140"
                     android:textAlignment="viewStart"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -312,11 +312,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10sp"
+                    android:backgroundTint="#dcd8d1"
                     android:onClick="loeschenButtonClicked"
                     android:text="@string/loeschen_button"
                     android:textAlignment="center"
                     android:textAllCaps="false"
-                    android:textColor="@color/dunkellila"
+                    android:textColor="@color/buttonDunkel"
                     android:textSize="14sp"
                     android:visibility="gone" />
 
@@ -324,7 +325,7 @@
                     android:id="@+id/gerichteBearbeitenSpeichernButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/helllila"
+                    android:backgroundTint="@color/buttonHell"
                     android:onClick="speichernButtonClicked"
                     android:text="@string/speichern_button"
                     android:textAlignment="center"

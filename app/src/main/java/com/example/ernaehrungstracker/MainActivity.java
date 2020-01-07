@@ -3,6 +3,7 @@ package com.example.ernaehrungstracker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -67,39 +68,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //heute speicher initialisieren
         ArrayList<HeuteSpeicher> curHSL = Speicher.loadHeuteSpeicherListe(this);
-        HeuteSpeicher curHS = curHSL.get(0);
 
         //display trackers?
         updateTrackerDisplayed(curHSL);
 
-        //daily reset(muss nach updateTrackerDisplay bleiben)
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
-        Date today = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
-        calendar.add(Calendar.HOUR_OF_DAY, -3);
-        today = calendar.getTime();
+        //daily reset(muss nach updateTrackerDisplayed bleiben)
+        dailyReset(curHSL);
 
-        if (!curHS.getDate().equals(formatter.format(today))) {
-
-            RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
-            rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
-            //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
-            HeuteSpeicher newHS = new HeuteSpeicher();
-            newHS.setKcalZielHeute(curHS.getKcalZielHeute());
-            newHS.setProtZielHeute(curHS.getProtZielHeute());
-            newHS.setKhZielHeute(curHS.getKhZielHeute());
-            newHS.setFettZielHeute(curHS.getFettZielHeute());
-            curHSL.add(0, newHS);
-
-            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("limitStorage", false)) {
-                int limitTo = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("limitStorageTo", "0x7fffffff"));
-                while (curHSL.size() > limitTo + 1) {
-                    curHSL.remove(curHSL.size() - 1);
-                }
-            }
-        }
-        Speicher.saveHeuteSpeicherListe(this, curHSL);
         updateUpperEditTexts(curHSL.get(0));
 
 
@@ -205,8 +180,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String fettString = toAddFettEditText.getText().toString();
 
                     portionenGrammEditText.setText("");
-                    portionenGrammEditText.setHint("1");
-                    ((TextView) findViewById(R.id.toAddPortionenText)).setText(getString(R.string.portionen));
+                    portionenGrammEditText.setHint("100");
+                    ((TextView) findViewById(R.id.toAddPortionenText)).setText(getString(R.string.gramm));
 
                     if (toAddKcalEditText.getText().toString().equals("") && toAddProtEditText.getText().toString().equals("") && toAddKhEditText.getText().toString().equals("") && toAddFettEditText.getText().toString().equals("")) {
                         ((Button) findViewById(R.id.gerichtAuswählenButton)).setText(getString(R.string.gericht_auswaehlen_button));
@@ -374,6 +349,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
+
+        dailyReset(HSL);
+        updateUpperEditTexts(HSL.get(0));
+    }
+
     public void entfernenButtonPressed(View view) {
         changeToUnknownCurGerichtWatcherActive = false;
         ((EditText) findViewById(R.id.toAddKcal)).setText("");
@@ -415,6 +399,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (!toAddKh.equals(""))   kh   = Double.parseDouble(toAddKh);
         if (!toAddFett.equals("")) fett = Double.parseDouble(toAddFett);
         if (kcal == 0 && prot == 0 && kh == 0 && fett == 0) return;
+
+        ((Vibrator) this.getSystemService(VIBRATOR_SERVICE)).vibrate(50);
 
         //speicherbares Gericht erzeugen
         Gericht curCopy = new Gericht(  currentGericht.getName(), currentGericht.getDescription(), currentGericht.getPortionenGramm(), currentGericht.isInPortionen(),
@@ -706,4 +692,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
+    private void dailyReset(ArrayList<HeuteSpeicher> curHSL) {
+        HeuteSpeicher curHS = curHSL.get(0);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
+        Date today = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.add(Calendar.HOUR_OF_DAY, -3);
+        today = calendar.getTime();
+
+
+        if (!formatter.format(curHS.getDate()).equals(formatter.format(today))) {
+
+            RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
+            rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
+            //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
+            HeuteSpeicher newHS = new HeuteSpeicher();
+            newHS.setKcalZielHeute(curHS.getKcalZielHeute());
+            newHS.setProtZielHeute(curHS.getProtZielHeute());
+            newHS.setKhZielHeute(curHS.getKhZielHeute());
+            newHS.setFettZielHeute(curHS.getFettZielHeute());
+            curHSL.add(0, newHS);
+
+            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("limitStorage", false)) {
+                int limitTo = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("limitStorageTo", "0x7fffffff"));
+                while (curHSL.size() > limitTo + 1) {
+                    curHSL.remove(curHSL.size() - 1);
+                }
+            }
+            Speicher.saveHeuteSpeicherListe(this, curHSL);
+        }
+    }
 }

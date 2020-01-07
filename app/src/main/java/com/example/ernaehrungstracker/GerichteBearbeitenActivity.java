@@ -55,7 +55,7 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         //farbe und größe von portionen/gramm
-        ((TextView) parent.getChildAt(0)).setTextColor(0xFFFFFFFF);
+        //((TextView) parent.getChildAt(0)).setTextColor(0x00000000);
         ((TextView) parent.getChildAt(0)).setTextSize(14);
 
 
@@ -84,8 +84,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
     private void activateNeuesGerichtModus() {
         neuesGerichtModus = true;
-        findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.dunkellila));
-        findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.helllila));
+        findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.buttonDunkel));
+        findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.buttonHell));
         findViewById(R.id.gerichteBearbeitenLöschenButton).setVisibility(View.GONE);
 
         currentGericht = null;
@@ -126,8 +126,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
         if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
                 neuesGerichtModus = false;
-                findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.helllila));
-                findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.dunkellila));
+                findViewById(R.id.neuesGerichtButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.buttonHell));
+                findViewById(R.id.gerichteBearbeitenButton).setBackgroundTintList(this.getResources().getColorStateList(R.color.buttonDunkel));
                 findViewById(R.id.gerichteBearbeitenLöschenButton).setVisibility(View.VISIBLE);
 
                 currentGericht = GerichtAuswaehlenRecyclerViewActivity.uebergabeGericht;
@@ -314,7 +314,7 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
 
             //fehler: name leer
-        if (userInputName.equals("")) {
+        if (userInputName.trim().equals("")) {
             Toast.makeText(this, this.getResources().getString(R.string.name_angeben), Toast.LENGTH_SHORT).show();
             return;
         }
@@ -337,8 +337,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
             //fehler: name & beschreibung bereits vorhanden
             for(Gericht i : curGerichteListe) {
-                if (i.getName().equals(userInputName)) {
-                    if (i.getDescription().equals(userInputDescription)) {
+                if (i.getName().toLowerCase().equals(userInputName.toLowerCase().trim())) {
+                    if (i.getDescription().toLowerCase().equals(userInputDescription.toLowerCase().trim())) {
                         Toast.makeText(this, this.getResources().getString(R.string.gericht_bereits_gespeichert), Toast.LENGTH_SHORT).show();
                         Toast.makeText(this, this.getResources().getString(R.string.namen_oder_beschreibung_aendern), Toast.LENGTH_SHORT).show();
                         return;
@@ -357,8 +357,8 @@ public class GerichteBearbeitenActivity extends AppCompatActivity implements Ada
 
             //fehler: name & beschreibung bereits vorhanden
             for(int i = 1; i < curGerichteListe.size(); i++) {
-                if (curGerichteListe.get(i).getName().equals(userInputName)) {
-                    if (curGerichteListe.get(i).getDescription().equals(userInputDescription)) {
+                if (curGerichteListe.get(i).getName().toLowerCase().equals(userInputName.toLowerCase().trim())) {
+                    if (curGerichteListe.get(i).getDescription().toLowerCase().equals(userInputDescription.toLowerCase().trim())) {
                         Toast.makeText(this, this.getResources().getString(R.string.gericht_bereits_gespeichert), Toast.LENGTH_SHORT).show();
                         Toast.makeText(this, this.getResources().getString(R.string.namen_oder_beschreibung_aendern), Toast.LENGTH_SHORT).show();
                         return;

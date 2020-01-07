@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHolderH> {
@@ -76,7 +77,9 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolderH holder, int position) {
         HeuteSpeicher HS = HSL.get(position);
-        String dateH = HS.getDate();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
+        String dateH = formatter.format(HS.getDate());
         double gewichtH = HS.getGewicht();
         double kcalH = HS.getKcalHeute();
         double protH = HS.getProtHeute();
