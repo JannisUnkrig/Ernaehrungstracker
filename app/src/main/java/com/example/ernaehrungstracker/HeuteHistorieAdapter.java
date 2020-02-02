@@ -43,6 +43,8 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
             } else  {
                 if (i.getPortionenGramm() == 1) {
                     foodPortionenGrammList.add(MainActivity.curMainAct.getResources().getString(R.string.ein_gramm));
+                } else if(i.getPortionenGramm() == 100) {
+                    foodPortionenGrammList.add("");
                 } else {
                     foodPortionenGrammList.add(MainActivity.doubleBeautifulizerNull(i.getPortionenGramm()) + " " + MainActivity.curMainAct.getResources().getString(R.string.gramm));
                 }

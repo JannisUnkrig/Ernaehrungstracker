@@ -24,7 +24,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="270sp"
-                android:background="@drawable/wheat2"
+                android:background="@drawable/links410x260"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -41,7 +41,7 @@
                     android:gravity="center"
                     android:text="@string/tageszieleHeadline"
                     android:textAlignment="center"
-                    android:textColor="#fff"
+                    android:textColor="@color/darkText"
                     android:textSize="20sp" />
 
                 <LinearLayout
@@ -282,6 +282,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#9996783C" />
 
                 <TextView
                     android:id="@+id/essenEssenHeadline"
@@ -535,9 +541,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/verlauf"
         app:headerLayout="@layout/header"
-        app:itemTextColor="#FFF"
+        app:itemTextColor="@color/mittelDarkText"
         app:menu="@menu/menu_item" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

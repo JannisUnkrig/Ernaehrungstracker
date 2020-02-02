@@ -66,18 +66,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        //heute speicher initialisieren
-        ArrayList<HeuteSpeicher> curHSL = Speicher.loadHeuteSpeicherListe(this);
-
-        //display trackers?
-        updateTrackerDisplayed(curHSL);
-
-        //daily reset(muss nach updateTrackerDisplayed bleiben)
-        dailyReset(curHSL);
-
-        updateUpperEditTexts(curHSL.get(0));
-
-
         //Inputfilter
         InputFilter[] ifd = new InputFilter[]{new InputFilterDecimal(5, 1)};
         InputFilter[] ifd2 = new InputFilter[]{new InputFilterDecimal(4, 1)};
@@ -350,10 +338,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
 
+        updateTrackerDisplayed(HSL);
         dailyReset(HSL);
         updateUpperEditTexts(HSL.get(0));
     }
@@ -535,14 +524,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //after settings
         if (requestCode == 5) {
+            changeToUnknownCurGerichtWatcherActive = false;
             ((EditText) findViewById(R.id.toAddKcal)).setText("");
             ((EditText) findViewById(R.id.toAddProt)).setText("");
             ((EditText) findViewById(R.id.toAddKh)).setText("");
+            ((EditText) findViewById(R.id.toAddFett)).setText("1");
+            changeToUnknownCurGerichtWatcherActive = true;
             ((EditText) findViewById(R.id.toAddFett)).setText("");
 
             ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
-
-            updateTrackerDisplayed(HSL);
 
             if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("limitStorage", false)) {
                 int limitTo = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("limitStorageTo", "0x7fffffff"));

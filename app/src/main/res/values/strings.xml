@@ -38,7 +38,7 @@
     <string name="neues_gericht_button">new food</string>
     <string name="gericht_bearbeiten_button">edit food...</string>
     <string name="name_angeben">name</string>
-    <string name="beschreibung_doppelpunkt">description:</string>
+    <string name="beschreibung_doppelpunkt">Description:</string>
     <string name="optional">optional</string>
     <string name="loeschen_button">delete</string>
     <string name="speichern_button">save</string>

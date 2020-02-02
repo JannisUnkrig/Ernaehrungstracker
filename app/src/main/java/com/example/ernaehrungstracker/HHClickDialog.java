@@ -42,6 +42,8 @@ public class HHClickDialog extends AppCompatDialogFragment {
         } else {
             if (gericht.getPortionenGramm() == 1) {
                 title += "  (" + getString(R.string.ein_gramm) + ")";
+            } else if (gericht.getPortionenGramm() == 100) {
+                //nix
             } else {
                 title += "  (" + MainActivity.doubleBeautifulizerNull(gericht.getPortionenGramm()) + " " + getString(R.string.gramm) + ")";
             }

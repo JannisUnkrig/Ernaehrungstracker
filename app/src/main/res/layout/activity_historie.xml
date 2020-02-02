@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="366sp"
-            android:background="@drawable/wheatminieck"
+            android:background="@drawable/rechtsmini410x354"
             android:gravity="center_horizontal|top"
             android:orientation="vertical">
 
@@ -76,9 +76,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60sp"
-                android:background="@drawable/verlaufgruen3"
                 android:gravity="center_horizontal|top"
                 android:orientation="vertical">
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#9996783C" />
 
                 <TextView
                     android:id="@+id/textView2"
