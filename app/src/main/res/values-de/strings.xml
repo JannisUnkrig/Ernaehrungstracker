@@ -18,9 +18,9 @@
     <string-array name="wovon">
         <item> </item>
         <item>kcal</item>
-        <item>prot</item>
-        <item>kh</item>
         <item>fett</item>
+        <item>kh</item>
+        <item>prot</item>
     </string-array>
 
     <string name="entfernenButtonText"><u>entfernen</u></string>

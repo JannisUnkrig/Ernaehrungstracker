@@ -132,11 +132,11 @@ public class GerichtAuswaehlenRecyclerViewActivity extends AppCompatActivity imp
             } else if (position == 1) {
                 naehrwert = 1;
             } else if (position == 2) {
-                naehrwert = 2;
+                naehrwert = 4;
             } else if (position == 3) {
                 naehrwert = 3;
             } else if (position == 4) {
-                naehrwert = 4;
+                naehrwert = 2;
             }
         }
 

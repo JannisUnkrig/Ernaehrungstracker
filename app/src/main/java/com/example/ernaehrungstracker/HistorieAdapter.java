@@ -130,17 +130,17 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
         }
 
 
-        if (HS.isTrackKcal() && HS.isTrackProt()) {
+        if (HS.isTrackKcal() && HS.isTrackFett()) {
             holder.myStrich1h.setVisibility(View.VISIBLE);
         } else {
             holder.myStrich1h.setVisibility(View.GONE);
         }
-        if ((HS.isTrackKcal() || HS.isTrackProt()) && HS.isTrackKh()) {
+        if ((HS.isTrackKcal() || HS.isTrackFett()) && HS.isTrackKh()) {
             holder.myStrich2h.setVisibility(View.VISIBLE);
         } else {
             holder.myStrich2h.setVisibility(View.GONE);
         }
-        if ((HS.isTrackKcal() || HS.isTrackProt() || HS.isTrackKh()) && HS.isTrackFett()) {
+        if ((HS.isTrackKcal() || HS.isTrackFett() || HS.isTrackKh()) && HS.isTrackProt()) {
             holder.myStrich3h.setVisibility(View.VISIBLE);
         } else {
             holder.myStrich3h.setVisibility(View.GONE);

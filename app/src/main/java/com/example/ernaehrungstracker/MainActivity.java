@@ -343,6 +343,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
 
         updateTrackerDisplayed(HSL);
+
+        curWatcherActive = false;
+        ((EditText) findViewById(R.id.curKcal)).setText("");
+        ((EditText) findViewById(R.id.curProt)).setText("");
+        ((EditText) findViewById(R.id.curKh)).setText("");
+        ((EditText) findViewById(R.id.curFett)).setText("");
+        curWatcherActive = true;
         dailyReset(HSL);
         updateUpperEditTexts(HSL.get(0));
     }
@@ -699,6 +706,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
             rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
             //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
+
+            changeToUnknownCurGerichtWatcherActive = false;
+            ((EditText) findViewById(R.id.toAddKcal)).setText("");
+            ((EditText) findViewById(R.id.toAddProt)).setText("");
+            ((EditText) findViewById(R.id.toAddKh)).setText("");
+            ((EditText) findViewById(R.id.toAddFett)).setText("1");
+            changeToUnknownCurGerichtWatcherActive = true;
+            ((EditText) findViewById(R.id.toAddFett)).setText("");
+
             HeuteSpeicher newHS = new HeuteSpeicher();
             newHS.setKcalZielHeute(curHS.getKcalZielHeute());
             newHS.setProtZielHeute(curHS.getProtZielHeute());

@@ -26,18 +26,16 @@
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
-            app:key="displayTrackerProt"
-            app:title="@string/proteine_tracken" />
-
+            app:key="displayTrackerFett"
+            app:title="@string/fette_tracken" />
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="displayTrackerKh"
             app:title="@string/kohlenhydrate_tracken" />
-
         <SwitchPreferenceCompat
             app:defaultValue="true"
-            app:key="displayTrackerFett"
-            app:title="@string/fette_tracken" />
+            app:key="displayTrackerProt"
+            app:title="@string/proteine_tracken" />
 
     </PreferenceCategory>
 

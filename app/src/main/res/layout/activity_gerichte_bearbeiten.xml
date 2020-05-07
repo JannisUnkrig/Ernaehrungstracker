@@ -96,7 +96,9 @@
                 android:maxLength="80"
                 android:textAlignment="center"
                 android:textColor="@color/darkText"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:nextFocusDown="@+id/gerichteBearbeitenKcalEditText"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,7 +127,9 @@
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="@color/darkText"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/gerichteBearbeitenFettEditText" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenKcalText"
@@ -141,16 +145,16 @@
                     android:layout_height="wrap_content" />
 
                 <ImageButton
-                    android:id="@+id/protNoteButton"
+                    android:id="@+id/fettNoteButton"
                     android:layout_width="28sp"
                     android:layout_height="28sp"
                     android:backgroundTint="@color/hintergrund"
-                    android:onClick="protNoteButtonClicked"
+                    android:onClick="fettNoteButtonClicked"
                     android:tint="@color/buttonHell"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
                 <EditText
-                    android:id="@+id/gerichteBearbeitenProtEditText"
+                    android:id="@+id/gerichteBearbeitenFettEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/darkText"
@@ -160,13 +164,15 @@
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="@color/darkText"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/gerichteBearbeitenKhEditText" />
 
                 <TextView
-                    android:id="@+id/gerichteBearbeitenProtText"
+                    android:id="@+id/gerichteBearbeitenFettText"
                     android:layout_width="47sp"
                     android:layout_height="wrap_content"
-                    android:text="@string/g_prot"
+                    android:text="@string/g_fett"
                     android:textAlignment="viewStart"
                     android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
@@ -200,7 +206,9 @@
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="@color/darkText"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/gerichteBearbeitenProtEditText" />
 
                 <TextView
                     android:id="@+id/gerichteBearbeitenKhText"
@@ -216,16 +224,16 @@
                     android:layout_height="wrap_content" />
 
                 <ImageButton
-                    android:id="@+id/fettNoteButton"
+                    android:id="@+id/protNoteButton"
                     android:layout_width="28sp"
                     android:layout_height="28sp"
                     android:backgroundTint="@color/hintergrund"
-                    android:onClick="fettNoteButtonClicked"
+                    android:onClick="protNoteButtonClicked"
                     android:tint="@color/buttonHell"
                     app:srcCompat="@android:drawable/ic_input_add" />
 
                 <EditText
-                    android:id="@+id/gerichteBearbeitenFettEditText"
+                    android:id="@+id/gerichteBearbeitenProtEditText"
                     android:layout_width="70sp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/darkText"
@@ -235,13 +243,15 @@
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="@color/darkText"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/gerichteBearbeitenPortionenGrammEditText" />
 
                 <TextView
-                    android:id="@+id/gerichteBearbeitenFettText"
+                    android:id="@+id/gerichteBearbeitenProtText"
                     android:layout_width="47sp"
                     android:layout_height="wrap_content"
-                    android:text="@string/g_fett"
+                    android:text="@string/g_prot"
                     android:textAlignment="viewStart"
                     android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
@@ -265,7 +275,9 @@
                     android:inputType="numberDecimal"
                     android:textAlignment="center"
                     android:textColor="@color/darkText"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:nextFocusDown="@+id/gerichteBearbeitenBeschreibungEditText" />
 
                 <Spinner
                     android:id="@+id/portionenGrammSpinner"

@@ -136,17 +136,17 @@ public class HeuteHistorieAdapter extends RecyclerView.Adapter<HeuteHistorieAdap
         }
 
 
-        if (HS.isTrackKcal() && HS.isTrackProt()) {
+        if (HS.isTrackKcal() && HS.isTrackFett()) {
             holder.myStrich1hh.setVisibility(View.VISIBLE);
         } else {
             holder.myStrich1hh.setVisibility(View.GONE);
         }
-        if ((HS.isTrackKcal() || HS.isTrackProt()) && HS.isTrackKh()) {
+        if ((HS.isTrackKcal() || HS.isTrackFett()) && HS.isTrackKh()) {
             holder.myStrich2hh.setVisibility(View.VISIBLE);
         } else {
             holder.myStrich2hh.setVisibility(View.GONE);
         }
-        if ((HS.isTrackKcal() || HS.isTrackProt() || HS.isTrackKh()) && HS.isTrackFett()) {
+        if ((HS.isTrackKcal() || HS.isTrackFett() || HS.isTrackKh()) && HS.isTrackProt()) {
             holder.myStrich3hh.setVisibility(View.VISIBLE);
         } else {
             holder.myStrich3hh.setVisibility(View.GONE);

@@ -52,10 +52,10 @@
             android:text="  |  " />
 
         <TextView
-            android:id="@+id/hhFoodProt"
+            android:id="@+id/hhFoodFett"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="124 g Prot" />
+            android:text="56 g Fett" />
 
         <TextView
             android:id="@+id/strich2hh"
@@ -76,10 +76,10 @@
             android:text="  |  " />
 
         <TextView
-            android:id="@+id/hhFoodFett"
+            android:id="@+id/hhFoodProt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="56 g Fett" />
+            android:text="124 g Prot" />
     </org.apmem.tools.layouts.FlowLayout>
 
     <Space

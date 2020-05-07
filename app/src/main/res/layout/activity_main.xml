@@ -106,15 +106,16 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/protTrackerLayout"
+                        android:id="@+id/fettTrackerLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8sp"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="visible">
 
                         <EditText
-                            android:id="@+id/curProt"
+                            android:id="@+id/curFett"
                             android:layout_width="70sp"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/darkText"
@@ -127,7 +128,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/slash2"
+                            android:id="@+id/slash4"
                             android:layout_width="10sp"
                             android:layout_height="wrap_content"
                             android:text="/"
@@ -136,7 +137,7 @@
                             android:textSize="16sp" />
 
                         <EditText
-                            android:id="@+id/goalProt"
+                            android:id="@+id/goalFett"
                             android:layout_width="70sp"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/darkText"
@@ -149,10 +150,10 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/protTrackerText"
+                            android:id="@+id/fettTrackerText"
                             android:layout_width="47sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/g_prot"
+                            android:text="@string/g_fett"
                             android:textAlignment="viewStart"
                             android:textColor="@color/mittelDarkText"
                             android:textSize="14sp" />
@@ -215,16 +216,15 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fettTrackerLayout"
+                        android:id="@+id/protTrackerLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8sp"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="visible">
+                        android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/curFett"
+                            android:id="@+id/curProt"
                             android:layout_width="70sp"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/darkText"
@@ -237,7 +237,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/slash4"
+                            android:id="@+id/slash2"
                             android:layout_width="10sp"
                             android:layout_height="wrap_content"
                             android:text="/"
@@ -246,7 +246,7 @@
                             android:textSize="16sp" />
 
                         <EditText
-                            android:id="@+id/goalFett"
+                            android:id="@+id/goalProt"
                             android:layout_width="70sp"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/darkText"
@@ -259,10 +259,10 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/fettTrackerText"
+                            android:id="@+id/protTrackerText"
                             android:layout_width="47sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/g_fett"
+                            android:text="@string/g_prot"
                             android:textAlignment="viewStart"
                             android:textColor="@color/mittelDarkText"
                             android:textSize="14sp" />
@@ -364,7 +364,8 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:textColor="@color/darkText"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:imeOptions="actionDone"/>
 
                             <TextView
                                 android:id="@+id/toAddPortionenText"
@@ -419,7 +420,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/protToAddLayout"
+                            android:id="@+id/fettToAddLayout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="7sp"
@@ -427,7 +428,7 @@
                             android:orientation="horizontal">
 
                             <EditText
-                                android:id="@+id/toAddProt"
+                                android:id="@+id/toAddFett"
                                 android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/darkText"
@@ -440,14 +441,13 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/toAddProtText"
+                                android:id="@+id/toAddFettText"
                                 android:layout_width="47sp"
                                 android:layout_height="wrap_content"
-                                android:text="@string/g_prot"
+                                android:text="@string/g_fett"
                                 android:textAlignment="viewStart"
                                 android:textColor="@color/mittelDarkText"
                                 android:textSize="14sp" />
-
                         </LinearLayout>
 
                         <LinearLayout
@@ -483,7 +483,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/fettToAddLayout"
+                            android:id="@+id/protToAddLayout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="7sp"
@@ -491,7 +491,7 @@
                             android:orientation="horizontal">
 
                             <EditText
-                                android:id="@+id/toAddFett"
+                                android:id="@+id/toAddProt"
                                 android:layout_width="70sp"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/darkText"
@@ -504,13 +504,14 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/toAddFettText"
+                                android:id="@+id/toAddProtText"
                                 android:layout_width="47sp"
                                 android:layout_height="wrap_content"
-                                android:text="@string/g_fett"
+                                android:text="@string/g_prot"
                                 android:textAlignment="viewStart"
                                 android:textColor="@color/mittelDarkText"
                                 android:textSize="14sp" />
+
                         </LinearLayout>
 
                     </LinearLayout>
