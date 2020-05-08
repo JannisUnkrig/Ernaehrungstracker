@@ -10,7 +10,15 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class HistorieActivity extends AppCompatActivity implements HeuteHistorieAdapter.ItemClickListener, HistorieAdapter.ItemClickListener, HHClickDialog.HHClickDialogListener, UmbenennenDialog.UmbenennenDialogListener {
 
@@ -31,6 +39,76 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
         //lower recyclerView
         updateLowerRecyView(HSL);
 
+
+
+        GraphView graph = findViewById(R.id.myGraphView);
+        // generate Dates
+        Calendar calendar = Calendar.getInstance();
+        Date d1 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d2 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d3 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d4 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d5 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d6 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d7 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d8 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d9 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d10 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d11 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d12 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d13 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d14 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date d15 = calendar.getTime();
+
+        // you can directly pass Date objects to DataPoint-Constructor
+        // this will convert the Date to double via Date#getTime()
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(d1, 1),
+                new DataPoint(d2, 5),
+                new DataPoint(d3, 3),
+                new DataPoint(d4, 1),
+                new DataPoint(d5, 5),
+                new DataPoint(d6, 3),
+                new DataPoint(d7, 1),
+                new DataPoint(d8, 5),
+                new DataPoint(d9, 3),
+                new DataPoint(d10, 1),
+                new DataPoint(d11, 1),
+                new DataPoint(d12, 5),
+                new DataPoint(d13, 3),
+                new DataPoint(d14, 1),
+                new DataPoint(d15, 5)
+        });
+
+        graph.addSeries(series);
+
+        new DateAsXAxisLabelFormatter(MainActivity.curMainAct);
+
+        // set date label formatter
+        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(MainActivity.curMainAct));
+        graph.getGridLabelRenderer().setNumHorizontalLabels(5); // only 4 because of the space
+
+        // set manual x bounds to have nice steps
+        graph.getViewport().setMinX(d1.getTime());
+        graph.getViewport().setMaxX(d15.getTime());
+        graph.getViewport().setXAxisBoundsManual(true);
+
+        // as we use dates as labels, the human rounding to nice readable numbers is not necessary
+        graph.getGridLabelRenderer().setHumanRounding(false);
     }
 
     @Override
