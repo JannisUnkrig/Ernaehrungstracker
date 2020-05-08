@@ -2,6 +2,7 @@ package com.example.ernaehrungstracker;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -14,16 +15,32 @@ import static android.content.Context.MODE_PRIVATE;
 @SuppressWarnings("WeakerAccess")
 public abstract class Speicher {
 
-    public static void saveHeuteSpeicherListe(Context context, ArrayList<HeuteSpeicher> heuteSpeicherListe ) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(heuteSpeicherListe);
-        editor.putString("heuteSpeicherListeKey", json);
-        editor.apply();
+    private static ArrayList<HeuteSpeicher> currentHSL = null;
+    private static ArrayList<Gericht> currentGerichteListe = null;
+
+    public static void saveHeuteSpeicherListe(final Context context, final ArrayList<HeuteSpeicher> heuteSpeicherListe ) {
+
+        currentHSL = heuteSpeicherListe;
+
+        class asyncStoreHSLTask extends AsyncTask<MainActivity, Void, Void> {
+            @Override
+            protected Void doInBackground(MainActivity... params) {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(heuteSpeicherListe);
+                editor.putString("heuteSpeicherListeKey", json);
+                editor.apply();
+                return null;
+            }
+        }
+        new asyncStoreHSLTask().execute();
     }
 
     public static ArrayList<HeuteSpeicher> loadHeuteSpeicherListe(Context context) {
+
+        if (currentHSL != null) return currentHSL;
+
         SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("heuteSpeicherListeKey", null);
@@ -38,16 +55,29 @@ public abstract class Speicher {
     }
 
 
-    public static void saveGerichteListe(Context context, ArrayList<Gericht> gerichteListe ) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(gerichteListe);
-        editor.putString("gerichteListeKey", json);
-        editor.apply();
+    public static void saveGerichteListe(final Context context, final ArrayList<Gericht> gerichteListe ) {
+
+        currentGerichteListe = gerichteListe;
+
+        class asyncStoreGLTask extends AsyncTask<MainActivity, Void, Void> {
+            @Override
+            protected Void doInBackground(MainActivity... params) {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(gerichteListe);
+                editor.putString("gerichteListeKey", json);
+                editor.apply();
+                return null;
+            }
+        }
+        new asyncStoreGLTask().execute();
     }
 
     public static ArrayList<Gericht> loadGerichteListe(Context context) {
+
+        if (currentGerichteListe != null) return currentGerichteListe;
+
         SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("gerichteListeKey", null);

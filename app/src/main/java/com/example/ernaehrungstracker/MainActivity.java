@@ -703,9 +703,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (!formatter.format(curHS.getDate()).equals(formatter.format(today))) {
 
-            RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
-            rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
-            //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
+            curWatcherActive = false;
+            ((EditText) findViewById(R.id.curKcal)).setText("");
+            ((EditText) findViewById(R.id.curProt)).setText("");
+            ((EditText) findViewById(R.id.curKh)).setText("");
+            ((EditText) findViewById(R.id.curFett)).setText("");
+            curWatcherActive = true;
 
             changeToUnknownCurGerichtWatcherActive = false;
             ((EditText) findViewById(R.id.toAddKcal)).setText("");
@@ -714,6 +717,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ((EditText) findViewById(R.id.toAddFett)).setText("1");
             changeToUnknownCurGerichtWatcherActive = true;
             ((EditText) findViewById(R.id.toAddFett)).setText("");
+
+            RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
+            rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
+            //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
 
             HeuteSpeicher newHS = new HeuteSpeicher();
             newHS.setKcalZielHeute(curHS.getKcalZielHeute());
