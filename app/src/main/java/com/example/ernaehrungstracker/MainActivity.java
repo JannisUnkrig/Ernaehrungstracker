@@ -23,7 +23,6 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -693,15 +692,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void dailyReset(ArrayList<HeuteSpeicher> curHSL) {
         HeuteSpeicher curHS = curHSL.get(0);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
         Date today = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(today);
         calendar.add(Calendar.HOUR_OF_DAY, -3);
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
         today = calendar.getTime();
 
-
-        if (!formatter.format(curHS.getDate()).equals(formatter.format(today))) {
+        if (!curHS.getDate().equals(today)) {
 
             curWatcherActive = false;
             ((EditText) findViewById(R.id.curKcal)).setText("");

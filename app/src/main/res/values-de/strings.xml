@@ -102,6 +102,12 @@
     <string name="tracker">Tracker</string>
     <string name="gericht_auswählen">Gericht auswählen</string>
     <string name="gerichte_bearbeiten_cond">Gerichte bearbeiten</string>
+    <string name="kilo_gram">kilo-/gramm</string>
+    <string name="fett">fett</string>
+    <string name="kh">kh</string>
+    <string name="prot">prot</string>
+    <string name="vom">vom</string>
+    <string name="bis_zum">bis zum</string>
 
 
     <string name="apfel">Apfel</string>

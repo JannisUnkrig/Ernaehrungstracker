@@ -63,7 +63,7 @@
     <string name="aenderungen_an">changes to</string>
     <string name="abbrechen_button">cancel</string>
     <string name="kein_gewicht_angegeben">No weight entered</string>
-    <string name="gewicht">Weight</string>
+    <string name="gewicht">weight</string>
     <string name="ein_gramm">one gram</string>
     <string name="gramm">grams</string>
     <string name="zurueck_button">back</string>
@@ -102,6 +102,12 @@
     <string name="tracker">Tracker</string>
     <string name="gericht_auswählen">Choose Food</string>
     <string name="gerichte_bearbeiten_cond">Edit Food</string>
+    <string name="kilo_gram">kilo-/grams</string>
+    <string name="fett">fat</string>
+    <string name="kh">carbs</string>
+    <string name="prot">prot</string>
+    <string name="vom">from</string>
+    <string name="bis_zum">to</string>
 
 
     <string name="apfel">Apple</string>

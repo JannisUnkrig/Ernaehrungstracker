@@ -10,5 +10,11 @@
     <color name="mittelDarkText">#222</color>
     <color name="hintergrund">#FCF8F1</color>
 
-
+    <color name="rosa">#EA80FC</color>
+    <color name="gelb">#ccbf08</color>
+    <color name="gruen">#82c959</color>
+    <color name="rot">#d36234</color>
+    <color name="dunkelgrau">#333</color>
+    <color name="ausgegraut">#CCCCCC</color>
+    
 </resources>

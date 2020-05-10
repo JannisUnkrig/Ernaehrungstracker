@@ -99,8 +99,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFFFF"
             android:gravity="center_horizontal|top"
-            android:background="#fff"
             android:orientation="vertical">
 
             <View
@@ -109,17 +109,55 @@
                 android:layout_height="1dp"
                 android:background="#9996783C" />
 
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/myGraphView"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="200sp"
-                android:layout_marginStart="5sp"
-                android:layout_marginTop="20sp"
-                android:layout_marginEnd="5sp" />
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <com.example.ernaehrungstracker.VerticalTextView
+                    android:id="@+id/kiloGrammLabelText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:gravity="bottom"
+                    android:text="@string/kilo_gram"
+                    android:textColor="@color/mittelDarkText"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/myGraphView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200sp"
+                    android:layout_marginStart="22sp"
+                    android:layout_marginEnd="4sp"
+                    android:layout_marginTop="20sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/kiloGrammLabelText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/kcalLabelText" />
+
+                <com.example.ernaehrungstracker.VerticalTextView
+                    android:id="@+id/kcalLabelText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5sp"
+                    android:text="@string/kcal"
+                    android:textColor="@color/mittelDarkText"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10sp"
                 android:orientation="horizontal">
 
                 <Space
@@ -131,61 +169,66 @@
                     android:id="@+id/toggleButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#EA80FC"
-                    android:textColor="#fff"
-                    android:layout_weight="1"
                     android:layout_marginStart="1sp"
                     android:layout_marginEnd="1sp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/rosa"
+                    android:onClick="kcalButtonClicked"
+                    android:text="@string/kcal"
                     android:textAllCaps="false"
-                    android:text="@string/kcal" />
+                    android:textColor="#fff" />
 
                 <Button
                     android:id="@+id/toggleButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#ccbf08"
-                    android:textColor="#fff"
-                    android:layout_weight="1"
                     android:layout_marginStart="1sp"
                     android:layout_marginEnd="1sp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/gelb"
+                    android:onClick="fettButtonClicked"
+                    android:text="@string/fett"
                     android:textAllCaps="false"
-                    android:text="@string/g_fett" />
+                    android:textColor="#fff" />
 
                 <Button
                     android:id="@+id/toggleButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#82c959"
-                    android:textColor="#fff"
-                    android:layout_weight="1"
                     android:layout_marginStart="1sp"
                     android:layout_marginEnd="1sp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/gruen"
+                    android:onClick="khButtonClicked"
+                    android:text="@string/kh"
                     android:textAllCaps="false"
-                    android:text="@string/g_kh" />
+                    android:textColor="#fff" />
 
                 <Button
                     android:id="@+id/toggleButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#d36234"
-                    android:textColor="#fff"
-                    android:layout_weight="1"
                     android:layout_marginStart="1sp"
                     android:layout_marginEnd="1sp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/rot"
+                    android:onClick="protButtonClicked"
+                    android:text="@string/prot"
                     android:textAllCaps="false"
-                    android:text="@string/g_prot" />
+                    android:textColor="#fff" />
 
                 <Button
                     android:id="@+id/toggleButton5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#333"
-                    android:textColor="#fff"
-                    android:layout_weight="1"
                     android:layout_marginStart="1sp"
                     android:layout_marginEnd="1sp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/dunkelgrau"
+                    android:onClick="gewichtButtonClicked"
+                    android:text="@string/gewicht"
                     android:textAllCaps="false"
-                    android:text="@string/gewicht" />
+                    android:textColor="#fff" />
 
                 <Space
                     android:layout_width="20sp"
@@ -196,6 +239,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="100sp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -203,40 +248,37 @@
                     android:id="@+id/fromText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="from "
+                    android:layout_marginEnd="7sp"
+                    android:text="@string/vom"
                     android:textColor="@color/mittelDarkText"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/fromEditText"
-                    android:layout_width="70sp"
+                <Button
+                    android:id="@+id/fromButton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkText"
-                    android:ems="10"
-                    android:importantForAutofill="no"
-                    android:inputType="date"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkText"
+                    android:onClick="fromButtonClicked"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/toText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" to "
+                    android:layout_marginStart="7sp"
+                    android:layout_marginEnd="7sp"
+                    android:text="@string/bis_zum"
                     android:textColor="@color/mittelDarkText"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/toEditText"
-                    android:layout_width="70sp"
+                <Button
+                    android:id="@+id/toButton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/darkText"
-                    android:ems="10"
-                    android:importantForAutofill="no"
-                    android:inputType="date"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkText"
+                    android:onClick="toButtonClicked"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mittelDarkText"
                     android:textSize="14sp" />
 
             </LinearLayout>
