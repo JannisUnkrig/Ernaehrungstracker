@@ -53,8 +53,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
 
         HSL = Speicher.loadHeuteSpeicherListe(this);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
-        ((TextView) findViewById(R.id.HeadlineDateHistorisch)).setText(formatter.format(HSL.get(posDay).getDate()));
+        ((TextView) findViewById(R.id.HeadlineDateHistorisch)).setText(HSL.get(posDay).getDateForPrint());
         
         recyView = findViewById(R.id.RecyViewHistorisch);
         nixGetracktLayout = findViewById(R.id.nichtsGetracktLayoutHistorisch);

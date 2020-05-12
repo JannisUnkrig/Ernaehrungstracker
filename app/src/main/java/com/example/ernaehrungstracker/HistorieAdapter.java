@@ -78,8 +78,8 @@ public class HistorieAdapter extends RecyclerView.Adapter<HistorieAdapter.ViewHo
     public void onBindViewHolder(ViewHolderH holder, int position) {
         HeuteSpeicher HS = HSL.get(position);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
-        String dateH = formatter.format(HS.getDate());
+
+        String dateH = HS.getDateForPrint();
         double gewichtH = HS.getGewicht();
         double kcalH = HS.getKcalHeute();
         double protH = HS.getProtHeute();

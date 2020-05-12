@@ -23,8 +23,7 @@ public class RueckblickDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMM yyyy");
-        String title = getString(R.string.tagesbilanz_vom) + " " + formatter.format(HS.getDate());
+        String title = getString(R.string.tagesbilanz_vom) + " " + HS.getDateForPrint();
 
         String message = "";
         if (HS.isTrackKcal()) {

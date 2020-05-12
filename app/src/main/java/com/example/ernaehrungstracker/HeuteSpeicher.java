@@ -3,6 +3,7 @@ package com.example.ernaehrungstracker;
 
 import androidx.preference.PreferenceManager;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,7 +12,7 @@ import java.util.Date;
 @SuppressWarnings({"WeakerAccess","unused"})
 public class HeuteSpeicher {
 
-    private Date date;
+    private long dateMillis;
 
     private ArrayList<Gericht> gegesseneGerichte = new ArrayList<>();
     private double Gewicht = -1;
@@ -33,16 +34,14 @@ public class HeuteSpeicher {
 
 
     public HeuteSpeicher() {
-        Date today = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
+        calendar.setTime(new Date());
         calendar.add(Calendar.HOUR_OF_DAY, -3);
-        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
-        today = calendar.getTime();
-        this.date = today;
+        this.dateMillis = calendar.getTimeInMillis();
 
         trackKcal = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerKcal", true);
         trackProt = PreferenceManager.getDefaultSharedPreferences(MainActivity.curMainAct).getBoolean("displayTrackerProt", true);
@@ -131,6 +130,13 @@ public class HeuteSpeicher {
     }
 
 
+    public long getDateMillis() {
+        return dateMillis;
+    }
+
+    public String getDateForPrint() {
+        return DateFormat.getDateInstance(DateFormat.DEFAULT).format(dateMillis);
+    }
 
     public ArrayList<Gericht> getGegesseneGerichte() {
         return gegesseneGerichte;
@@ -189,6 +195,4 @@ public class HeuteSpeicher {
     public boolean isTrackFett() { return trackFett; }
 
     public void setTrackFett(boolean trackFett) { this.trackFett = trackFett; }
-
-    public Date getDate() { return date; }
 }

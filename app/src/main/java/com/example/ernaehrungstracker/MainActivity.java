@@ -692,17 +692,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void dailyReset(ArrayList<HeuteSpeicher> curHSL) {
         HeuteSpeicher curHS = curHSL.get(0);
 
-        Date today = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
-        calendar.add(Calendar.HOUR_OF_DAY, -3);
-        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR_OF_DAY, -3);     //new day starts at 3 o'clock
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
-        today = calendar.getTime();
+        long today = calendar.getTimeInMillis();
 
-        if (!curHS.getDate().equals(today)) {
+        if (curHS.getDateMillis() != today) {
 
             curWatcherActive = false;
             ((EditText) findViewById(R.id.curKcal)).setText("");
