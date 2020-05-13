@@ -109,6 +109,10 @@
     <string name="vom">vom</string>
     <string name="bis_zum">bis zum</string>
     <string name="graph">Grafische Historie</string>
+    <string name="kg_koerpergewicht">kg Körpergewicht</string>
+    <string name="aufzeichnungen_loeschen">Aufzeichnungen loeschen?</string>
+    <string name="aufzeichnungen_loeschen_message">Alle Aufzeichnungen zu diesem Tag werden gelöscht und können nicht wiederhergestellt werden.</string>
+    <string name="tag_geloescht">Aufzeichnungen gelöscht</string>
 
 
     <string name="apfel">Apfel</string>

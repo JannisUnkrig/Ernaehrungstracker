@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class HistorieBearbeitenActivity extends AppCompatActivity implements HistorischeGerichteAdapter.ItemClickListener, HHClickDialog.HHClickDialogListener, UmbenennenDialog.UmbenennenDialogListener {
+public class HistorieBearbeitenActivity extends AppCompatActivity implements HistorischeGerichteAdapter.ItemClickListener, HHClickDialog.HHClickDialogListener, UmbenennenDialog.UmbenennenDialogListener, DeleteDialog.DeleteDialogListener {
 
     ArrayList<HeuteSpeicher> HSL;
     
@@ -31,6 +31,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
     EditText goalProt;
     EditText goalKh;
     EditText goalFett;
+    EditText gewicht;
 
     int posDay;
     private boolean curWatcherActive = true;
@@ -65,9 +66,11 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         goalProt = findViewById(R.id.goalProtHistorisch);
         goalKh   = findViewById(R.id.goalKhHistorisch);
         goalFett = findViewById(R.id.goalFettHistorisch);
+        gewicht = findViewById(R.id.gewichtHistorisch);
 
         //Inputfilter
         InputFilter[] ifd = new InputFilter[]{new InputFilterDecimal(5, 1)};
+        InputFilter[] ifd2 = new InputFilter[]{new InputFilterDecimal(3, 1)};
 
         curKcal.setFilters(ifd);
         curProt.setFilters(ifd);
@@ -77,6 +80,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         goalProt.setFilters(ifd);
         goalKh.setFilters(ifd);
         goalFett.setFilters(ifd);
+        gewicht.setFilters(ifd2);
         
         //upper initialisieren
         updateTrackerDisplayed(HSL.get(posDay));
@@ -108,16 +112,19 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
                 String protString = curProt.getText().toString();
                 String khString = curKh.getText().toString();
                 String fettString = curFett.getText().toString();
+                String gewichtString = gewicht.getText().toString();
 
                 double kcalDouble = 0;
                 double protDouble = 0;
                 double khDouble = 0;
                 double fettDouble = 0;
+                double gewichtDouble = -1;
 
                 if (!kcalString.equals("")) kcalDouble = Double.parseDouble(kcalString);
                 if (!protString.equals("")) protDouble = Double.parseDouble(protString);
-                if (!khString.equals("")) khDouble = Double.parseDouble(khString);
+                if (!khString.equals(""))   khDouble   = Double.parseDouble(khString);
                 if (!fettString.equals("")) fettDouble = Double.parseDouble(fettString);
+                if (!gewichtString.equals("")) gewichtDouble = Double.parseDouble(gewichtString);
 
                 double kcalDelta = (double) (Math.round((kcalDouble - curHS.getKcalHeute()) * 10)) / 10;
                 double protDelta = (double) (Math.round((protDouble - curHS.getProtHeute()) * 10)) / 10;
@@ -154,6 +161,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
                     }
 
                 }
+                curHS.setGewicht(gewichtDouble);
 
                 Speicher.saveHeuteSpeicherListe(getApplicationContext(), curHSL);
                 updateLowerRecyView(curHSL);
@@ -164,6 +172,7 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         curProt.addTextChangedListener(curWatcher);
         curKh.addTextChangedListener(curWatcher);
         curFett.addTextChangedListener(curWatcher);
+        gewicht.addTextChangedListener(curWatcher);
 
         //manuelle änderungen Ziel
         TextWatcher goalWatcher = new TextWatcher() {
@@ -232,6 +241,18 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
     }
 
 
+    public void onDeleteClick(View view) {
+        DeleteDialog deleteDialog = new DeleteDialog(posDay);
+        deleteDialog.show(getSupportFragmentManager(), "delete dialog");
+    }
+
+    @Override
+    public void applyDeleteClicked(ArrayList<HeuteSpeicher> HSL) {
+        //activity schließen
+        finish();
+    }
+
+
 
     private void updateUpperEditTexts(ArrayList<HeuteSpeicher> HSL) {
         curWatcherActive = false;
@@ -243,9 +264,9 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
         curFett.setText(MainActivity.doubleBeautifulizerNull(HS.getFettHeute()));
         if (HS.getKcalZielHeute() != -1) goalKcal.setText(MainActivity.doubleBeautifulizerNull(HS.getKcalZielHeute()));
         if (HS.getProtZielHeute() != -1) goalProt.setText(MainActivity.doubleBeautifulizerNull(HS.getProtZielHeute()));
-        if (HS.getKhZielHeute() != -1)     goalKh.setText(MainActivity.doubleBeautifulizerNull(HS.getKhZielHeute()));
+        if (HS.getKhZielHeute() != -1)   goalKh  .setText(MainActivity.doubleBeautifulizerNull(HS.getKhZielHeute()));
         if (HS.getFettZielHeute() != -1) goalFett.setText(MainActivity.doubleBeautifulizerNull(HS.getFettZielHeute()));
-
+        if (HS.getGewicht() != -1)       gewicht .setText(MainActivity.doubleBeautifulizerNull(HS.getGewicht()));
         curWatcherActive = true;
     }
 
@@ -295,5 +316,4 @@ public class HistorieBearbeitenActivity extends AppCompatActivity implements His
             upperFett.setVisibility(View.GONE);
         }
     }
-    
 }

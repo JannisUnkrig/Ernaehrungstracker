@@ -99,7 +99,6 @@ public abstract class Speicher {
             gerichteListe.add(new Gericht("Kokos Müsli", "50g Düsis mit 333ml Kokosmilch", 1, true, 282, 9.5, 35, 4.8, Note.LOW, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
             gerichteListe.add(new Gericht("Löffel Proteinpulver", "5g Seitenbacher Erdbeer-Proteinpulver", 1, true, 18.2, 4.1, 0.3, 0.1, Note.NEUTRAL, Note.HIGH, Note.LOW, Note.LOW));
             gerichteListe.add(new Gericht("Kokosmilch", "", 100, false, 28, 0.3, 4.3, 1, Note.LOW, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
-            gerichteListe.add(new Gericht("Düsis", "", 30, false, 113, 5.1, 18.5, 0.9, Note.LOW, Note.HIGH, Note.NEUTRAL, Note.NEUTRAL));
             gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.thunfisch), MainActivity.curMainAct.getString(R.string.thunfisch_desc), 100, false, 115, 25, 0.3, 1.3, Note.LOW, Note.HIGH, Note.LOW, Note.LOW));
 
         }

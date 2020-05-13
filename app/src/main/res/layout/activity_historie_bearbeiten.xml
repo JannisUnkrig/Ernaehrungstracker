@@ -11,11 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal|top"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="270sp"
+            android:layout_height="320sp"
             android:background="@drawable/links410x260"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -44,8 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8sp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    tools:visibility="visible">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/curKcalHistorisch"
@@ -56,10 +56,10 @@
                         android:hint="0"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="10sp"
@@ -78,10 +78,10 @@
                         android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="47sp"
@@ -99,8 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8sp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/curFettHistorisch"
@@ -111,10 +110,10 @@
                         android:hint="0"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="10sp"
@@ -133,10 +132,10 @@
                         android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="47sp"
@@ -154,8 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8sp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/curKhHistorisch"
@@ -166,10 +164,10 @@
                         android:hint="0"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="10sp"
@@ -188,10 +186,10 @@
                         android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="47sp"
@@ -220,10 +218,10 @@
                         android:hint="0"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="10sp"
@@ -242,15 +240,47 @@
                         android:hint="@string/ziel"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:singleLine="true"
                         android:textAlignment="center"
                         android:textColor="@color/darkText"
-                        android:textSize="14sp"
-                        android:singleLine="true" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="47sp"
                         android:layout_height="wrap_content"
                         android:text="@string/g_prot"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/mittelDarkText"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/gewichtTrackerLayoutHistorisch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/gewichtHistorisch"
+                        android:layout_width="70sp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/darkText"
+                        android:ems="10"
+                        android:hint="0"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/darkText"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kg_koerpergewicht"
                         android:textAlignment="viewStart"
                         android:textColor="@color/mittelDarkText"
                         android:textSize="14sp" />
@@ -329,6 +359,18 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14sp"
+            android:layout_marginBottom="30sp"
+            android:backgroundTint="@color/rot"
+            android:onClick="onDeleteClick"
+            android:text="@string/loeschen_button"
+            android:textAllCaps="false"
+            android:textColor="#fff" />
 
     </LinearLayout>
 

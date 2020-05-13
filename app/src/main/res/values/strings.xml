@@ -109,6 +109,10 @@
     <string name="vom">from</string>
     <string name="bis_zum">to</string>
     <string name="graph">Graphic History</string>
+    <string name="kg_koerpergewicht">kg bodyweight</string>
+    <string name="aufzeichnungen_loeschen">Delete records?</string>
+    <string name="aufzeichnungen_loeschen_message">All records of this day will be deleted and can not be restored.</string>
+    <string name="tag_geloescht">Records deleted</string>
 
 
     <string name="apfel">Apple</string>

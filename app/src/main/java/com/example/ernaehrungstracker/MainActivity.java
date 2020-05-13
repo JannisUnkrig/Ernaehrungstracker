@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void afterTextChanged(Editable s) {
                 // Fires right after the text has changed
                 if (!changeToUnknownCurGerichtWatcherActive) return;
-                //if (toAddKcalEditText.isFocused() || toAddProtEditText.isFocused() || toAddKhEditText.isFocused() || toAddFettEditText.isFocused()) {
 
                     portionenLiveUpdaterActive = false;
 
@@ -339,6 +338,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
+
+        View focused = getCurrentFocus();
+        if (focused != null) focused.clearFocus();
         ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
 
         updateTrackerDisplayed(HSL);

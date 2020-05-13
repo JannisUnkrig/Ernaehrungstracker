@@ -321,12 +321,6 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
             myGraphView.getSecondScale().addSeries(kcalSeries);
         }
 
-        /// the y bounds are always manual for second scale
-        myGraphView.getSecondScale().setMinY(0);
-        double maxY = 2000;
-        while (maxY < curHighestKcal) maxY *= 2;
-        myGraphView.getSecondScale().setMaxY(maxY);
-
         if (graphFett) {
             PointsGraphSeries<DataPoint> fettSeries = getDataPoints(HSL, 2);
             fettSeries.setColor(0xFFccbf08);
@@ -374,8 +368,17 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
         myGraphView.getViewport().setMaxX((double) TimeUnit.DAYS.convert(to,   TimeUnit.MILLISECONDS) + 0.01);
         myGraphView.getViewport().setXAxisBoundsManual(true);
 
-        // as we use dates as labels, the human rounding to nice readable numbers is not necessary
-        myGraphView.getGridLabelRenderer().setHumanRounding(false, true);
+        /// the y bounds are always manual for second scale
+        myGraphView.getSecondScale().setMinY(0);
+        double maxY = 2000;
+        while (maxY < curHighestKcal) maxY *= 2;
+        myGraphView.getSecondScale().setMaxY(maxY);
+
+        // display up to one fraction digit if needed
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMinimumFractionDigits(0);
+        nf.setMaximumFractionDigits(1);
+        myGraphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(nf, nf));
     }
 
     //modes: 1=kcal 2=Fett 3=Prot 4=Gewicht
