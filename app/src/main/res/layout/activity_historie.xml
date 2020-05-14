@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hintergrund"
+    android:background="#fff"
     android:focusableInTouchMode="true"
     tools:context=".HistorieActivity">
 
@@ -71,6 +71,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="350sp"
+            android:background="@color/hintergrund"
             android:gravity="center_horizontal|top"
             android:orientation="vertical"
             tools:visibility="visible">
