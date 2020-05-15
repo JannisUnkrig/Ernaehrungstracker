@@ -339,20 +339,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
 
-        View focused = getCurrentFocus();
-        if (focused != null) focused.clearFocus();
         ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
-
         updateTrackerDisplayed(HSL);
 
-        curWatcherActive = false;
-        ((EditText) findViewById(R.id.curKcal)).setText("");
-        ((EditText) findViewById(R.id.curProt)).setText("");
-        ((EditText) findViewById(R.id.curKh)).setText("");
-        ((EditText) findViewById(R.id.curFett)).setText("");
-        curWatcherActive = true;
         dailyReset(HSL);
         updateUpperEditTexts(HSL.get(0));
+
+        View focused = getCurrentFocus();
+        if (focused != null) focused.clearFocus();
     }
 
     public void entfernenButtonPressed(View view) {
@@ -696,7 +690,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        calendar.add(Calendar.HOUR_OF_DAY, -3);     //new day starts at 3 o'clock
+        calendar.add(Calendar.HOUR_OF_DAY, -3);     //new day starts at 3 in the morning
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -705,12 +699,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (curHS.getDateMillis() != today) {
 
-            curWatcherActive = false;
+            /*curWatcherActive = false;
             ((EditText) findViewById(R.id.curKcal)).setText("");
             ((EditText) findViewById(R.id.curProt)).setText("");
             ((EditText) findViewById(R.id.curKh)).setText("");
             ((EditText) findViewById(R.id.curFett)).setText("");
-            curWatcherActive = true;
+            curWatcherActive = true;*/
 
             changeToUnknownCurGerichtWatcherActive = false;
             ((EditText) findViewById(R.id.toAddKcal)).setText("");
@@ -722,7 +716,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             RueckblickDialog rueckblickDialog = new RueckblickDialog(curHS);
             rueckblickDialog.show(getSupportFragmentManager(), "rueckblick dialog");
-            //Toast.makeText(this, "new day", Toast.LENGTH_SHORT).show();
 
             HeuteSpeicher newHS = new HeuteSpeicher();
             newHS.setKcalZielHeute(curHS.getKcalZielHeute());
