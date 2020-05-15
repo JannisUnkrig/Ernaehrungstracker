@@ -37,6 +37,18 @@ public abstract class Speicher {
         new asyncStoreHSLTask().execute();
     }
 
+    public static void saveHeuteSpeicherListeSync(final Context context, final ArrayList<HeuteSpeicher> heuteSpeicherListe ) {
+
+        currentHSL = heuteSpeicherListe;
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(heuteSpeicherListe);
+        editor.putString("heuteSpeicherListeKey", json);
+        editor.apply();
+    }
+
     public static ArrayList<HeuteSpeicher> loadHeuteSpeicherListe(Context context) {
 
         if (currentHSL != null) return currentHSL;

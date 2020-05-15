@@ -737,7 +737,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     curHSL.remove(curHSL.size() - 1);
                 }
             }
-            Speicher.saveHeuteSpeicherListe(this, curHSL);
+            Speicher.saveHeuteSpeicherListeSync(this, curHSL);
         }
     }
 }
