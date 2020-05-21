@@ -316,41 +316,53 @@ public class HistorieActivity extends AppCompatActivity implements HeuteHistorie
 
         if (graphKcal) {
             PointsGraphSeries<DataPoint> kcalSeries = getDataPoints(HSL, 1);
-            kcalSeries.setColor(0xFFEA80FC);
-            kcalSeries.setCustomShape(smallPoint);
-            myGraphView.getSecondScale().addSeries(kcalSeries);
+            if (!kcalSeries.isEmpty()) {
+                kcalSeries.setColor(0xFFEA80FC);
+                kcalSeries.setCustomShape(smallPoint);
+                myGraphView.getSecondScale().addSeries(kcalSeries);
+            }
         }
 
         if (graphFett) {
             PointsGraphSeries<DataPoint> fettSeries = getDataPoints(HSL, 2);
-            fettSeries.setColor(0xFFccbf08);
-            fettSeries.setCustomShape(smallPoint);
-            myGraphView.addSeries(fettSeries);
+            if (!fettSeries.isEmpty()) {
+                fettSeries.setColor(0xFFccbf08);
+                fettSeries.setCustomShape(smallPoint);
+                myGraphView.addSeries(fettSeries);
+            }
         }
 
         if (graphKh) {
             PointsGraphSeries<DataPoint> khSeries   = getDataPoints(HSL, 3);
-            khSeries.setColor(0xFF82c959);
-            khSeries.setCustomShape(smallPoint);
-            myGraphView.addSeries(khSeries);
+            if (!khSeries.isEmpty()) {
+                khSeries.setColor(0xFF82c959);
+                khSeries.setCustomShape(smallPoint);
+                myGraphView.addSeries(khSeries);
+            }
         }
 
         if (graphProt) {
             PointsGraphSeries<DataPoint> protSeries = getDataPoints(HSL, 4);
-            protSeries.setColor(0xFFd36234);
-            protSeries.setCustomShape(smallPoint);
-            myGraphView.addSeries(protSeries);
+            if (!protSeries.isEmpty()) {
+                protSeries.setColor(0xFFd36234);
+                protSeries.setCustomShape(smallPoint);
+                myGraphView.addSeries(protSeries);
+            }
         }
 
         if (graphGewicht) {
             LineGraphSeries<DataPoint> gewichtSeriesLine = getGewichtDataPoints(HSL);
-            gewichtSeriesLine.setColor(0xFF303030);
-            myGraphView.addSeries(gewichtSeriesLine);
+            if (!gewichtSeriesLine.isEmpty()) {
+                gewichtSeriesLine.setColor(0xFF303030);
+                myGraphView.addSeries(gewichtSeriesLine);
+            }
 
             PointsGraphSeries<DataPoint> gewichtSeriesPoints = getDataPoints(HSL, 5);
-            gewichtSeriesPoints.setColor(0xFF303030);
-            gewichtSeriesPoints.setCustomShape(smallCross);
-            myGraphView.addSeries(gewichtSeriesPoints);
+            if (!gewichtSeriesPoints.isEmpty()) {
+                gewichtSeriesPoints.setColor(0xFF303030);
+                gewichtSeriesPoints.setCustomShape(smallCross);
+                myGraphView.addSeries(gewichtSeriesPoints);
+            }
         }
 
 

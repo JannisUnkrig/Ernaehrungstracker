@@ -106,12 +106,14 @@ public abstract class Speicher {
             gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.skyr_mit_sojaflocken),     MainActivity.curMainAct.getString(R.string.skyr_mit_sojaflocken_desc), 1, true, 486, 54, 24, 16, Note.NEUTRAL, Note.HIGH, Note.LOW, Note.NEUTRAL));
             gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.milch),                    MainActivity.curMainAct.getString(R.string.milch_desc), 100, false, 47, 3.4, 4.9, 1.5, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
             gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.schuessel_muesli),         MainActivity.curMainAct.getString(R.string.schuessel_muesli_desc), 1, true, 550, 22, 84, 12, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
+            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.thunfisch), MainActivity.curMainAct.getString(R.string.thunfisch_desc), 100, false, 115, 25, 0.3, 1.3, Note.LOW, Note.HIGH, Note.LOW, Note.LOW));
+            //TODO remove before publishing
             gerichteListe.add(new Gericht("Karotten Eiweiß Brot", "50g", 1, true, 114, 10.9, 5.7, 4.1, Note.NEUTRAL, Note.HIGH, Note.NEUTRAL, Note.NEUTRAL));
             gerichteListe.add(new Gericht("Düsis", "", 30, false, 113, 5.1, 18.5, 0.9, Note.LOW, Note.HIGH, Note.NEUTRAL, Note.NEUTRAL));
             gerichteListe.add(new Gericht("Kokos Müsli", "50g Düsis mit 333ml Kokosmilch", 1, true, 282, 9.5, 35, 4.8, Note.LOW, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
             gerichteListe.add(new Gericht("Löffel Proteinpulver", "5g Seitenbacher Erdbeer-Proteinpulver", 1, true, 18.2, 4.1, 0.3, 0.1, Note.NEUTRAL, Note.HIGH, Note.LOW, Note.LOW));
             gerichteListe.add(new Gericht("Kokosmilch", "", 100, false, 28, 0.3, 4.3, 1, Note.LOW, Note.NEUTRAL, Note.NEUTRAL, Note.NEUTRAL));
-            gerichteListe.add(new Gericht(MainActivity.curMainAct.getString(R.string.thunfisch), MainActivity.curMainAct.getString(R.string.thunfisch_desc), 100, false, 115, 25, 0.3, 1.3, Note.LOW, Note.HIGH, Note.LOW, Note.LOW));
+
 
         }
         return gerichteListe;

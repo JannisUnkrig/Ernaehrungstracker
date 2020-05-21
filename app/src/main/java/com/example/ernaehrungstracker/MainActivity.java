@@ -336,8 +336,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
 
         ArrayList<HeuteSpeicher> HSL = Speicher.loadHeuteSpeicherListe(this);
         updateTrackerDisplayed(HSL);
@@ -643,7 +643,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         HS.setTrackKh(khTrackerDisplayed);
         HS.setTrackFett(fettTrackerDisplayed);
 
-        Speicher.saveHeuteSpeicherListe(this, HSL);
+        Speicher.saveHeuteSpeicherListeSync(this, HSL);
 
         View upperKcal = findViewById(R.id.kcalTrackerLayout);
         View upperProt = findViewById(R.id.protTrackerLayout);
